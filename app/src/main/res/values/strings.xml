@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FruitsVegetablesMall</string>
+    <string name="main_activity_bottom_main">首页</string>
+    <string name="main_activity_bottom_classification">分类</string>
+    <string name="main_activity_bottom_inventory">盘库</string>
+    <string name="main_activity_bottom_shopping_car">购物车</string>
+    <string name="main_activity_bottom_mine">我的</string>
+    <string name="common_netdata_error"> 网络数据出错，\n请检查网络设置或联系相关人员</string>
+    <string name="common_money">￥%1$s</string>
+    <string name="search_keyword_activity_hint">输入商品名称</string>
+    <string name="recommend_list_item_price_unit">/份</string>
+    <string name="common_exit_app">再按一次退出应用</string>
+</resources>

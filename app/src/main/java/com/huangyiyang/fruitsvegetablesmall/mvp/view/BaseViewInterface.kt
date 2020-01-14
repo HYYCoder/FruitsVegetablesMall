@@ -1,0 +1,3 @@
+package com.huangyiyang.fruitsvegetablesmall.mvp.view
+
+interface BaseViewInterface
