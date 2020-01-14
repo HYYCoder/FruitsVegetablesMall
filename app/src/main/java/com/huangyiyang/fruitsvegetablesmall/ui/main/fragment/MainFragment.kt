@@ -9,8 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.bean.RecommendGoodsBean
-import com.huangyiyang.fruitsvegetablesmall.bean.categoryListBean
-import com.huangyiyang.fruitsvegetablesmall.event.EventParams
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
 import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
@@ -21,6 +19,7 @@ import com.huangyiyang.fruitsvegetablesmall.view.CommonLayout
 import com.youth.banner.listener.OnBannerListener
 import com.zhouyou.recyclerview.XRecyclerView
 import com.zhouyou.recyclerview.XRecyclerView.LoadingListener
+import com.zhouyou.recyclerview.adapter.AnimationType
 import com.zhouyou.recyclerview.adapter.HelperRecyclerViewHolder
 
 class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
@@ -28,6 +27,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     private var mXRecyclerView: XRecyclerView? = null
     private var mCommonLayout: CommonLayout? = null
+    private var mAdapter: SearchListAdapter? = null
     private var staggeredGridLayoutManager: StaggeredGridLayoutManager? = null
     private var headerView: View? = null
     private var mSearchBar: TextView? = null
@@ -74,9 +74,10 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
     }
 
     override fun initView() {
-        mCommonLayout = layout!!.findViewById(R.id.common_content)
-
-        mXRecyclerView = layout!!.findViewById(R.id.main_list) as XRecyclerView
+        mCommonLayout = layout?.findViewById(R.id.common_content)
+        mAdapter = SearchListAdapter(this.context)
+        mAdapter?.setItemAnimation(AnimationType.SLIDE_FROM_BOTTOM)
+        mXRecyclerView = layout?.findViewById(R.id.main_list) as XRecyclerView
         mXRecyclerView?.isPullRefreshEnabled = false
 
         //mXRecyclerView.addItemDecoration(new GridItemDecoration(getActivity(), 2, 8, false));
@@ -100,7 +101,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
                 //mPresenter.onLoadMore()
             }
         })
-        //mXRecyclerView?.setAdapter(mAdapter)
+        mXRecyclerView?.setAdapter(mAdapter)
 
 
         headerView = LayoutInflater.from(activity).inflate(
