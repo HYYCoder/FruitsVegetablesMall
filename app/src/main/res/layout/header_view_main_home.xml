@@ -6,7 +6,6 @@
     android:background="@color/white_ffffff"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
     <com.huangyiyang.fruitsvegetablesmall.view.CommonLayout
         android:id="@+id/common_content"
         android:layout_width="match_parent"
@@ -425,5 +424,4 @@
         </LinearLayout>
 
     </com.huangyiyang.fruitsvegetablesmall.view.CommonLayout>
-
 </RelativeLayout>

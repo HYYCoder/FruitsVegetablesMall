@@ -108,6 +108,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
             mXRecyclerView?.parent as ViewGroup,
             false
         )
+
         mXRecyclerView?.addHeaderView(headerView)
 
         mSearchBar = headerView?.findViewById(R.id.search_bar)
