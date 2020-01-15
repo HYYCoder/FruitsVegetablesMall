@@ -5,9 +5,18 @@
     <string name="main_activity_bottom_inventory">盘库</string>
     <string name="main_activity_bottom_shopping_car">购物车</string>
     <string name="main_activity_bottom_mine">我的</string>
-    <string name="common_netdata_error"> 网络数据出错，\n请检查网络设置或联系相关人员</string>
     <string name="common_money">￥%1$s</string>
+    <string name="common_exit_app">再按一次退出应用</string>
+    <string name="common_no_more_date">无更多数据</string>
+    <string name="common_netdata_error"> 网络数据出错，\n请检查网络设置或联系相关人员</string>
+    <string name="common_connection_error">网络连接出错，请检查设置</string>
+    <string name="call_back_loading">加载中...</string>
+    <string name="call_back_loading_more">努力加载中...</string>
+    <string name="call_back_loading_failed">加载失败</string>
+    <string name="call_back_no_network">当前网络不可用，请检查网络情况</string>
+    <string name="call_back_network_error">网络错误 %1$d</string>
+    <string name="call_back_requext_json_error">数据解析异常</string>
     <string name="search_keyword_activity_hint">输入商品名称</string>
     <string name="recommend_list_item_price_unit">/份</string>
-    <string name="common_exit_app">再按一次退出应用</string>
+
 </resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_ffffff"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white_ffffff">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/spacing_16"
+                android:layout_marginEnd="@dimen/spacing_16">
+
+                <TextView
+                    android:id="@+id/search_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_30"
+                    android:layout_marginStart="@dimen/spacing_10"
+                    android:background="@drawable/bg_search_bar"
+                    android:drawableStart="@drawable/icon_search_bar_grey"
+                    android:drawablePadding="@dimen/spacing_5"
+                    android:hint="@string/search_keyword_activity_hint"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/spacing_10"
+                    android:paddingTop="@dimen/spacing_6"
+                    android:paddingBottom="@dimen/spacing_6"
+                    android:textColor="@color/black_333333"
+                    android:textColorHint="@color/grey_999999"
+                    android:textSize="@dimen/font_12" />
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_shadow" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
+        android:id="@+id/common_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_fbfbfb">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <com.huangyiyang.fruitsvegetablesmall.view.classification.VerticalTabLayout
+                android:id="@+id/classification_one_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/grey_f5f5f5"
+                app:indicator_color="@color/white_ffffff"
+                app:indicator_gravity="fill"
+                app:indicator_width="@dimen/spacing_4"
+                app:tabTextColor="@color/grey_666666"
+                app:tab_height="55dp"
+                app:tab_margin="@dimen/spacing_15"
+                app:tab_mode="scrollable" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical" />
+        </LinearLayout>
+    </com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout>
+</LinearLayout>

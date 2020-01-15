@@ -9,7 +9,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".ui.main.activity.MainActivity">
-    <com.huangyiyang.fruitsvegetablesmall.view.NoSwipeableViewPager
+    <com.huangyiyang.fruitsvegetablesmall.view.main.NoSwipeableViewPager
         android:id="@+id/view_page"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toTopOf="@id/view_line"
         android:layout_weight="1">
 
-    </com.huangyiyang.fruitsvegetablesmall.view.NoSwipeableViewPager>
+    </com.huangyiyang.fruitsvegetablesmall.view.main.NoSwipeableViewPager>
 
     <View
         android:id="@+id/view_line"

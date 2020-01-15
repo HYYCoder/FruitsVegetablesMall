@@ -1,0 +1,6 @@
+package com.huangyiyang.fruitsvegetablesmall.ui.cassification.model
+
+import com.huangyiyang.fruitsvegetablesmall.ui.cassification.contract.ClassificationFragmentContract
+
+class ClassificationFragmentModel : ClassificationFragmentContract.ClassificationFragmentModel {
+}

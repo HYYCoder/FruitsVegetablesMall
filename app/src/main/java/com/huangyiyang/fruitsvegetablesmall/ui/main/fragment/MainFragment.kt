@@ -15,7 +15,7 @@ import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainFragmentModel
 import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
-import com.huangyiyang.fruitsvegetablesmall.view.CommonLayout
+import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.youth.banner.listener.OnBannerListener
 import com.zhouyou.recyclerview.XRecyclerView
 import com.zhouyou.recyclerview.XRecyclerView.LoadingListener

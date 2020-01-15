@@ -6,7 +6,7 @@
     android:orientation="vertical"
     >
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -22,7 +22,7 @@
             android:orientation="vertical"
             android:padding="@dimen/spacing_10">
 
-            <com.huangyiyang.fruitsvegetablesmall.view.ImageViewSquare
+            <com.huangyiyang.fruitsvegetablesmall.view.main.ImageViewSquare
                 android:id="@+id/iv_item_goods_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,10 +34,10 @@
                 android:id="@+id/tv_item_goods_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxHeight="@dimen/spacing_40"
                 android:layout_below="@+id/tv_item_order_number"
                 android:layout_marginTop="@dimen/spacing_10"
                 android:ellipsize="end"
+                android:maxHeight="@dimen/spacing_40"
                 android:maxLines="2"
                 android:text="大阪日本环球影¬城 大阪环球影城大门票+快速券大阪日本环球影¬城 大阪环球影城大门票+快速券大阪日本环球影¬城 大阪环球影城大门票+快速券大阪日本环球影¬城 大阪环球影城大门票+快速券"
                 android:textColor="@color/grey_666666"
@@ -99,9 +99,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_marginRight="-27dp"
                     android:src="@drawable/recommend_goods_item_add_shopping_car" />
 
             </RelativeLayout>
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

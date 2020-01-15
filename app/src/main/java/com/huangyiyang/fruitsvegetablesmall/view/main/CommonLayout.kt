@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.view
+package com.huangyiyang.fruitsvegetablesmall.view.main
 
 import android.annotation.TargetApi
 import android.content.Context

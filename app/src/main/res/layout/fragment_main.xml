@@ -9,7 +9,7 @@
 
 
 
-        <com.huangyiyang.fruitsvegetablesmall.view.CommonLayout
+        <com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
             android:id="@+id/common_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -27,7 +27,7 @@
 
                  </com.zhouyou.recyclerview.XRecyclerView>
              </RelativeLayout>
-        </com.huangyiyang.fruitsvegetablesmall.view.CommonLayout>
+        </com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout>
 
 
 

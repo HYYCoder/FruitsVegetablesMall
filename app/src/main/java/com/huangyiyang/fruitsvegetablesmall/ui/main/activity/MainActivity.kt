@@ -12,10 +12,11 @@ import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
+import com.huangyiyang.fruitsvegetablesmall.ui.cassification.fragment.ClassificationFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.ui.main.fragment.MainFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainFragmentModel
-import com.huangyiyang.fruitsvegetablesmall.view.NoSwipeableViewPager
+import com.huangyiyang.fruitsvegetablesmall.view.main.NoSwipeableViewPager
 import rx.functions.Action1
 
 class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnCheckedChangeListener, BaseActivity<MainFragmentModel,MainFragmentContract.MainFragmentView, BasePresenter<MainFragmentModel,MainFragmentContract.MainFragmentView>>() {
@@ -170,11 +171,11 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
                     if (mMainFragment == null) mMainFragment = MainFragment()
                     mMainFragment
                 }
-//                1 -> {
-//                    if (mMainClassificationFragment == null) mMainClassificationFragment =
-//                        MainClassificationFragment()
-//                    mMainClassificationFragment
-//                }
+                1 -> {
+                    if (mMainClassificationFragment == null) mMainClassificationFragment =
+                        ClassificationFragment()
+                    mMainClassificationFragment
+                }
 //                2 -> {
 //                    if (mInventoryFragment == null) mInventoryFragment = InventoryFragment()
 //                    mInventoryFragment
@@ -196,7 +197,7 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
         }
 
         override fun getCount(): Int {
-            return 1
+            return 2
         }
     }
 }
