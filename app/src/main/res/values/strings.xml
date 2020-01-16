@@ -18,5 +18,8 @@
     <string name="call_back_requext_json_error">数据解析异常</string>
     <string name="search_keyword_activity_hint">输入商品名称</string>
     <string name="recommend_list_item_price_unit">/份</string>
+    <string name="shopping_car_empty_to_main">去首页看看</string>
+    <string name="total_money">合计:¥%1$s</string>
+    <string name="settlement">结算（%1$s）</string>
 
 </resources>

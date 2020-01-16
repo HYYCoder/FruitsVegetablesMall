@@ -12,6 +12,7 @@ import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
+import com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.fragment.ShoppingCarFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.fragment.ClassificationFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.ui.main.fragment.MainFragment
@@ -180,10 +181,10 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
 //                    if (mInventoryFragment == null) mInventoryFragment = InventoryFragment()
 //                    mInventoryFragment
 //                }
-//                3 -> {
-//                    if (mShoppingCarFragment == null) mShoppingCarFragment = ShoppingCarFragment()
-//                    mShoppingCarFragment
-//                }
+                3 -> {
+                    if (mShoppingCarFragment == null) mShoppingCarFragment = ShoppingCarFragment()
+                    mShoppingCarFragment
+                }
 //                4 -> {
 //                    if (mMineFragment == null) mMineFragment = MineFragment()
 //                    mMineFragment
@@ -197,7 +198,7 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
         }
 
         override fun getCount(): Int {
-            return 2
+            return 3
         }
     }
 }
