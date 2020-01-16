@@ -66,20 +66,6 @@
             android:textSize="@dimen/font_10" />
 
         <RadioButton
-            android:id="@+id/main_activity_bottom_inventory"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@null"
-            android:button="@null"
-            android:drawableTop="@drawable/bottom_bar_inventory"
-            android:gravity="center"
-            android:text="@string/main_activity_bottom_inventory"
-            android:textColor="@drawable/main_bottom_bat_text_color"
-            android:textSize="@dimen/font_10"
-            android:visibility="visible" />
-
-        <RadioButton
             android:id="@+id/main_activity_bottom_shopping_car"
             android:layout_width="0dp"
             android:layout_height="match_parent"

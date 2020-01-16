@@ -21,5 +21,13 @@
     <string name="shopping_car_empty_to_main">去首页看看</string>
     <string name="total_money">合计:¥%1$s</string>
     <string name="settlement">结算（%1$s）</string>
+    <string name="order_all">全部订单</string>
+    <string name="order_to_be_received">待收货</string>
+    <string name="mine_discounts_center">优惠中心</string>
+    <string name="mine_address">收货地址</string>
+    <string name="mine_help">帮助中心</string>
+    <string name="mine_connect_us">联系我们</string>
+    <string name="mine_feedback">意见反馈</string>
+    <string name="logout">退出登录</string>
 
 </resources>

@@ -17,6 +17,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.cassification.fragment.Classifica
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.ui.main.fragment.MainFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainFragmentModel
+import com.huangyiyang.fruitsvegetablesmall.ui.mine.fragment.MineFragment
 import com.huangyiyang.fruitsvegetablesmall.view.main.NoSwipeableViewPager
 import rx.functions.Action1
 
@@ -28,7 +29,6 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
     private var currentFragment = 0
     private var mainActivityBottomMain: RadioButton? = null
     private var mainActivityBottomClassification: RadioButton? = null
-    private var mainActivityBottomInventory: RadioButton? = null
     private var mainActivityBottomShoppingCar: RadioButton? = null
     private var tabBottomBarMine: RadioButton? = null
     private var tvShoppingCount: TextView? = null
@@ -36,7 +36,6 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
     companion object {
         var mMainFragment: Fragment? = null
         var mMainClassificationFragment: Fragment? = null
-        var mInventoryFragment: Fragment? = null
         var mShoppingCarFragment: Fragment? = null
         var mMineFragment: Fragment? = null
         var mGameFragment: Fragment? = null
@@ -44,7 +43,6 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         mRxManager.on(EventParams.EVENT_TYPE_TO_MAIN_FRAGMENT, Action1 {
             //接收设置选中首页
             mRadioGroup?.check(R.id.main_activity_bottom_main)
@@ -53,7 +51,7 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
         mRxManager.on(EventParams.EVENT_TYPE_TO_SHOPPING_CAR_FRAGMENT, Action1 {
             //接收设置选中购物车
             mRadioGroup?.check(R.id.main_activity_bottom_shopping_car)
-            mViewPage?.currentItem = 3
+            mViewPage?.currentItem = 2
         })
         mRxManager.on(EventParams.EVENT_TYPE_TO_CASSIFICATION_1, Action1 {
             //接收设置选中分类页面
@@ -110,9 +108,8 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
         when (checkedId) {
             R.id.main_activity_bottom_main -> currentFragment = 0
             R.id.main_activity_bottom_classification -> currentFragment = 1
-            R.id.main_activity_bottom_inventory -> currentFragment = 2
-            R.id.main_activity_bottom_shopping_car -> currentFragment = 3
-            R.id.tab_bottom_bar_mine -> currentFragment = 4
+            R.id.main_activity_bottom_shopping_car -> currentFragment = 2
+            R.id.tab_bottom_bar_mine -> currentFragment = 3
         }
         mViewPage?.currentItem = currentFragment
     }
@@ -139,7 +136,6 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
         tvShoppingCount = findViewById(R.id.tv_shopping_count)
         mainActivityBottomMain = findViewById(R.id.main_activity_bottom_main)
         mainActivityBottomClassification = findViewById(R.id.main_activity_bottom_classification)
-        mainActivityBottomInventory = findViewById(R.id.main_activity_bottom_inventory)
         mainActivityBottomShoppingCar = findViewById(R.id.main_activity_bottom_shopping_car)
         tabBottomBarMine = findViewById(R.id.tab_bottom_bar_mine)
         mAdapter = ViewPageAdapter(supportFragmentManager)
@@ -177,19 +173,15 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
                         ClassificationFragment()
                     mMainClassificationFragment
                 }
-//                2 -> {
-//                    if (mInventoryFragment == null) mInventoryFragment = InventoryFragment()
-//                    mInventoryFragment
-//                }
-                3 -> {
+                2 -> {
                     if (mShoppingCarFragment == null) mShoppingCarFragment = ShoppingCarFragment()
                     mShoppingCarFragment
                 }
+                3 -> {
+                    if (mMineFragment == null) mMineFragment = MineFragment()
+                    mMineFragment
+                }
 //                4 -> {
-//                    if (mMineFragment == null) mMineFragment = MineFragment()
-//                    mMineFragment
-//                }
-//                5 -> {
 //                    if (mGameFragment == null) mGameFragment = ShakeFragment()
 //                    mGameFragment
 //                }
@@ -198,7 +190,7 @@ class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnChecked
         }
 
         override fun getCount(): Int {
-            return 3
+            return 4
         }
     }
 }
