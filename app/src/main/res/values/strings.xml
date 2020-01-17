@@ -33,5 +33,19 @@
     <string name="login_activity_password_hint">请输入密码</string>
     <string name="login_activity_forgot_psw_text">忘记密码？</string>
     <string name="login_activity_sign_text">登录</string>
+    <string name="add_shopping_car">加入购物车</string>
+    <string name="common_confirm">确定</string>
+    <string name="total_goods_amount">商品金额</string>
+    <string name="memo">备注</string>
+    <string name="memo_hint">选填，可以说明特殊需求</string>
+    <string name="success">提交成功</string>
+    <string name="success_memo">我们将尽快为您安排发货</string>
+    <string name="success_order_num">订单编号</string>
+    <string name="success_name">收件人</string>
+    <string name="success_address">收件地址</string>
+    <string name="success_amount">订单金额</string>
+    <string name="success_order_detail">订单详情</string>
+    <string name="coupon_title">优惠券</string>
+    <string name="coupon_choose">已选推荐优惠</string>
 
 </resources>

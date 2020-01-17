@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_ffffff"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.login.activity.LoginActivity">
+
+    <include
+        android:id="@+id/frame_toolbar"
+        layout="@layout/fram_toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/frame_toolbar">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/spacing_15"
+            android:layout_marginTop="@dimen/spacing_15"
+            android:layout_marginEnd="@dimen/spacing_15"
+            android:layout_marginBottom="@dimen/spacing_15"
+            android:background="@color/white_ffffff"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="@dimen/spacing_18"
+            app:cardElevation="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/spacing_35"
+                android:paddingBottom="@dimen/spacing_52">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="232dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/order_success" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/spacing_15"
+                    android:layout_toRightOf="@id/shopping_car_check_all"
+                    android:text="@string/success"
+                    android:textColor="@color/grey_666666"
+                    android:textSize="@dimen/spacing_18"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/spacing_10"
+                    android:layout_toRightOf="@id/shopping_car_check_all"
+                    android:text="@string/success_memo"
+                    android:textColor="@color/grey_999999"
+                    android:textSize="@dimen/spacing_12" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_30"
+                    android:layout_marginTop="@dimen/spacing_20"
+                    android:layout_marginRight="@dimen/spacing_30">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/success_order_num"
+                        android:textColor="@color/grey_999999"
+                        android:textSize="@dimen/spacing_12" />
+
+                    <TextView
+                        android:id="@+id/tv_order_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/spacing_52"
+                        android:text=""
+                        android:textColor="@color/grey_999999"
+                        android:textSize="@dimen/spacing_12" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_30"
+                    android:layout_marginTop="@dimen/spacing_10"
+                    android:layout_marginRight="@dimen/spacing_30">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/success_name"
+                        android:textColor="@color/grey_999999"
+                        android:textSize="@dimen/spacing_12" />
+
+                    <TextView
+                        android:id="@+id/tv_order_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/grey_999999"
+                        android:textSize="@dimen/spacing_12"
+                        tools:text="提交成功" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_30"
+                    android:layout_marginTop="@dimen/spacing_10"
+                    android:layout_marginRight="@dimen/spacing_30">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/success_address"
+                        android:textColor="@color/grey_999999"
+                        android:textSize="@dimen/spacing_12" />
+
+                    <TextView
+                        android:id="@+id/tv_order_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/spacing_52"
+                        android:textColor="@color/grey_999999"
+                        android:textSize="@dimen/spacing_12"
+                        tools:text="提交成功" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_30"
+                    android:layout_marginTop="@dimen/spacing_10"
+                    android:layout_marginRight="@dimen/spacing_30">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/success_amount"
+                        android:textColor="@color/grey_999999"
+                        android:textSize="@dimen/spacing_12" />
+
+                    <TextView
+                        android:id="@+id/tv_order_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/grey_999999"
+                        android:textSize="@dimen/spacing_12"
+                        tools:text="提交成功" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_order_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/spacing_30"
+                    android:layout_toRightOf="@id/shopping_car_check_all"
+                    android:text="@string/success_order_detail"
+                    android:textColor="@color/grey_666666"
+                    android:textSize="@dimen/spacing_18"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+</RelativeLayout>
