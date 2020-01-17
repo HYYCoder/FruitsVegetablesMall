@@ -29,5 +29,9 @@
     <string name="mine_connect_us">联系我们</string>
     <string name="mine_feedback">意见反馈</string>
     <string name="logout">退出登录</string>
+    <string name="login_activity_user_id_hint">请输入账号</string>
+    <string name="login_activity_password_hint">请输入密码</string>
+    <string name="login_activity_forgot_psw_text">忘记密码？</string>
+    <string name="login_activity_sign_text">登录</string>
 
 </resources>

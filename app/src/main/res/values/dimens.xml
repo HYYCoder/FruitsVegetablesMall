@@ -64,6 +64,10 @@
     <dimen name="spacing_59">59dp</dimen>
     <dimen name="spacing_60">60dp</dimen>
     <dimen name="spacing_100">100dp</dimen>
+    <dimen name="spacing_129">129dp</dimen>
+    <dimen name="spacing_134">134dp</dimen>
+    <dimen name="spacing_190">190dp</dimen>
+    <dimen name="spacing_320">320dp</dimen>
 
     <dimen name="font_1">1sp</dimen>
     <dimen name="font_2">2sp</dimen>

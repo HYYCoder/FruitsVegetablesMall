@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/common_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white_ffffff"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_44"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_default_ygf"
+                        android:layout_width="@dimen/spacing_190"
+                        android:layout_height="@dimen/spacing_134"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/default_holder" />
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_320"
+                        app:image_scale_type="fit_xy"
+                        app:indicator_drawable_selected="@drawable/main_banner_selected"
+                        app:indicator_drawable_unselected="@drawable/main_banner_unselected" />
+
+                    <ImageView
+                        android:id="@+id/iv_sold_out"
+                        android:layout_width="@dimen/spacing_129"
+                        android:layout_height="@dimen/spacing_129"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_soldout"
+                        android:visibility="gone"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <ImageView
+                            android:id="@+id/back"
+                            android:layout_width="@dimen/spacing_30"
+                            android:layout_height="@dimen/spacing_30"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/spacing_16"
+                            android:src="@drawable/goods_detail_back" />
+
+
+                        <RelativeLayout
+                            android:id="@+id/rv_shopping_car"
+                            android:layout_width="@dimen/spacing_30"
+                            android:layout_height="@dimen/spacing_30"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/spacing_16">
+
+                            <ImageView
+                                android:id="@+id/shopping_car"
+                                android:layout_width="@dimen/spacing_30"
+                                android:layout_height="@dimen/spacing_30"
+                                android:layout_centerInParent="true"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/goods_detail_shopping_car" />
+
+                            <TextView
+                                android:id="@+id/shopping_car_count"
+                                android:layout_width="@dimen/spacing_13"
+                                android:layout_height="@dimen/spacing_13"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/bg_shopping_car_count"
+                                android:gravity="center"
+                                android:textColor="@color/white_ffffff"
+                                android:textSize="@dimen/font_9"
+                                tools:text="2" />
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white_ffffff"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/spacing_15"
+                    android:paddingTop="@dimen/font_10"
+                    android:paddingRight="@dimen/spacing_15"
+                    android:paddingBottom="@dimen/font_10">
+
+
+                    <TextView
+                        android:id="@+id/tv_goods_detail_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/black_333333"
+                        android:textSize="@dimen/font_16"
+                        android:textStyle="bold"
+                        tools:text="新鲜鸡胸肉  约500g/份" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/spacing_40"
+                        android:layout_marginTop="@dimen/spacing_10">
+
+                        <TextView
+                            android:id="@+id/tv_goods_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:gravity="bottom"
+                            android:textColor="@color/red_e66c6c"
+                            android:textSize="@dimen/font_24"
+                            tools:text="33.33" />
+
+                        <TextView
+                            android:id="@+id/tv_goods_price_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/tv_goods_price"
+                            android:gravity="bottom"
+                            android:text="@string/recommend_list_item_price_unit"
+                            android:textColor="@color/black_686868"
+                            android:textSize="@dimen/font_16" />
+
+                        <TextView
+                            android:id="@+id/tv_goods_old_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/spacing_6"
+                            android:layout_toRightOf="@id/tv_goods_price_unit"
+                            android:gravity="bottom"
+                            android:textColor="@color/grey_999999"
+                            android:textSize="@dimen/font_12"
+                            android:textStyle="italic"
+                            tools:text="$22.88" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_goods_stock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/spacing_3"
+                            android:gravity="bottom"
+                            android:text="$22.88"
+                            android:textColor="@color/grey_666666"
+                            android:textSize="@dimen/font_12"
+                            tools:text="库存：178件" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fitsSystemWindows="true">
+
+                                <LinearLayout
+                                    android:id="@+id/goods_count_edit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <FrameLayout
+                                        android:id="@+id/cb_goods_detail_activity_minus"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+
+                                        >
+
+                                        <CheckBox
+                                            android:id="@+id/cb_1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:button="@drawable/icon_minus"
+                                            android:clickable="false"
+                                            android:focusable="false" />
+                                    </FrameLayout>
+
+
+                                    <EditText
+                                        android:id="@+id/et_shopping_count"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:gravity="center"
+                                        android:inputType="number|numberDecimal"
+                                        android:minWidth="@dimen/spacing_40"
+                                        android:paddingLeft="@dimen/spacing_5"
+                                        android:paddingRight="@dimen/spacing_5"
+                                        android:text="1"
+                                        android:textColor="@color/black_333333"
+                                        android:textSize="@dimen/font_12" />
+
+
+                                    <FrameLayout
+                                        android:id="@+id/cb_goods_detail_activity_plus"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+                                        <CheckBox
+                                            android:id="@+id/cb_2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:button="@drawable/icon_plus"
+                                            android:clickable="false"
+                                            android:focusable="false"
+                                            />
+                                    </FrameLayout>
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/discount_recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_10"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/add_shopping_car"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_44"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/btn_add_shopping_car_button"
+            android:enabled="false"
+            android:text="@string/add_shopping_car"
+            android:textColor="@color/gray_999999"
+            android:textSize="@dimen/font_16" />
+    </RelativeLayout>
+</com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout>

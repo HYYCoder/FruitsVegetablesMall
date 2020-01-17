@@ -1,19 +1,21 @@
-package com.huangyiyang.fruitsvegetablesmall.ui.login.activity
+package com.huangyiyang.fruitsvegetablesmall.ui.good.activity
 
 import android.view.View
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
-import com.huangyiyang.fruitsvegetablesmall.ui.login.contract.LoginActivityContract
-import com.huangyiyang.fruitsvegetablesmall.ui.login.model.LoginActivityModel
+import com.huangyiyang.fruitsvegetablesmall.ui.good.contract.GoodsDetailActivityContract
+import com.huangyiyang.fruitsvegetablesmall.ui.good.model.GoodsDetailActivityModel
 
-class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListener,BaseActivity<LoginActivityModel,LoginActivityContract.LoginActivityView,BasePresenter<LoginActivityModel,LoginActivityContract.LoginActivityView>>(){
+class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView, View.OnClickListener, BaseActivity<GoodsDetailActivityModel,
+GoodsDetailActivityContract.GoodsDetailActivityView, BasePresenter<GoodsDetailActivityModel,
+        GoodsDetailActivityContract.GoodsDetailActivityView>>(){
     override fun onClick(v: View?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun getLayoutResId(): Int {
-        return R.layout.activity_login
+        return R.layout.activity_goods_detail
     }
 
     override fun initPresenter() {
@@ -31,4 +33,5 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
     override fun initView() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
 }
