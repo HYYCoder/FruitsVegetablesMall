@@ -11,17 +11,17 @@ import androidx.viewpager.widget.ViewPager
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
-import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.fragment.ShoppingCarFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.fragment.ClassificationFragment
-import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContract
+import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainActivityContract
 import com.huangyiyang.fruitsvegetablesmall.ui.main.fragment.MainFragment
-import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainFragmentModel
+import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainActivityModel
+import com.huangyiyang.fruitsvegetablesmall.ui.main.presenter.MainActivityPresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.mine.fragment.MineFragment
 import com.huangyiyang.fruitsvegetablesmall.view.main.NoSwipeableViewPager
 import rx.functions.Action1
 
-class MainActivity : MainFragmentContract.MainFragmentView, RadioGroup.OnCheckedChangeListener, BaseActivity<MainFragmentModel,MainFragmentContract.MainFragmentView, BasePresenter<MainFragmentModel,MainFragmentContract.MainFragmentView>>() {
+class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnCheckedChangeListener, BaseActivity<MainActivityModel,MainActivityPresenter>() {
 
     private var mRadioGroup: RadioGroup? = null
     private var mAdapter: ViewPageAdapter? = null

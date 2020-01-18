@@ -11,9 +11,9 @@ import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.bean.RecommendGoodsBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
-import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainFragmentModel
+import com.huangyiyang.fruitsvegetablesmall.ui.main.presenter.MainFragmentPresenter
 import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.youth.banner.listener.OnBannerListener
@@ -23,7 +23,7 @@ import com.zhouyou.recyclerview.adapter.AnimationType
 import com.zhouyou.recyclerview.adapter.HelperRecyclerViewHolder
 
 class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
-    BannerUtil.OnLoadFinish, BaseFragment<MainFragmentModel, MainFragmentContract.MainFragmentView, BasePresenter<MainFragmentModel,MainFragmentContract.MainFragmentView>>(){
+    BannerUtil.OnLoadFinish, BaseFragment<MainFragmentModel,MainFragmentPresenter>(){
 
     private var mXRecyclerView: XRecyclerView? = null
     private var mCommonLayout: CommonLayout? = null

@@ -6,10 +6,10 @@ import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.order.contract.ConfirmOrderActivityContract
 import com.huangyiyang.fruitsvegetablesmall.ui.order.model.ConfirmOrderActivityModel
+import com.huangyiyang.fruitsvegetablesmall.ui.order.presenter.ConfirmOrderActivityPresenter
 
 class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityView, View.OnClickListener,BaseActivity<ConfirmOrderActivityModel
-        ,ConfirmOrderActivityContract.ConfirmOrderActivityView, BasePresenter<ConfirmOrderActivityModel
-        ,ConfirmOrderActivityContract.ConfirmOrderActivityView>>() {
+        ,ConfirmOrderActivityPresenter>() {
     override fun onClick(v: View?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

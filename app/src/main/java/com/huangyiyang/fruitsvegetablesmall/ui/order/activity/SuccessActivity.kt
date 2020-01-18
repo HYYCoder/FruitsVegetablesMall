@@ -6,9 +6,9 @@ import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.order.contract.SuccessActivityContract
 import com.huangyiyang.fruitsvegetablesmall.ui.order.model.SuccessActivityModel
+import com.huangyiyang.fruitsvegetablesmall.ui.order.presenter.SuccessActivityPresenter
 
-class SuccessActivity : SuccessActivityContract.SuccessActivityView, View.OnClickListener,BaseActivity<SuccessActivityModel,SuccessActivityContract.SuccessActivityView
-        , BasePresenter<SuccessActivityModel,SuccessActivityContract.SuccessActivityView>>(){
+class SuccessActivity : SuccessActivityContract.SuccessActivityView, View.OnClickListener,BaseActivity<SuccessActivityModel,SuccessActivityPresenter>(){
     override fun onClick(v: View?) {
 
     }

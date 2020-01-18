@@ -20,7 +20,7 @@ import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
 import com.huangyiyang.fruitsvegetablesmall.util.TypeUtil
 import java.util.*
 
-abstract class BaseActivity<M : BaseModelInterface,V : BaseViewInterface ,P : BasePresenter<M,V>>:AppCompatActivity() {
+abstract class BaseActivity<M : BaseModelInterface,P : BasePresenter<*, *>>:AppCompatActivity() {
 
     lateinit var mContext:Context
 

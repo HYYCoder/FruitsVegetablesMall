@@ -14,7 +14,7 @@ import com.huangyiyang.fruitsvegetablesmall.mvp.view.BaseViewInterface
 import com.huangyiyang.fruitsvegetablesmall.rxevent.RxManager
 import com.huangyiyang.fruitsvegetablesmall.util.TypeUtil
 
-abstract class BaseFragment<M : BaseModelInterface,V : BaseViewInterface,P : BasePresenter<M, V>> : Fragment(){
+abstract class BaseFragment<M : BaseModelInterface,P : BasePresenter<*, *>> : Fragment(){
 
     protected var layout: View? = null
 
