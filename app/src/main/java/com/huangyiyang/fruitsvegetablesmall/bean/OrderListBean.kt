@@ -1,4 +1,4 @@
 package com.huangyiyang.fruitsvegetablesmall.bean
 
-class categoryListBean {
+class OrderListBean {
 }

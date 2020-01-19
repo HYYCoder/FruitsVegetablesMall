@@ -50,7 +50,7 @@ class LoadingDialog {
                 LinearLayout.LayoutParams.MATCH_PARENT
             )
         )
-        mLoadingDialog!!.show()
+        mLoadingDialog?.show()
         return mLoadingDialog
     }
 

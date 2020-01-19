@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.huangyiyang.fruitsvegetablesmall.ui.cassification.fragment.CassificationDetailFragment">
+
+    <com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
+        android:id="@+id/common_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_fbfbfb">
+
+        <com.zhouyou.recyclerview.XRecyclerView
+            android:id="@+id/classification_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout>
+</FrameLayout>

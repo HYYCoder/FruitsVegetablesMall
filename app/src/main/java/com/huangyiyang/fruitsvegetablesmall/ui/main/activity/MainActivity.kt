@@ -38,7 +38,6 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
         var mMainClassificationFragment: Fragment? = null
         var mShoppingCarFragment: Fragment? = null
         var mMineFragment: Fragment? = null
-        var mGameFragment: Fragment? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -181,10 +180,6 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
                     if (mMineFragment == null) mMineFragment = MineFragment()
                     mMineFragment
                 }
-//                4 -> {
-//                    if (mGameFragment == null) mGameFragment = ShakeFragment()
-//                    mGameFragment
-//                }
                 else -> null
             }
         }
