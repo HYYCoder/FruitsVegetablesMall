@@ -1,6 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall.bean
 
-class shoppingCarListBean {
+class ShoppingCarListBean {
 
     var normalItems: List<NormalItemsBean>? = null
 
