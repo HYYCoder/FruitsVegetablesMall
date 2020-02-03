@@ -99,6 +99,15 @@ class AppForegroundStateManager// 在主线程创建一个 handler
         }
     }
 
+       /**
+        * 添加一个用于监听前台应用状态的监听器
+        *
+        * @param listener
+        */
+       fun addListener(listener: OnAppForegroundStateChangeListener?) {
+           mListeners.add(listener!!)
+       }
+
     /**
      * 移除用于监听前台应用状态的监听器
      *

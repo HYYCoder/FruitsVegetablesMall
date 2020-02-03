@@ -3,7 +3,7 @@ package com.huangyiyang.fruitsvegetablesmall.api
 import android.app.Activity
 import android.content.Context
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.util.FrameConstUtil
+import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
 import com.huangyiyang.fruitsvegetablesmall.util.NetWorkUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import org.json.JSONException
@@ -44,7 +44,7 @@ abstract class ApiCallBack<T> : Subscriber<ApiResult<T>> {
 
     override fun onStart() {
         super.onStart()
-        if (!NetWorkUtil().isNetConnected(FrameConstUtil().getContext() as Context)) { //            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_no_network));
+        if (!NetWorkUtil().isNetConnected(FrameConst.getContext() as Context)) { //            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_no_network));
             _onError(
                 ServerException(
                     ServerException().ERROR_EXCEPTION,

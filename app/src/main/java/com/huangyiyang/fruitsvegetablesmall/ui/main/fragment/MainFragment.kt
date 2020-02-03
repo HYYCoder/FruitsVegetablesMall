@@ -1,6 +1,7 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.main.fragment
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.huangyiyang.fruitsvegetablesmall.R
+import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
+import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.bean.RecommendGoodsBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
@@ -179,6 +183,8 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 //                false
 //            )
         })
+
+        mPresenter?.getRecommendGoodsList(Const.header())
     }
 
     override fun initData() {
@@ -237,6 +243,14 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
         ) {
 
         }
+    }
+
+    override fun setRecommendGoodsListInfo(goodsBeanList: List<RecommendGoodsBean?>?) {
+
+    }
+
+    override fun setCategoriesList(categoryListBean: List<CategoryListBean?>?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

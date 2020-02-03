@@ -1,4 +1,22 @@
 package com.huangyiyang.fruitsvegetablesmall.bean
 
-class RecommendGoodsBean {
-}
+data class RecommendGoodsBean(var pageNum:Int?,
+                              var pageSize:Int?,
+                              var size:Int?,
+                              var startRow:Int?,
+                              var endRow:Int?,
+                              var total:Int?,
+                              var pages:Int?,
+                              var list: MutableList<GoodsDetail>,
+                              var prePage:Int,
+                              var nextPage:Int,
+                              var isFirstPage:Boolean,
+                              var isLastPage:Boolean,
+                              var hasPreviousPage:Boolean,
+                              var hasNextPage:Boolean,
+                              var navigatePages:Int,
+                              var navigatepageNums:MutableList<Int>,
+                              var navigateFirstPage:Int,
+                              var navigateLastPage:Int,
+                              var firstPage:Int,
+                              var lastPage:Int)
