@@ -4,7 +4,7 @@ import java.util.*
 
 class Const {
     companion object {
-        const val verType = 1 //0是测试1是正式
+        const val verType = 0 //0是测试1是正式
         val BASE_URL =
             if (verType == 0) "http://10.0.2.2:8080/" else "http://10.0.2.2:8080/"
 

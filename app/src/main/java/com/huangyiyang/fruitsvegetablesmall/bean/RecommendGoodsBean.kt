@@ -29,4 +29,5 @@ data class RecommendGoodsBean(
     var stock:Double,
     var specification:String,
     var reducedPrice:Double,
-    var detail:String)
+    var detail:String
+)
