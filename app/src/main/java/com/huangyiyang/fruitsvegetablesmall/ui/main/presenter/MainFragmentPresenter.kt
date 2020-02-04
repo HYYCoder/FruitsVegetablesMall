@@ -10,9 +10,9 @@ import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
 class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
     override fun getRecommendGoodsList(header: Map<String?, String?>?,parame: Map<String?, String?>?) {
         mManager!!.add(mModel?.getRecommendGoodsList(header,parame)?.subscribe(object :
-            ApiCallBack<List<RecommendGoodsBean?>?>(mContext) {
+            ApiCallBack<RecommendGoodsBean?>(mContext) {
             override fun _onNext(
-                goodsList: List<RecommendGoodsBean?>?,
+                goodsList: RecommendGoodsBean?,
                 message: String?
             ) {
                 mView!!.setRecommendGoodsListInfo(goodsList)

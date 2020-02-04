@@ -13,12 +13,12 @@ interface MainFragmentContract {
         fun getRecommendGoodsList(
             header: Map<String?, String?>?,
             parame: Map<String?, String?>?
-        ): Observable<ApiResult<List<RecommendGoodsBean?>?>?>?
+        ): Observable<ApiResult<RecommendGoodsBean?>?>?
         fun getCategoriesList(header: Map<String?, String?>?): Observable<ApiResult<List<CategoryListBean?>?>?>?
     }
 
     interface MainFragmentView : BaseViewInterface {
-        fun setRecommendGoodsListInfo(goodsBeanList: List<RecommendGoodsBean?>?)
+        fun setRecommendGoodsListInfo(goodsBeanList: RecommendGoodsBean?)
         fun setCategoriesList(categoryListBean: List<CategoryListBean?>?)
     }
 

@@ -254,7 +254,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
         }
     }
 
-    override fun setRecommendGoodsListInfo(goodsBeanList: List<RecommendGoodsBean?>?) {
+    override fun setRecommendGoodsListInfo(goodsBeanList: RecommendGoodsBean?) {
         Log.e("测试",goodsBeanList.toString())
         Log.e("测试",goodsBeanList?.size.toString())
     }
