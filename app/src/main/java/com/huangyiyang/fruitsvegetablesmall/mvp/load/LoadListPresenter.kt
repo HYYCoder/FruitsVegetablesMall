@@ -15,31 +15,23 @@ import com.zhouyou.recyclerview.refresh.LoadingMoreFooter
 import com.zhouyou.recyclerview.refresh.ProgressStyle
 import java.util.*
 
-abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V>() {
-
+abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V> {
 
     var mPage = 1
-
-
     var mPageSize = 10
     var isE = false
-
-
     var mParamsMap: MutableMap<String, String>? = null
     var header: Map<String, String>? = null
     var param: String? = null
-
     private var mCommonLayout: CommonLayout? = null
     private var mRecyclerView: XRecyclerView? = null
     private var mAdapter: BaseQuickAdapter<T>? = null
-
     private var mCallBack: ApiCallBack<List<T>?>? = null
-
     private var mSwipeRefreshLayout: SwipeRefreshLayout? = null
 
-    open fun LoadListPresenter() {}
+    constructor():super()
 
-    open fun LoadListPresenter(pageSize: Int) {
+    constructor(pageSize: Int) :super(){
         mPageSize = pageSize
     }
 
@@ -125,14 +117,14 @@ abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V
         // mPageSize = 10;
         mCommonLayout?.showLoading()
         if (mParamsMap != null) {
-            mParamsMap!!["pn"] = mPage.toString()
+            mParamsMap!!["current"] = mPage.toString()
         }
         requestNextPage()
     }
 
     private fun loadMore() {
         if (mParamsMap != null) {
-            mParamsMap!!["pn"] = mPage.toString()
+            mParamsMap!!["current"] = mPage.toString()
         }
         requestNextPage()
     }

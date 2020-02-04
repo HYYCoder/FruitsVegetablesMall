@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.api.Const
-import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.bean.RecommendGoodsBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
@@ -25,6 +24,7 @@ import com.zhouyou.recyclerview.XRecyclerView
 import com.zhouyou.recyclerview.XRecyclerView.LoadingListener
 import com.zhouyou.recyclerview.adapter.AnimationType
 import com.zhouyou.recyclerview.adapter.HelperRecyclerViewHolder
+import java.util.*
 
 class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
     BannerUtil.OnLoadFinish, BaseFragment<MainFragmentModel,MainFragmentPresenter>(){
@@ -184,7 +184,16 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 //            )
         })
 
-        mPresenter?.getRecommendGoodsList(Const.header())
+        val params: MutableMap<String?, String?> =
+            HashMap()
+        params["type"] = ""
+        params["name"] = ""
+        params["price"] = ""
+        params["stock"] = ""
+        params["reducedPrice"] = ""
+        params["current"] = java.lang.String.valueOf(1)
+        params["pageSize"] = java.lang.String.valueOf(mPresenter!!.mPageSize)
+        mPresenter?.getRecommendGoodsList(Const.header(),params)
     }
 
     override fun initData() {
@@ -247,6 +256,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     override fun setRecommendGoodsListInfo(goodsBeanList: List<RecommendGoodsBean?>?) {
         Log.e("测试",goodsBeanList.toString())
+        Log.e("测试",goodsBeanList?.size.toString())
     }
 
     override fun setCategoriesList(categoryListBean: List<CategoryListBean?>?) {

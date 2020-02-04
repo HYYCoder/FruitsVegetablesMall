@@ -11,9 +11,10 @@ import rx.Observable
 
 class MainFragmentModel : MainFragmentContract.MainFragmentModel{
     override fun getRecommendGoodsList(
-        header: Map<String?, String?>?
+        header: Map<String?, String?>?,
+        parame: Map<String?, String?>?
     ): Observable<ApiResult<List<RecommendGoodsBean?>?>?>? {
-        return FrameConst.apiService(HttpApi::class.java).getRecommendList(header)
+        return FrameConst.apiService(HttpApi::class.java).getRecommendList(header,parame)
             ?.compose(RxSchedulers.io_main())
     }
 

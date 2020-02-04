@@ -11,7 +11,8 @@ import rx.Observable
 interface MainFragmentContract {
     interface MainFragmentModel : BaseModelInterface {
         fun getRecommendGoodsList(
-            header: Map<String?, String?>?
+            header: Map<String?, String?>?,
+            parame: Map<String?, String?>?
         ): Observable<ApiResult<List<RecommendGoodsBean?>?>?>?
         fun getCategoriesList(header: Map<String?, String?>?): Observable<ApiResult<List<CategoryListBean?>?>?>?
     }
@@ -23,7 +24,7 @@ interface MainFragmentContract {
 
     abstract class MainFragmentPresenter :
         LoadListPresenter<RecommendGoodsBean, MainFragmentModel, MainFragmentView>() {
-        abstract fun getRecommendGoodsList(header: Map<String?, String?>?)
+        abstract fun getRecommendGoodsList(header: Map<String?, String?>?,parame: Map<String?, String?>?)
         abstract fun getCategoriesList(header: Map<String?, String?>?)
     }
 

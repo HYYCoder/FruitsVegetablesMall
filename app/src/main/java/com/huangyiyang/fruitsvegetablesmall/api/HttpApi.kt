@@ -13,7 +13,7 @@ interface HttpApi {
 
     //获取首页推荐商品列表
     @GET("/goods")
-    fun getRecommendList(@HeaderMap header: Map<String?, String?>?): Observable<ApiResult<List<RecommendGoodsBean?>?>?>?
+    fun getRecommendList(@HeaderMap header: Map<String?, String?>?, @QueryMap body:Map<String?, String?>?): Observable<ApiResult<List<RecommendGoodsBean?>?>?>?
 
     //获取分类信息
     @GET("/categories")

@@ -20,4 +20,5 @@ abstract class BasePresenter<M,V> {
     }
 
     open fun onStart() {}
+
 }

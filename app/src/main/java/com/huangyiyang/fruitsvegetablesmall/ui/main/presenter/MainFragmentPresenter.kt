@@ -8,8 +8,8 @@ import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContrac
 import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
 
 class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
-    override fun getRecommendGoodsList(header: Map<String?, String?>?) {
-        mManager!!.add(mModel?.getRecommendGoodsList(header)?.subscribe(object :
+    override fun getRecommendGoodsList(header: Map<String?, String?>?,parame: Map<String?, String?>?) {
+        mManager!!.add(mModel?.getRecommendGoodsList(header,parame)?.subscribe(object :
             ApiCallBack<List<RecommendGoodsBean?>?>(mContext) {
             override fun _onNext(
                 goodsList: List<RecommendGoodsBean?>?,
@@ -32,7 +32,7 @@ class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
     }
 
     override fun requestNextPage() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 }
