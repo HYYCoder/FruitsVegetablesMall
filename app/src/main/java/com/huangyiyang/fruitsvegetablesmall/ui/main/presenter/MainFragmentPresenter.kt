@@ -1,5 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.main.presenter
 
+import com.huangyiyang.fruitsvegetablesmall.MVPApplication
 import com.huangyiyang.fruitsvegetablesmall.api.ApiCallBack
 import com.huangyiyang.fruitsvegetablesmall.api.ServerException
 import com.huangyiyang.fruitsvegetablesmall.bean.RecommendGoodsBean
@@ -17,11 +18,10 @@ class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
                 mView!!.setRecommendGoodsListInfo(goodsList)
             }
 
-            override fun _onError(exception: ServerException?) {
+            override fun _onError(e: ServerException?) {
                 ToastUtil().showLong(
                     mContext,
-//                    YGFShopMVPApplication.getToastContent(mContext, e.mErrorCode)
-                    ""
+                    MVPApplication.getToastContent(mContext, e?.mErrorCode,e?.mErrorMsg).toString()
                 )
             }
         }))

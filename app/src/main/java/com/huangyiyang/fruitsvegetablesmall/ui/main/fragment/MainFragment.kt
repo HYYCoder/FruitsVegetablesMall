@@ -246,7 +246,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
     }
 
     override fun setRecommendGoodsListInfo(goodsBeanList: List<RecommendGoodsBean?>?) {
-
+        Log.e("测试",goodsBeanList.toString())
     }
 
     override fun setCategoriesList(categoryListBean: List<CategoryListBean?>?) {

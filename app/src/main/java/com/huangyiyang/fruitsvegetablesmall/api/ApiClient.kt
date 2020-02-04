@@ -27,7 +27,7 @@ open class ApiClient {
 
         val CACHE_CONTROL_AGE = "max-age=5"
 
-        private val HTTP_LOG = "YGF"
+        private val HTTP_LOG = "FVM"
 
         @Volatile
         private var sInstance: ApiClient? = null
@@ -45,7 +45,7 @@ open class ApiClient {
 
         //根据网络设置离线、在线缓存Header
         fun getCacheControl(): String? {
-            return if (NetWorkUtil().isNetConnected(FrameConst.getContext() as Context)) CACHE_CONTROL_AGE else CACHE_CONTROL_CACHE
+            return if (NetWorkUtil.isNetConnected(FrameConst.getContext() as Context)) CACHE_CONTROL_AGE else CACHE_CONTROL_CACHE
         }
 
     }
@@ -70,12 +70,14 @@ open class ApiClient {
             .addInterceptor(LoggerInterceptor(HTTP_LOG, true))
             .cookieJar(cookieJar)
             .build()
+
         mRetrofit = Retrofit.Builder()
             .client(client)
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .build()
+
     }
 
 }

@@ -9,8 +9,9 @@ import rx.schedulers.Schedulers
  */
 class RxSchedulers {
     companion object {
-        fun <T> io_main(): Observable.Transformer<T, T>? {
-            return Observable.Transformer { observable ->
+        fun <T> io_main(): Observable.Transformer<T, T> {
+            return Observable.Transformer<T, T>{
+                    observable:Observable<T> ->
                 observable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
             }

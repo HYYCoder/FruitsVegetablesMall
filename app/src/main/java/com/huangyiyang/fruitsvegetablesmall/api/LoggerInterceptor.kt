@@ -11,6 +11,11 @@ class LoggerInterceptor : Interceptor{
     companion object{
         val TAG = "HttpLog"
         private var errorCode: String? = null
+
+        fun errorCodeCallback(): String? {
+            return if (errorCode == null) "" else errorCode!!.split(",").toTypedArray()[0].split(":")
+                .toTypedArray()[1]
+        }
     }
     private var tag: String? = null
     private var showResponse = false

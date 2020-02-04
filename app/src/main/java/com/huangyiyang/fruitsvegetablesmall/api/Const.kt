@@ -10,7 +10,7 @@ class Const {
 
         //    public static final String BASE_URL = "http://api.client.ygfmlt.infoloop.cn"; //正式更改之后
         val BASE_URL =
-            if (verType == 0) "http://localhost:8080/" else "http://localhost:8080/"
+            if (verType == 0) "http://10.0.2.2:8080/" else "http://10.0.2.2:8080/"
         const val APP_KEY = "MOXUOLSRGKNT1HRSSHBJ8EQSUWTZO1Z5"
 
         fun header(): Map<String?, String?>? {

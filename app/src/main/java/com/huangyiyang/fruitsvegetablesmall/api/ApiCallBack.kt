@@ -7,9 +7,9 @@ import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
 import com.huangyiyang.fruitsvegetablesmall.util.NetWorkUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import org.json.JSONException
+import retrofit2.HttpException
 import rx.Subscriber
 import java.net.ConnectException
-import retrofit2.adapter.rxjava.HttpException
 
 
 abstract class ApiCallBack<T> : Subscriber<ApiResult<T>> {
@@ -44,7 +44,7 @@ abstract class ApiCallBack<T> : Subscriber<ApiResult<T>> {
 
     override fun onStart() {
         super.onStart()
-        if (!NetWorkUtil().isNetConnected(FrameConst.getContext() as Context)) { //            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_no_network));
+        if (!NetWorkUtil.isNetConnected(FrameConst.getContext() as Context)) { //            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_no_network));
             _onError(
                 ServerException(
                     ServerException().ERROR_EXCEPTION,
@@ -77,14 +77,12 @@ abstract class ApiCallBack<T> : Subscriber<ApiResult<T>> {
         if (mShowDialog) LoadingDialog().cancelDialogForLoading()
         e.printStackTrace()
         //网络
-//        if (!NetWorkUtil.isNetConnected(FrameConst.getContext())) {
-////            ToastUtil.showShort(mContext, com.wangxing.code.R.string.call_back_no_network_1);
-//            _onError(new ServerException(ServerException.ERROR_EXCEPTION, mContext.getString(com.wangxing.code.R.string.call_back_no_network_1)));
-//        } else
-        if (e is ServerException) { //            ToastUtil.showShort(mContext, ((ServerException) e).mErrorMsg);
-            _onError(e as ServerException)
+        if (!NetWorkUtil.isNetConnected(FrameConst.getContext() as Context)) {
+            _onError(ServerException(ServerException().ERROR_EXCEPTION, mContext!!.getString(R.string.call_back_no_network)))
+        } else if (e is ServerException) { //            ToastUtil.showShort(mContext, ((ServerException) e).mErrorMsg);
+            _onError(e)
         } else if (e is HttpException) {
-            val code: Int = (e as HttpException).code()
+            val code: Int = (e).code()
             //            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_network_error, code));
             _onError(
                 ServerException(

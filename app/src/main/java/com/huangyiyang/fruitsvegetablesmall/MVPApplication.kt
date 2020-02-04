@@ -57,8 +57,8 @@ class MVPApplication : AppForegroundStateManager.OnAppForegroundStateChangeListe
 
         fun getToastContent(
             context: Context,
-            code: String,
-            message: String
+            code: String?,
+            message: String?
         ): String? {
             if (errorCode == null) {
                 errorCode = HashMap()
