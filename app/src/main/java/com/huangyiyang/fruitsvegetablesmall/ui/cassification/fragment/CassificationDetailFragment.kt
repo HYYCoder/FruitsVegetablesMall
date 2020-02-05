@@ -88,7 +88,7 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
 
     override fun onInvisible() {
         super.onInvisible()
-        LoadingDialog().cancelDialogForLoading()
+        LoadingDialog.cancelDialogForLoading()
     }
 
     class ClassificationDetaiListAdapter : BaseQuickAdapter<RecommendGoodsBean>{

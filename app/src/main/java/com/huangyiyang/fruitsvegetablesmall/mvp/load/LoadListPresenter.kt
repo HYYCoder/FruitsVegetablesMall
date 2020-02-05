@@ -17,7 +17,7 @@ import java.util.*
 
 abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V> {
 
-    var mPage = 1
+    var mPage = 0
     var mPageSize = 10
     var isE = false
     var mParamsMap: MutableMap<String, String>? = null
@@ -29,9 +29,9 @@ abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V
     private var mCallBack: ApiCallBack<List<T>?>? = null
     private var mSwipeRefreshLayout: SwipeRefreshLayout? = null
 
-    constructor():super()
+    constructor()
 
-    constructor(pageSize: Int) :super(){
+    constructor(pageSize: Int){
         mPageSize = pageSize
     }
 
@@ -113,7 +113,7 @@ abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V
     private fun reload() {
         mRecyclerView!!.reset()
         mAdapter?.setListAll(ArrayList<T>())
-        mPage = 1
+        mPage = 0
         // mPageSize = 10;
         mCommonLayout?.showLoading()
         if (mParamsMap != null) {
@@ -140,7 +140,7 @@ abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V
                 message: String?
             ) {
                 if (bean == null || bean == null) {
-                    if (mPage == 1) {
+                    if (mPage == 0) {
                         if (isE) { //                              mCommonLayout.cancelShow();
                             mCommonLayout?.showEmpty()
                         } else {
@@ -154,7 +154,7 @@ abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V
                     } else {
                         mRecyclerView!!.setNoMore(true) //没有下一页
                     }
-                    LoadingDialog()
+                    LoadingDialog
                         .cancelDialogForLoading()
                     return
                 }
@@ -166,7 +166,7 @@ abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V
                         mRecyclerView!!.setNoMore(true) //没有下一页
                     }
                 }
-                if (mPage == 1) {
+                if (mPage == 0) {
                     if (bean.isNotEmpty()) {
                         mPageSize = bean.size // API可能只需要page, 而不需要page size
                         if (mPageSize < 6) { //
@@ -194,12 +194,13 @@ abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V
                     }
                 }
                 response(bean)
-                LoadingDialog().cancelDialogForLoading()
+                LoadingDialog.cancelDialogForLoading()
             }
 
             override fun _onError(exception: ServerException?) {
                 errorBack(exception)
-                if (mPage == 1) {
+                println(exception)
+                if (mPage == 0) {
                     if (!exception?.mErrorCode.equals(ServerException().ERROR_NO_DATA)) {
                         mCommonLayout?.showError()
                         if (mSwipeRefreshLayout != null) {
@@ -229,7 +230,7 @@ abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V
                         mSwipeRefreshLayout?.isRefreshing = false
                     }
                 }
-                LoadingDialog().cancelDialogForLoading()
+                LoadingDialog.cancelDialogForLoading()
             }
         }
         return mCallBack
@@ -246,7 +247,7 @@ abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V
 
     //加载更多
     override fun onLoadMore() {
-        LoadingDialog().showDialogForLoading(
+        LoadingDialog.showDialogForLoading(
             mContext,
             mContext.getString(R.string.call_back_loading),
             false

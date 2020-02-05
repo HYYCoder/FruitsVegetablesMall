@@ -7,8 +7,8 @@ import android.view.View
 import android.view.animation.Interpolator
 import com.zhouyou.recyclerview.adapter.*
 
-abstract class BaseQuickAdapter<T>(context: Context?) :
-    HelperRecyclerViewAdapter<T>(context) {
+abstract class BaseQuickAdapter<T> :
+    HelperRecyclerViewAdapter<T> {
 
 
     private var mAnimationType: AnimationType? = null
@@ -18,21 +18,23 @@ abstract class BaseQuickAdapter<T>(context: Context?) :
     private var mCustomAnimator: HelperRecyclerViewAnimAdapter.CustomAnimator? = null
     private var mLastItemPosition = -1
 
-    constructor(
-        context: Context?,
-        vararg layoutIds: Int
-    ) : this(context)
+    constructor(context: Context?):super(context)
 
     constructor(
-        data: List<*>?,
+        context: Context?,
+        layoutIds: Int
+    ) : super(context,layoutIds)
+
+    constructor(
+        data: List<T>?,
         context: Context?
-    ):this(context)
+    ):super(data,context)
 
     constructor(
-        data: List<*>?,
+        data: List<T>?,
         context: Context?,
-        vararg layoutId: Int
-    ): this(context)
+        layoutId: Int
+    ): super(data,context,layoutId)
 
 //    @Override
 //    public void onBindViewHolder(BH holder, int position, List<Object> payloads) {

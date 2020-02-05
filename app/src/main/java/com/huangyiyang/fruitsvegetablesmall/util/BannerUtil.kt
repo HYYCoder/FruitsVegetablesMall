@@ -130,18 +130,14 @@ class BannerUtil {
     }
 
 
-    class DataBean {
-        var imageUrl: String? = null
-        var eventId: String? = null
-
-    }
+    class DataBean(var id: String,var imageUrl: String)
 
     class GlideImageLoader : ImageLoader() {
         override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
             //具体方法内容自己去选择，次方法是为了减少banner过多的依赖第三方包，所以将这个权限开放给使用者去选择
             Glide.with(context!!.applicationContext)
                 .load(path)
-                .into(imageView)
+                .into(imageView!!)
         }
 
     }

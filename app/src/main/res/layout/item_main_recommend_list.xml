@@ -22,11 +22,10 @@
             android:orientation="vertical"
             android:padding="@dimen/spacing_10">
 
-            <com.huangyiyang.fruitsvegetablesmall.view.main.ImageViewSquare
+            <ImageView
                 android:id="@+id/iv_item_goods_img"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/tv_item_ticket_name"
+                android:layout_height="192dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/fvm_login_logo" />
 

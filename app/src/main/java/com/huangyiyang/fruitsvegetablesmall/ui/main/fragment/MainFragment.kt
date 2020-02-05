@@ -1,6 +1,9 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.main.fragment
 
 import android.content.Context
+import android.graphics.Paint
+import android.net.Uri
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,12 +21,15 @@ import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContrac
 import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainFragmentModel
 import com.huangyiyang.fruitsvegetablesmall.ui.main.presenter.MainFragmentPresenter
 import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
+import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
+import com.huangyiyang.fruitsvegetablesmall.view.main.ImageViewSquare
 import com.youth.banner.listener.OnBannerListener
 import com.zhouyou.recyclerview.XRecyclerView
 import com.zhouyou.recyclerview.XRecyclerView.LoadingListener
 import com.zhouyou.recyclerview.adapter.AnimationType
 import com.zhouyou.recyclerview.adapter.HelperRecyclerViewHolder
+import java.io.File
 import java.util.*
 
 class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
@@ -86,26 +92,22 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
         //mXRecyclerView.addItemDecoration(new GridItemDecoration(getActivity(), 2, 8, false));
         //mXRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        //mXRecyclerView.addItemDecoration(new GridItemDecoration(getActivity(), 2, 8, false));
-        //mXRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         staggeredGridLayoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         mXRecyclerView?.layoutManager = staggeredGridLayoutManager
-        //mXRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.HORIZONTAL));
         //mXRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.HORIZONTAL));
         mXRecyclerView?.isLoadingMoreEnabled = true
         mXRecyclerView?.isPullRefreshEnabled = true
         mXRecyclerView?.setLoadingListener(object : LoadingListener {
             override fun onRefresh() {
-                //mPresenter.onRefresh()
                 mXRecyclerView?.refreshComplete()
             }
 
             override fun onLoadMore() {
-                //mPresenter.onLoadMore()
+                mPresenter?.onLoadMore()
             }
         })
-        mXRecyclerView?.setAdapter(mAdapter)
+        mXRecyclerView?.adapter = mAdapter
 
 
         headerView = LayoutInflater.from(activity).inflate(
@@ -184,16 +186,17 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 //            )
         })
 
-        val params: MutableMap<String?, String?> =
+        val parames: MutableMap<String, String> =
             HashMap()
-        params["type"] = ""
-        params["name"] = ""
-        params["price"] = ""
-        params["stock"] = ""
-        params["reducedPrice"] = ""
-        params["current"] = java.lang.String.valueOf(1)
-        params["pageSize"] = java.lang.String.valueOf(mPresenter!!.mPageSize)
-        mPresenter?.getRecommendGoodsList(Const.header(),params)
+        parames["type"] = ""
+        parames["name"] = ""
+        parames["price"] = ""
+        parames["stock"] = ""
+        parames["reducedPrice"] = ""
+        parames["pageSize"] = java.lang.String.valueOf(mPresenter?.mPageSize)
+        mPresenter?.initLoadParams(Const.header(), parames)
+
+        mPresenter!!.initLoadView(mCommonLayout, mXRecyclerView, mAdapter)
     }
 
     override fun initData() {
@@ -242,25 +245,92 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     }
 
+    override fun setRecommendGoodsListInfo(goodsBeanList: List<RecommendGoodsBean>?) {
+
+    }
+
+    override fun setCategoriesList(categoryListBean: List<CategoryListBean>?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     private class SearchListAdapter internal constructor(context: Context?) :
-        BaseQuickAdapter<RecommendGoodsBean?>(context, R.layout.item_main_recommend_list) {
+        BaseQuickAdapter<RecommendGoodsBean>(context, R.layout.item_main_recommend_list) {
 
         override fun HelperBindData(
             viewHolder: HelperRecyclerViewHolder?,
             position: Int,
             item: RecommendGoodsBean?
         ) {
-
+            val mGoodsImg =
+                viewHolder?.getView<ImageView>(R.id.iv_item_goods_img) //商品图
+            println(mGoodsImg)
+            ImageLoaderUtil.getInstance()?.load(
+                mGoodsImg!!,
+                Uri.fromFile(File(Const.IMAHE_URL+item?.imageUrls?.split("&&")?.get(1))).toString()
+            )
+            val mGoodsName = viewHolder?.getView<TextView>(R.id.tv_item_goods_name) //商品名称
+            val mGoodsUnit =
+                viewHolder?.getView<TextView>(R.id.tv_item_goods_price_unit) //商品单位
+            val mGoodsPrice =
+                viewHolder?.getView<TextView>(R.id.tv_item_goods_price) //商品优惠价格
+            val mGoodsActivity =
+                viewHolder?.getView<TextView>(R.id.tv_item_goods_activity) //商品活动
+            val mGoodsOldPrice =
+                viewHolder?.getView<TextView>(R.id.tv_item_goods_old_price) //商品原价
+            val shoppingCar =
+                viewHolder?.getView<ImageView>(R.id.iv_item_goods_shoppingcar) //购物车按钮
+            mGoodsUnit?.text = "/" + item?.specification
+            mGoodsName?.text = item?.name
+//            if (data.getLabels().size() > 0) {
+//                mGoodsActivity.visibility = View.VISIBLE
+//                mGoodsActivity.setText(data.getLabels().get(data.getLabels().size() - 1))
+//            } else {
+//                mGoodsActivity.visibility = View.GONE
+//            }
+//            if (data.isDiscountable()) { //判断是否有优惠价格
+//                mGoodsOldPrice.visibility = View.VISIBLE
+//                mGoodsPrice.setText(getString(R.string.common_amount, data.getReducedPrice()))
+//                mGoodsOldPrice.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG //中划线
+//                mGoodsOldPrice.setText(getString(R.string.common_amount, data.getPrice()))
+//            } else {
+//                mGoodsPrice.setText(getString(R.string.common_amount, data.getPrice()))
+//                mGoodsOldPrice.visibility = View.INVISIBLE
+//            }
+//            viewHolder.itemView.setOnClickListener {
+//                //跳转商品详情
+//                GoodsDetailActivity.goTo(getActivity(), java.lang.String.valueOf(data.getId()))
+//            }
+//            shoppingCar.setOnClickListener {
+//                //在此还需要接口返回库存数量，来做提示
+//                // 对最大下单量，最小下单量进行判断
+//                var count: Double = data.getMinimumIncrementQuantity()
+//                if (DoubleUtils.compare(
+//                        data.getMinimumIncrementQuantity(),
+//                        data.getMaximumOrderQuantity()
+//                    ) === -1
+//                ) { // 最小增减量 > 最大下单量
+//                    count = data.getMaximumOrderQuantity()
+//                } else if (DoubleUtils.compare(
+//                        data.getMinimumIncrementQuantity(),
+//                        data.getMinimunOrderQuantity()
+//                    ) === 1
+//                ) { // 最小增减量 < 最小下单量
+//                    count = data.getMinimunOrderQuantity()
+//                }
+//                val map: MutableMap<String, Number> =
+//                    HashMap()
+//                map["skuId"] = data.getId()
+//                map["quantity"] = count
+//                mPresenter.addShoppingCar(
+//                    Const.header(),
+//                    ParamsUtil.getInstance().getBodyNumber(map)
+//                )
+//                LoadingDialog.showDialogForLoading(
+//                    getActivity(),
+//                    getString(R.string.call_back_loading),
+//                    false
+//                )
         }
-    }
-
-    override fun setRecommendGoodsListInfo(goodsBeanList: RecommendGoodsBean?) {
-        Log.e("测试",goodsBeanList.toString())
-        Log.e("测试",goodsBeanList?.size.toString())
-    }
-
-    override fun setCategoriesList(categoryListBean: List<CategoryListBean?>?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

@@ -43,4 +43,5 @@ dependencies {
     implementation 'q.rorbin:badgeview:1.1.2'
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
 }

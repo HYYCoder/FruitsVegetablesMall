@@ -84,7 +84,7 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
                 String.valueOf(bean?.amount)
             )
             finish()
-            LoadingDialog().showDialogForLoading(
+            LoadingDialog.showDialogForLoading(
                 this,
                 getString(R.string.call_back_loading),
                 false

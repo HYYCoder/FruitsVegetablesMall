@@ -11,21 +11,21 @@ import rx.Observable
 interface MainFragmentContract {
     interface MainFragmentModel : BaseModelInterface {
         fun getRecommendGoodsList(
-            header: Map<String?, String?>?,
-            parame: Map<String?, String?>?
-        ): Observable<ApiResult<RecommendGoodsBean?>?>?
-        fun getCategoriesList(header: Map<String?, String?>?): Observable<ApiResult<List<CategoryListBean?>?>?>?
+            header: Map<String, String>?,
+            parame: Map<String, String>?
+        ): Observable<ApiResult<List<RecommendGoodsBean>?>?>?
+        fun getCategoriesList(header: Map<String, String>?): Observable<ApiResult<List<CategoryListBean>?>?>?
     }
 
     interface MainFragmentView : BaseViewInterface {
-        fun setRecommendGoodsListInfo(goodsBeanList: RecommendGoodsBean?)
-        fun setCategoriesList(categoryListBean: List<CategoryListBean?>?)
+        fun setRecommendGoodsListInfo(goodsBeanList: List<RecommendGoodsBean>?)
+        fun setCategoriesList(categoryListBean: List<CategoryListBean>?)
     }
 
     abstract class MainFragmentPresenter :
         LoadListPresenter<RecommendGoodsBean, MainFragmentModel, MainFragmentView>() {
-        abstract fun getRecommendGoodsList(header: Map<String?, String?>?,parame: Map<String?, String?>?)
-        abstract fun getCategoriesList(header: Map<String?, String?>?)
+        //abstract fun getRecommendGoodsList(header: Map<String?, String?>?,parame: Map<String?, String?>?)
+        abstract fun getCategoriesList(header: Map<String, String>?)
     }
 
 }

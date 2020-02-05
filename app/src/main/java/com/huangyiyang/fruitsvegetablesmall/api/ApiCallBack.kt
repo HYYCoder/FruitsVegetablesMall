@@ -39,7 +39,7 @@ abstract class ApiCallBack<T> : Subscriber<ApiResult<T>> {
 
 
     override fun onCompleted() {
-        LoadingDialog().cancelDialogForLoading()
+        LoadingDialog.cancelDialogForLoading()
     }
 
     override fun onStart() {
@@ -56,7 +56,7 @@ abstract class ApiCallBack<T> : Subscriber<ApiResult<T>> {
         }
         if (mShowDialog) {
             try {
-                LoadingDialog()
+                LoadingDialog
                     .showDialogForLoading(mContext as Activity, msg, true)
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -74,7 +74,7 @@ abstract class ApiCallBack<T> : Subscriber<ApiResult<T>> {
     }
 
     override fun onError(e: Throwable) {
-        if (mShowDialog) LoadingDialog().cancelDialogForLoading()
+        if (mShowDialog) LoadingDialog.cancelDialogForLoading()
         e.printStackTrace()
         //网络
         if (!NetWorkUtil.isNetConnected(FrameConst.getContext() as Context)) {

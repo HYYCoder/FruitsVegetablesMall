@@ -8,8 +8,10 @@ class Const {
         val BASE_URL =
             if (verType == 0) "http://10.0.2.2:8080/" else "http://10.0.2.2:8080/"
 
-        fun header(): Map<String?, String?>? {
-            val header: MutableMap<String?, String?> =
+        val IMAHE_URL ="D:/Scripts/Project/MyProject/FruitsVegetablesMallServer/target/classes/static/images/goods/"
+
+        fun header(): Map<String, String>? {
+            val header: MutableMap<String, String> =
                 HashMap()
 //            header["auth-" + UserManager.getInstance().getUserId()] =
 //                UserManager.getInstance().getUserToken()
