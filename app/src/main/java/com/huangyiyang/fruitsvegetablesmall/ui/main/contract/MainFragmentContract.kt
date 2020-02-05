@@ -14,7 +14,9 @@ interface MainFragmentContract {
 
     interface MainFragmentModel : BaseModelInterface {
 
-        fun getBannerList(header: Map<String, String>?): Observable<ApiResult<List<BannerUtil.DataBean>?>?>?
+        fun getBannerList(header: Map<String, String>?,
+                          parame: Map<String, String>?
+        ): Observable<ApiResult<List<BannerUtil.DataBean>?>?>?
 
         fun getRecommendGoodsList(
             header: Map<String, String>?,
@@ -42,7 +44,10 @@ interface MainFragmentContract {
 
     abstract class MainFragmentPresenter : LoadListPresenter<RecommendGoodsBean, MainFragmentModel, MainFragmentView>() {
 
-        abstract fun getBannerList(header: Map<String, String>?)
+        abstract fun getBannerList(
+            header: Map<String, String>?,
+            parame: Map<String, String>?
+        )
 
         //abstract fun getRecommendGoodsList(header: Map<String?, String?>?,parame: Map<String?, String?>?)
 

@@ -12,8 +12,8 @@ import okhttp3.RequestBody
 import rx.Observable
 
 class MainFragmentModel : MainFragmentContract.MainFragmentModel{
-    override fun getBannerList(header: Map<String, String>?): Observable<ApiResult<List<BannerUtil.DataBean>?>?>? {
-        return FrameConst.apiService(HttpApi::class.java).getBannerList(header)
+    override fun getBannerList(header: Map<String, String>?, parame: Map<String, String>?): Observable<ApiResult<List<BannerUtil.DataBean>?>?>? {
+        return FrameConst.apiService(HttpApi::class.java).getBannerList(header,parame)
             ?.compose(RxSchedulers.io_main())
     }
 

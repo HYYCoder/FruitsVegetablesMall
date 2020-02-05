@@ -35,9 +35,8 @@ class ImageLoaderUtil {
     // view不能设置tag
     fun load(view: ImageView, uri: String?) {
         if (uri == null) return
-        //        L.e(uri);
         Glide.with(view.context)
-            .load(Const.IMAHE_URL + uri)
+            .load(Const.IMAHE_URL + uri)  //Const.IMAHE_URL添加前缀，相当于http://10.0.2.2:8080/images/+图片名
             .apply(
                 RequestOptions()
                     .centerCrop()

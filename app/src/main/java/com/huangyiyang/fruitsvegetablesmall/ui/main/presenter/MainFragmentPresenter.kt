@@ -12,8 +12,8 @@ import okhttp3.RequestBody
 
 class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
 
-    override fun getBannerList(header: Map<String, String>?) {
-        mManager!!.add(mModel?.getBannerList(header)?.subscribe(object :
+    override fun getBannerList(header: Map<String, String>?, parame: Map<String, String>?) {
+        mManager!!.add(mModel?.getBannerList(header,parame)?.subscribe(object :
             ApiCallBack<List<BannerUtil.DataBean>?>(mContext) {
             override fun _onNext(bannerList: List<BannerUtil.DataBean>?, message: String?) {
                 mView!!.setBannerList(bannerList)

@@ -179,21 +179,23 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 //            )
         })
 
-        val parames: MutableMap<String, String> =
+        val goodsDetailParames: MutableMap<String, String> =
             HashMap()
-        parames["type"] = ""
-        parames["name"] = ""
-        parames["price"] = ""
-        parames["stock"] = ""
-        parames["reducedPrice"] = ""
-        parames["pageSize"] = java.lang.String.valueOf(mPresenter?.mPageSize)
-        mPresenter?.initLoadParams(Const.header(), parames)
+        goodsDetailParames["type"] = ""
+        goodsDetailParames["name"] = ""
+        goodsDetailParames["price"] = ""
+        goodsDetailParames["stock"] = ""
+        goodsDetailParames["reducedPrice"] = ""
+        goodsDetailParames["pageSize"] = java.lang.String.valueOf(mPresenter?.mPageSize)
+        mPresenter!!.initLoadParams(Const.header(), goodsDetailParames)
 
         mPresenter!!.initLoadView(mCommonLayout, mXRecyclerView, mAdapter)
 
-        if (mPresenter != null) {
-            mPresenter!!.getBannerList(Const.header())
-        }
+        val bannerListParames: MutableMap<String, String> =
+            HashMap()
+        bannerListParames["current"] = java.lang.String.valueOf(0)
+        bannerListParames["pageSize"] = java.lang.String.valueOf(mPresenter?.mPageSize)
+        mPresenter!!.getBannerList(Const.header(),bannerListParames)
     }
 
     override fun initData() {
@@ -248,7 +250,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
         if (bannerList != null) {
             mBannerUtil!!.setBanner(bannerList)
             bannerLists = bannerList
-            if (bannerList.size > 0) {
+            if (bannerList.isNotEmpty()) {
                 image.visibility = View.INVISIBLE
             } else {
                 image.visibility = View.VISIBLE

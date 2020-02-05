@@ -12,7 +12,7 @@ interface HttpApi {
 
     //获取首页Banner列表
     @GET("/specialoffers")
-    fun getBannerList(@HeaderMap header: Map<String, String>?): Observable<ApiResult<List<BannerUtil.DataBean>?>?>?
+    fun getBannerList(@HeaderMap header: Map<String, String>?, @QueryMap body:Map<String, String>?): Observable<ApiResult<List<BannerUtil.DataBean>?>?>?
 
     //获取首页推荐商品列表
     @GET("/goods")
