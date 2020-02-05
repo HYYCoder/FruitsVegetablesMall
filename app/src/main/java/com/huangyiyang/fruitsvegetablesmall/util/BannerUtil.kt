@@ -10,6 +10,7 @@ import com.youth.banner.BannerConfig
 import com.youth.banner.listener.OnBannerListener
 import com.youth.banner.loader.ImageLoader
 import com.bumptech.glide.Glide
+import com.huangyiyang.fruitsvegetablesmall.api.Const
 
 import java.util.*
 
@@ -87,7 +88,7 @@ class BannerUtil {
         mBanners = banners
         val images: MutableList<String?> =
             ArrayList()
-        if (mBanners != null && !mBanners!!.isEmpty()) {
+        if (!(mBanners == null || mBanners!!.isEmpty())) {
             if (mContentView != null) mContentView!!.visibility = View.VISIBLE
             for (i in mBanners!!.indices) {
                 images.add(mBanners!![i].imageUrl)
@@ -117,7 +118,6 @@ class BannerUtil {
 
     fun setBannerHeight(bannerSize: IntArray) {
         mContentView!!.layoutParams.height = bannerSize[1]
-        //        int height = f.getHeight();
         mContentView!!.requestLayout()
     }
 
@@ -136,7 +136,7 @@ class BannerUtil {
         override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
             //具体方法内容自己去选择，次方法是为了减少banner过多的依赖第三方包，所以将这个权限开放给使用者去选择
             Glide.with(context!!.applicationContext)
-                .load(path)
+                .load(Const.IMAHE_URL + path)
                 .into(imageView!!)
         }
 

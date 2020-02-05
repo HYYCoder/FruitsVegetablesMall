@@ -1,10 +1,8 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.main.fragment
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Paint
-import android.net.Uri
-import android.util.DisplayMetrics
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,19 +15,19 @@ import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.bean.RecommendGoodsBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
+import com.huangyiyang.fruitsvegetablesmall.ui.goods.activity.GoodsDetailActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainFragmentModel
 import com.huangyiyang.fruitsvegetablesmall.ui.main.presenter.MainFragmentPresenter
 import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
 import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
-import com.huangyiyang.fruitsvegetablesmall.view.main.ImageViewSquare
+import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import com.youth.banner.listener.OnBannerListener
 import com.zhouyou.recyclerview.XRecyclerView
 import com.zhouyou.recyclerview.XRecyclerView.LoadingListener
 import com.zhouyou.recyclerview.adapter.AnimationType
 import com.zhouyou.recyclerview.adapter.HelperRecyclerViewHolder
-import java.io.File
 import java.util.*
 
 class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
@@ -58,6 +56,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
     private var tvItemMainHomeMerchantTitle7: TextView? = null
     private var ivItemMainHomeMerchantIcon8: ImageView? = null
     private var tvItemMainHomeMerchantTitle8: TextView? = null
+    private var bannerLists: List<BannerUtil.DataBean>? = null
 
     fun scrollToTop() {
         if (mXRecyclerView == null) return
@@ -89,13 +88,9 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
         mAdapter?.setItemAnimation(AnimationType.SLIDE_FROM_BOTTOM)
         mXRecyclerView = layout?.findViewById(R.id.main_list) as XRecyclerView
         mXRecyclerView?.isPullRefreshEnabled = false
-
-        //mXRecyclerView.addItemDecoration(new GridItemDecoration(getActivity(), 2, 8, false));
-        //mXRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         staggeredGridLayoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         mXRecyclerView?.layoutManager = staggeredGridLayoutManager
-        //mXRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.HORIZONTAL));
         mXRecyclerView?.isLoadingMoreEnabled = true
         mXRecyclerView?.isPullRefreshEnabled = true
         mXRecyclerView?.setLoadingListener(object : LoadingListener {
@@ -120,8 +115,6 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
         mSearchBar = headerView?.findViewById(R.id.search_bar)
 
-        //svMain = headerView.findViewById(R.id.sv_main);
-        //svMain = headerView.findViewById(R.id.sv_main);
         mBannerUtil = BannerUtil(headerView)
         mSearchBar?.setOnClickListener(this)
         mBannerUtil?.setOnLoadFinish(this)
@@ -197,6 +190,10 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
         mPresenter?.initLoadParams(Const.header(), parames)
 
         mPresenter!!.initLoadView(mCommonLayout, mXRecyclerView, mAdapter)
+
+        if (mPresenter != null) {
+            mPresenter!!.getBannerList(Const.header())
+        }
     }
 
     override fun initData() {
@@ -245,16 +242,46 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     }
 
-    override fun setRecommendGoodsListInfo(goodsBeanList: List<RecommendGoodsBean>?) {
+    override fun setBannerList(bannerList: List<BannerUtil.DataBean>?) {
+        val image =
+            headerView!!.findViewById<ImageView>(R.id.iv_default_ygf)
+        if (bannerList != null) {
+            mBannerUtil!!.setBanner(bannerList)
+            bannerLists = bannerList
+            if (bannerList.size > 0) {
+                image.visibility = View.INVISIBLE
+            } else {
+                image.visibility = View.VISIBLE
+            }
+        } else {
+            if (bannerLists != null) {
+                //bannerLists.clear()
+                mBannerUtil!!.setBanner(bannerLists)
+            }
+            image.visibility = View.VISIBLE
+        }
+    }
+
+    override fun setRecommendGoodsList(goodsBeanList: List<RecommendGoodsBean>?) {
 
     }
+
 
     override fun setCategoriesList(categoryListBean: List<CategoryListBean>?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
-    private class SearchListAdapter internal constructor(context: Context?) :
-        BaseQuickAdapter<RecommendGoodsBean>(context, R.layout.item_main_recommend_list) {
+    override fun addShoppingCar() {
+
+    }
+
+    private class SearchListAdapter : BaseQuickAdapter<RecommendGoodsBean> {
+
+        var context: Context? = null
+
+        constructor(context: Context?) : super(context, R.layout.item_main_recommend_list) {
+            this.context = context
+        }
 
         override fun HelperBindData(
             viewHolder: HelperRecyclerViewHolder?,
@@ -265,7 +292,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
                 viewHolder?.getView<ImageView>(R.id.iv_item_goods_img) //商品图
             ImageLoaderUtil.getInstance()?.load(
                 mGoodsImg!!,
-                Const.IMAHE_URL+item?.imageUrls?.split("&&")?.get(1)
+                item?.imageUrls?.split("&&")?.get(1)
             )
             val mGoodsName = viewHolder?.getView<TextView>(R.id.tv_item_goods_name) //商品名称
             val mGoodsUnit =
@@ -286,22 +313,21 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 //            } else {
 //                mGoodsActivity.visibility = View.GONE
 //            }
-//            if (data.isDiscountable()) { //判断是否有优惠价格
-//                mGoodsOldPrice.visibility = View.VISIBLE
-//                mGoodsPrice.setText(getString(R.string.common_amount, data.getReducedPrice()))
-//                mGoodsOldPrice.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG //中划线
-//                mGoodsOldPrice.setText(getString(R.string.common_amount, data.getPrice()))
-//            } else {
-//                mGoodsPrice.setText(getString(R.string.common_amount, data.getPrice()))
-//                mGoodsOldPrice.visibility = View.INVISIBLE
-//            }
-//            viewHolder.itemView.setOnClickListener {
-//                //跳转商品详情
-//                GoodsDetailActivity.goTo(getActivity(), java.lang.String.valueOf(data.getId()))
-//            }
-//            shoppingCar.setOnClickListener {
-//                //在此还需要接口返回库存数量，来做提示
-//                // 对最大下单量，最小下单量进行判断
+            if (item?.reducedPrice != 0.0) { //判断是否有优惠价格
+                mGoodsOldPrice?.visibility = View.VISIBLE
+                mGoodsPrice?.text = context?.getString(R.string.common_amount, item?.reducedPrice)
+                mGoodsOldPrice?.paint?.flags = Paint.STRIKE_THRU_TEXT_FLAG //中划线
+                mGoodsOldPrice?.text = context?.getString(R.string.common_amount, item?.price)
+            } else {
+                mGoodsPrice?.text = context?.getString(R.string.common_amount, item?.price)
+                mGoodsOldPrice?.visibility = View.INVISIBLE
+            }
+            viewHolder?.itemView?.setOnClickListener {
+                //跳转商品详情
+                GoodsDetailActivity().goTo(context!!, java.lang.String.valueOf(item?.id))
+            }
+            shoppingCar?.setOnClickListener {
+                // 对最大下单量，最小下单量进行判断
 //                var count: Double = data.getMinimumIncrementQuantity()
 //                if (DoubleUtils.compare(
 //                        data.getMinimumIncrementQuantity(),
@@ -316,20 +342,20 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 //                ) { // 最小增减量 < 最小下单量
 //                    count = data.getMinimunOrderQuantity()
 //                }
-//                val map: MutableMap<String, Number> =
-//                    HashMap()
-//                map["skuId"] = data.getId()
-//                map["quantity"] = count
-//                mPresenter.addShoppingCar(
+                val map: MutableMap<String, Number?> =
+                    HashMap()
+                map["skuId"] = item?.id
+                map["quantity"] = 1 //count
+//                MainFragment().mPresenter.addShoppingCar(
 //                    Const.header(),
-//                    ParamsUtil.getInstance().getBodyNumber(map)
+//                    map
 //                )
-//                LoadingDialog.showDialogForLoading(
-//                    getActivity(),
-//                    getString(R.string.call_back_loading),
-//                    false
-//                )
+                LoadingDialog.showDialogForLoading(
+                    context as Activity,
+                    context?.getString(R.string.call_back_loading),
+                    false
+                )
+            }
         }
     }
-
 }

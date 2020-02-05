@@ -24,27 +24,29 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/iv_default_ygf"
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/banner" />
+                    android:layout_height="213dp">
 
                     <com.youth.banner.Banner
                         android:id="@+id/banner"
                         android:layout_width="match_parent"
-                        android:layout_height="180dp"
+                        android:layout_height="match_parent"
                         app:image_scale_type="fit_xy"
                         app:indicator_drawable_selected="@drawable/main_banner_selected"
-                        app:indicator_drawable_unselected="@drawable/main_banner_unselected" />
+                        app:indicator_drawable_unselected="@drawable/main_banner_unselected" >
+
+                        <ImageView
+                            android:id="@+id/iv_default_ygf"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="0dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/banner" />
+                    </com.youth.banner.Banner>
 
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/spacing_40"
                         android:layout_marginStart="@dimen/spacing_38"
                         android:layout_marginTop="@dimen/spacing_10"
                         android:layout_marginEnd="@dimen/spacing_38">
@@ -53,7 +55,6 @@
                             android:id="@+id/search_bar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
                             android:layout_marginStart="@dimen/spacing_10"
                             android:background="@drawable/bg_main_search_bar"
                             android:drawableStart="@drawable/icon_main_search_bar"
@@ -399,7 +400,7 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="24dp"
                         android:src="@drawable/main_recommend_title_icon" />
 
                     <TextView

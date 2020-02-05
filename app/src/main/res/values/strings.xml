@@ -47,5 +47,6 @@
     <string name="success_order_detail">订单详情</string>
     <string name="coupon_title">优惠券</string>
     <string name="coupon_choose">已选推荐优惠</string>
+    <string name="common_amount">¥%.2f</string>
 
 </resources>

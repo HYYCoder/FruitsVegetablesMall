@@ -6,26 +6,52 @@ import com.huangyiyang.fruitsvegetablesmall.bean.RecommendGoodsBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.load.LoadListPresenter
 import com.huangyiyang.fruitsvegetablesmall.mvp.model.BaseModelInterface
 import com.huangyiyang.fruitsvegetablesmall.mvp.view.BaseViewInterface
+import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
+import okhttp3.RequestBody
 import rx.Observable
 
 interface MainFragmentContract {
+
     interface MainFragmentModel : BaseModelInterface {
+
+        fun getBannerList(header: Map<String, String>?): Observable<ApiResult<List<BannerUtil.DataBean>?>?>?
+
         fun getRecommendGoodsList(
             header: Map<String, String>?,
             parame: Map<String, String>?
         ): Observable<ApiResult<List<RecommendGoodsBean>?>?>?
+
         fun getCategoriesList(header: Map<String, String>?): Observable<ApiResult<List<CategoryListBean>?>?>?
+
+        fun addShoppingCar(
+            header: Map<String, String>?,
+            parame: RequestBody?
+        ): Observable<ApiResult<Void>?>?
     }
 
     interface MainFragmentView : BaseViewInterface {
-        fun setRecommendGoodsListInfo(goodsBeanList: List<RecommendGoodsBean>?)
+
+        fun setBannerList(bannerList: List<BannerUtil.DataBean>?)
+
+        fun setRecommendGoodsList(goodsBeanList: List<RecommendGoodsBean>?)
+
         fun setCategoriesList(categoryListBean: List<CategoryListBean>?)
+
+        fun addShoppingCar()
     }
 
-    abstract class MainFragmentPresenter :
-        LoadListPresenter<RecommendGoodsBean, MainFragmentModel, MainFragmentView>() {
+    abstract class MainFragmentPresenter : LoadListPresenter<RecommendGoodsBean, MainFragmentModel, MainFragmentView>() {
+
+        abstract fun getBannerList(header: Map<String, String>?)
+
         //abstract fun getRecommendGoodsList(header: Map<String?, String?>?,parame: Map<String?, String?>?)
+
         abstract fun getCategoriesList(header: Map<String, String>?)
+
+        abstract fun addShoppingCar(
+            header: Map<String, String>?,
+            parame: RequestBody?
+        )
     }
 
 }

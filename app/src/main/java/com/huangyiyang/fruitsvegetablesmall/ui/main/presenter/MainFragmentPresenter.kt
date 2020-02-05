@@ -1,33 +1,65 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.main.presenter
 
 import com.huangyiyang.fruitsvegetablesmall.MVPApplication
+import com.huangyiyang.fruitsvegetablesmall.api.ApiCallBack
 import com.huangyiyang.fruitsvegetablesmall.api.ServerException
+import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.bean.RecommendGoodsBean
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContract
+import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
 import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
+import okhttp3.RequestBody
 
 class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
-//    override fun getRecommendGoodsList(header: Map<String?, String?>?,parame: Map<String?, String?>?) {
-//        mManager!!.add(mModel?.getRecommendGoodsList(header,parame)?.subscribe(object :
-//            ApiCallBack<RecommendGoodsBean?>(mContext) {
-//            override fun _onNext(
-//                goodsList: RecommendGoodsBean?,
-//                message: String?
-//            ) {
-//                mView!!.setRecommendGoodsListInfo(goodsList)
-//            }
-//
-//            override fun _onError(e: ServerException?) {
-//                ToastUtil().showLong(
-//                    mContext,
-//                    MVPApplication.getToastContent(mContext, e?.mErrorCode,e?.mErrorMsg).toString()
-//                )
-//            }
-//        }))
-//    }
+
+    override fun getBannerList(header: Map<String, String>?) {
+        mManager!!.add(mModel?.getBannerList(header)?.subscribe(object :
+            ApiCallBack<List<BannerUtil.DataBean>?>(mContext) {
+            override fun _onNext(bannerList: List<BannerUtil.DataBean>?, message: String?) {
+                mView!!.setBannerList(bannerList)
+            }
+
+            override fun _onError(e: ServerException?) {
+                ToastUtil().showLong(
+                    mContext,
+                    MVPApplication.getToastContent(mContext, e?.mErrorCode,e?.mErrorMsg).toString()
+                )
+            }
+        }))
+    }
 
     override fun getCategoriesList(header: Map<String, String>?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mManager!!.add(mModel?.getCategoriesList(header)?.subscribe(object :
+            ApiCallBack<List<CategoryListBean>?>(mContext) {
+
+            override fun _onNext(categoryListBean: List<CategoryListBean>?, message: String?) {
+                mView!!.setCategoriesList(categoryListBean)
+            }
+
+            override fun _onError(e: ServerException?) {
+                ToastUtil().showLong(
+                    mContext,
+                    MVPApplication.getToastContent(mContext, e?.mErrorCode,e?.mErrorMsg).toString()
+                )
+            }
+        }))
+    }
+
+    override fun addShoppingCar(header: Map<String, String>?, parame: RequestBody?) {
+        mManager!!.add(mModel?.addShoppingCar(header,parame)?.subscribe(object :
+            ApiCallBack<Void>(mContext) {
+
+            override fun _onNext(t: Void?, message: String?) {
+                mView!!.addShoppingCar()
+            }
+
+            override fun _onError(e: ServerException?) {
+                ToastUtil().showLong(
+                    mContext,
+                    MVPApplication.getToastContent(mContext, e?.mErrorCode,e?.mErrorMsg).toString()
+                )
+            }
+        }))
     }
 
     override fun requestNextPage() {
@@ -40,10 +72,10 @@ class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
             mContext,
             MVPApplication.getToastContent(mContext, e?.mErrorCode, e?.mErrorMsg).toString()
         )
-        mView!!.setRecommendGoodsListInfo(null)
+        mView!!.setRecommendGoodsList(null)
     }
 
     override fun response(bean: List<RecommendGoodsBean>?) {
-        mView!!.setRecommendGoodsListInfo(bean)
+        mView!!.setRecommendGoodsList(bean)
     }
 }

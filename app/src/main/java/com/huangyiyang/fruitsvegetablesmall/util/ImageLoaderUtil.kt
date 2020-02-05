@@ -6,6 +6,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.huangyiyang.fruitsvegetablesmall.api.Const
 
 class ImageLoaderUtil {
     companion object {
@@ -36,7 +37,7 @@ class ImageLoaderUtil {
         if (uri == null) return
         //        L.e(uri);
         Glide.with(view.context)
-            .load(uri)
+            .load(Const.IMAHE_URL + uri)
             .apply(
                 RequestOptions()
                     .centerCrop()
