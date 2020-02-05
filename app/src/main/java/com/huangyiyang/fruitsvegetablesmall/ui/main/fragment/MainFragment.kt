@@ -263,10 +263,9 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
         ) {
             val mGoodsImg =
                 viewHolder?.getView<ImageView>(R.id.iv_item_goods_img) //商品图
-            println(mGoodsImg)
             ImageLoaderUtil.getInstance()?.load(
                 mGoodsImg!!,
-                Uri.fromFile(File(Const.IMAHE_URL+item?.imageUrls?.split("&&")?.get(1))).toString()
+                Const.IMAHE_URL+item?.imageUrls?.split("&&")?.get(1)
             )
             val mGoodsName = viewHolder?.getView<TextView>(R.id.tv_item_goods_name) //商品名称
             val mGoodsUnit =

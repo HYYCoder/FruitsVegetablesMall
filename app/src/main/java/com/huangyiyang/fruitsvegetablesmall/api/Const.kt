@@ -8,7 +8,7 @@ class Const {
         val BASE_URL =
             if (verType == 0) "http://10.0.2.2:8080/" else "http://10.0.2.2:8080/"
 
-        val IMAHE_URL ="D:/Scripts/Project/MyProject/FruitsVegetablesMallServer/target/classes/static/images/goods/"
+        val IMAHE_URL ="http://10.0.2.2:8080/images/"
 
         fun header(): Map<String, String>? {
             val header: MutableMap<String, String> =
