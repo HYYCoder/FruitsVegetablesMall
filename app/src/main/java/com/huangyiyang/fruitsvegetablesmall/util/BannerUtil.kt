@@ -130,7 +130,7 @@ class BannerUtil {
     }
 
 
-    class DataBean(var id: String,var imageUrl: String)
+    class DataBean(var id: String,var orders: String,var imageUrl: String,var detail: String)
 
     class GlideImageLoader : ImageLoader() {
         override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
