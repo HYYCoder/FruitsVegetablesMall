@@ -116,7 +116,7 @@ abstract class BaseActivity<M : BaseModelInterface,P : BasePresenter<*, *>>:AppC
         if (sActivities.size == 1) {
             if (System.currentTimeMillis() - mExitTimestamp > 3000) {
                 mExitTimestamp = System.currentTimeMillis()
-                ToastUtil().showShort(this, R.string.common_exit_app)
+                ToastUtil.showShort(this, R.string.common_exit_app)
             } else {
                 super.onBackPressed()
             }

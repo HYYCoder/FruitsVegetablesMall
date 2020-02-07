@@ -12,16 +12,16 @@ import okhttp3.RequestBody
 import rx.Observable
 
 class MainFragmentModel : MainFragmentContract.MainFragmentModel{
-    override fun getBannerList(header: Map<String, String>?, parame: Map<String, String>?): Observable<ApiResult<List<BannerUtil.DataBean>?>?>? {
-        return FrameConst.apiService(HttpApi::class.java).getBannerList(header,parame)
+    override fun getBannerList(header: Map<String, String>?, param: Map<String, String>?): Observable<ApiResult<List<BannerUtil.Companion.DataBean>?>?>? {
+        return FrameConst.apiService(HttpApi::class.java).getBannerList(header,param)
             ?.compose(RxSchedulers.io_main())
     }
 
     override fun getRecommendGoodsList(
         header: Map<String, String>?,
-        parame: Map<String, String>?
+        param: Map<String, String>?
     ): Observable<ApiResult<List<GoodsDetailBean>?>?>? {
-        return FrameConst.apiService(HttpApi::class.java).getGoodsList(header,parame)
+        return FrameConst.apiService(HttpApi::class.java).getGoodsList(header,param)
             ?.compose(RxSchedulers.io_main())
     }
 
@@ -32,9 +32,9 @@ class MainFragmentModel : MainFragmentContract.MainFragmentModel{
 
     override fun addShoppingCar(
         header: Map<String, String>?,
-        parame: RequestBody?
+        param: RequestBody?
     ): Observable<ApiResult<Void>?>? {
-        return FrameConst.apiService(HttpApi::class.java).addShoppingCar(header,parame)
+        return FrameConst.apiService(HttpApi::class.java).addShoppingCar(header,param)
             ?.compose(RxSchedulers.io_main())
     }
 }

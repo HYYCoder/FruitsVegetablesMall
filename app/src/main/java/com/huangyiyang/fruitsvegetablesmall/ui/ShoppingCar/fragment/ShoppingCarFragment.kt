@@ -29,7 +29,7 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
 //                    }
 //            }
             if (goods.size == 0) {
-                ToastUtil().showShort(mPresenter?.mContext!!, "没有选择商品")
+                ToastUtil.showShort(mPresenter?.mContext!!, "没有选择商品")
             } else {
                 ConfirmOrderActivity.goTo(mPresenter?.mContext!!, goods)
             }

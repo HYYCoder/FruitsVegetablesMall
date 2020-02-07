@@ -12,15 +12,15 @@ import okhttp3.RequestBody
 
 class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
 
-    override fun getBannerList(header: Map<String, String>?, parame: Map<String, String>?) {
-        mManager!!.add(mModel?.getBannerList(header,parame)?.subscribe(object :
-            ApiCallBack<List<BannerUtil.DataBean>?>(mContext) {
-            override fun _onNext(bannerList: List<BannerUtil.DataBean>?, message: String?) {
-                mView!!.setBannerList(bannerList)
+    override fun getBannerList(header: Map<String, String>?, param: Map<String, String>?) {
+        mManager!!.add(mModel?.getBannerList(header,param)?.subscribe(object :
+            ApiCallBack<List<BannerUtil.Companion.DataBean>?>(mContext) {
+            override fun _onNext(t: List<BannerUtil.Companion.DataBean>?, message: String?) {
+                mView!!.setBannerList(t)
             }
 
             override fun _onError(e: ServerException?) {
-                ToastUtil().showLong(
+                ToastUtil.showLong(
                     mContext,
                     MVPApplication.getToastContent(mContext, e?.mErrorCode,e?.mErrorMsg).toString()
                 )
@@ -32,12 +32,12 @@ class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
         mManager!!.add(mModel?.getCategoriesList(header)?.subscribe(object :
             ApiCallBack<List<CategoryListBean>?>(mContext) {
 
-            override fun _onNext(categoryListBean: List<CategoryListBean>?, message: String?) {
-                mView!!.setCategoriesList(categoryListBean)
+            override fun _onNext(t: List<CategoryListBean>?, message: String?) {
+                mView!!.setCategoriesList(t)
             }
 
             override fun _onError(e: ServerException?) {
-                ToastUtil().showLong(
+                ToastUtil.showLong(
                     mContext,
                     MVPApplication.getToastContent(mContext, e?.mErrorCode,e?.mErrorMsg).toString()
                 )
@@ -45,8 +45,8 @@ class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
         }))
     }
 
-    override fun addShoppingCar(header: Map<String, String>?, parame: RequestBody?) {
-        mManager!!.add(mModel?.addShoppingCar(header,parame)?.subscribe(object :
+    override fun addShoppingCar(header: Map<String, String>?, param: RequestBody?) {
+        mManager!!.add(mModel?.addShoppingCar(header,param)?.subscribe(object :
             ApiCallBack<Void>(mContext) {
 
             override fun _onNext(t: Void?, message: String?) {
@@ -54,7 +54,7 @@ class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
             }
 
             override fun _onError(e: ServerException?) {
-                ToastUtil().showLong(
+                ToastUtil.showLong(
                     mContext,
                     MVPApplication.getToastContent(mContext, e?.mErrorCode,e?.mErrorMsg).toString()
                 )
@@ -68,7 +68,7 @@ class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {
     }
 
     override fun errorBack(e: ServerException?) {
-        ToastUtil().showLong(
+        ToastUtil.showLong(
             mContext,
             MVPApplication.getToastContent(mContext, e?.mErrorCode, e?.mErrorMsg).toString()
         )

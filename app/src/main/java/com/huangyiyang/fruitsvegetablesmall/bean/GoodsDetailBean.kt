@@ -1,26 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall.bean
 
 data class GoodsDetailBean(
-//    var pageNum:Int,
-//    var pageSize:Int,
-//    var size:Int,
-//    var startRow:Int,
-//    var endRow:Int,
-//    var total:Int,
-//    var pages:Int,
-//    var list: List<GoodsDetail>,
-//    var prePage:Int,
-//    var nextPage:Int,
-//    var isFirstPage:String,
-//    var isLastPage:String,
-//    var hasPreviousPage:String,
-//    var hasNextPage:String,
-//    var navigatePages:Int,
-//    var navigatepageNums:List<Int>,
-//    var navigateFirstPage:Int,
-//    var navigateLastPage:Int,
-//    var firstPage:Int,
-//    var lastPage:Int
     var id:Int,
     var imageUrls:String,
     var categoryId:Int,
@@ -29,5 +9,8 @@ data class GoodsDetailBean(
     var stock:Double,
     var specification:String,
     var reducedPrice:Double,
+    var minimunOrderQuantity: Double,
+    var maximumOrderQuantity: Double,
+    var minimumIncrementQuantity: Double,
     var detail:String
 )

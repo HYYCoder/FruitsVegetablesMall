@@ -18,7 +18,7 @@ class ClassificationFragmentPresenter :
             }
 
             override fun _onError(e: ServerException?) {
-                ToastUtil().showLong(
+                ToastUtil.showLong(
                     mContext,
                     MVPApplication.getToastContent(mContext, e?.mErrorCode,e?.mErrorMsg).toString()
                 )

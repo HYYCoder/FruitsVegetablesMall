@@ -1,5 +1,7 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.main.activity
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -38,6 +40,12 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
         var mMainClassificationFragment: Fragment? = null
         var mShoppingCarFragment: Fragment? = null
         var mMineFragment: Fragment? = null
+    }
+
+
+    fun goTo(context: Activity) {
+        val intent = Intent(context, MainActivity::class.java)
+        context.startActivity(intent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

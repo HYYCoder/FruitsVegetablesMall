@@ -21,6 +21,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContrac
 import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainFragmentModel
 import com.huangyiyang.fruitsvegetablesmall.ui.main.presenter.MainFragmentPresenter
 import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
+import com.huangyiyang.fruitsvegetablesmall.util.DoubleUtil
 import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
@@ -57,7 +58,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
     private var tvItemMainHomeMerchantTitle7: TextView? = null
     private var ivItemMainHomeMerchantIcon8: ImageView? = null
     private var tvItemMainHomeMerchantTitle8: TextView? = null
-    private var bannerLists: List<BannerUtil.DataBean>? = null
+    private var bannerLists: List<BannerUtil.Companion.DataBean>? = null
     var categoryListBean: List<CategoryListBean> = ArrayList()
 
     fun scrollToTop() {
@@ -247,7 +248,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     }
 
-    override fun setBannerList(bannerList: List<BannerUtil.DataBean>?) {
+    override fun setBannerList(bannerList: List<BannerUtil.Companion.DataBean>?) {
         val image =
             headerView!!.findViewById<ImageView>(R.id.iv_default_ygf)
         if (bannerList != null) {
@@ -340,13 +341,9 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     }
 
-    private class SearchListAdapter : BaseQuickAdapter<GoodsDetailBean> {
+    private inner class SearchListAdapter : BaseQuickAdapter<GoodsDetailBean> {
 
-        var context: Context? = null
-
-        constructor(context: Context?) : super(context, R.layout.item_main_recommend_list) {
-            this.context = context
-        }
+        constructor(context: Context?) : super(context, R.layout.item_main_recommend_list)
 
         override fun HelperBindData(
             viewHolder: HelperRecyclerViewHolder?,
@@ -380,11 +377,11 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 //            }
             if (item?.reducedPrice != 0.0) { //判断是否有优惠价格
                 mGoodsOldPrice?.visibility = View.VISIBLE
-                mGoodsPrice?.text = context?.getString(R.string.common_amount, item?.reducedPrice)
+                mGoodsPrice?.text = getString(R.string.common_amount, item?.reducedPrice)
                 mGoodsOldPrice?.paint?.flags = Paint.STRIKE_THRU_TEXT_FLAG //中划线
-                mGoodsOldPrice?.text = context?.getString(R.string.common_amount, item?.price)
+                mGoodsOldPrice?.text = getString(R.string.common_amount, item?.price)
             } else {
-                mGoodsPrice?.text = context?.getString(R.string.common_amount, item?.price)
+                mGoodsPrice?.text = getString(R.string.common_amount, item?.price)
                 mGoodsOldPrice?.visibility = View.INVISIBLE
             }
             viewHolder?.itemView?.setOnClickListener {
@@ -393,25 +390,25 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
             }
             shoppingCar?.setOnClickListener {
                 // 对最大下单量，最小下单量进行判断
-//                var count: Double = data.getMinimumIncrementQuantity()
-//                if (DoubleUtils.compare(
-//                        data.getMinimumIncrementQuantity(),
-//                        data.getMaximumOrderQuantity()
-//                    ) === -1
-//                ) { // 最小增减量 > 最大下单量
-//                    count = data.getMaximumOrderQuantity()
-//                } else if (DoubleUtils.compare(
-//                        data.getMinimumIncrementQuantity(),
-//                        data.getMinimunOrderQuantity()
-//                    ) === 1
-//                ) { // 最小增减量 < 最小下单量
-//                    count = data.getMinimunOrderQuantity()
-//                }
-                val map: MutableMap<String, Number?> =
+                var count: Double = item?.minimumIncrementQuantity!!
+                if (DoubleUtil.compare(
+                        item?.minimumIncrementQuantity!!,
+                        item?.maximumOrderQuantity
+                    ) === -1
+                ) { // 最小增减量 > 最大下单量
+                    count = item.maximumOrderQuantity
+                } else if (DoubleUtil.compare(
+                        item.minimumIncrementQuantity,
+                        item.minimunOrderQuantity
+                    ) === 1
+                ) { // 最小增减量 < 最小下单量
+                    count = item.minimunOrderQuantity
+                }
+                val map: MutableMap<String, String> =
                     HashMap()
-                map["skuId"] = item?.id
-                map["quantity"] = 1 //count
-//                MainFragment().mPresenter.addShoppingCar(
+                map["skuId"] = item?.id.toString()
+                map["quantity"] = "1" //count
+//                mPresenter?.addShoppingCar(
 //                    Const.header(),
 //                    map
 //                )

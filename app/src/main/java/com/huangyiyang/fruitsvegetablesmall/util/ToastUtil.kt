@@ -10,53 +10,55 @@ import android.widget.Toast
 import com.huangyiyang.fruitsvegetablesmall.R
 
 class ToastUtil {
-    private var sToast: Toast? = null
-    private var sMessageTv: TextView? = null
 
-    private fun initToast(context: Context) {
-        if (sToast == null) {
-            sToast = Toast(context)
-            @SuppressLint("InflateParams")
-            val view: View = LayoutInflater.from(context).inflate(R.layout.toast_layout, null)
-            sMessageTv = view.findViewById<View>(android.R.id.message) as TextView
-            sToast!!.view = view
-            sToast!!.setGravity(Gravity.CENTER, 0, 0)
+    companion object {
+        private var sToast: Toast? = null
+        private var sMessageTv: TextView? = null
+
+        private fun initToast(context: Context) {
+            if (sToast == null) {
+                sToast = Toast(context)
+                @SuppressLint("InflateParams")
+                val view: View = LayoutInflater.from(context).inflate(R.layout.toast_layout, null)
+                sMessageTv = view.findViewById<View>(android.R.id.message) as TextView
+                sToast!!.view = view
+                sToast!!.setGravity(Gravity.CENTER, 0, 0)
+            }
         }
-    }
 
-    fun showShort(
-        context: Context,
-        message: CharSequence
-    ) {
-        show(context, message, Toast.LENGTH_SHORT)
-    }
-
-    fun showShort(context: Context, messageResId: Int) {
-        show(context, context.getString(messageResId), Toast.LENGTH_SHORT)
-    }
-
-    fun showLong(context: Context, message: CharSequence) {
-        show(context, message, Toast.LENGTH_LONG)
-    }
-
-    fun showLong(context: Context, messageResId: Int) {
-        show(context, context.getString(messageResId), Toast.LENGTH_LONG)
-    }
-
-    private fun show(
-        context: Context,
-        message: CharSequence,
-        duration: Int
-    ) {
-        if (sToast != null) {
-            sToast!!.cancel()
-            sToast = null
+        fun showShort(
+            context: Context,
+            message: CharSequence
+        ) {
+            show(context, message, Toast.LENGTH_SHORT)
         }
-        initToast(context)
-        sMessageTv!!.text = message
-        sToast!!.duration = duration
-        sToast!!.show()
-    }
+
+        fun showShort(context: Context, messageResId: Int) {
+            show(context, context.getString(messageResId), Toast.LENGTH_SHORT)
+        }
+
+        fun showLong(context: Context, message: CharSequence) {
+            show(context, message, Toast.LENGTH_LONG)
+        }
+
+        fun showLong(context: Context, messageResId: Int) {
+            show(context, context.getString(messageResId), Toast.LENGTH_LONG)
+        }
+
+        private fun show(
+            context: Context,
+            message: CharSequence,
+            duration: Int
+        ) {
+            if (sToast != null) {
+                sToast!!.cancel()
+                sToast = null
+            }
+            initToast(context)
+            sMessageTv!!.text = message
+            sToast!!.duration = duration
+            sToast!!.show()
+        }
 
 //    public static void showStyle(Context context, int resid) {
 //        if (sToast != null) {
@@ -166,4 +168,5 @@ class ToastUtil {
 //        sToast.setDuration(Toast.LENGTH_SHORT);
 //        sToast.show();
 //    }
+    }
 }

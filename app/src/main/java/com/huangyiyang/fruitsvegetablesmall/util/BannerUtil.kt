@@ -17,7 +17,22 @@ import java.util.*
 
 class BannerUtil {
 
-    private val DELAY_TIME = 3000 // 3s
+    companion object {
+
+        private val DELAY_TIME = 3000 // 3s
+
+        class DataBean(var id: String?, var orders: String?, var imageUrl: String?, var detail: String?)
+
+        class GlideImageLoader : ImageLoader() {
+            override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
+                //具体方法内容自己去选择，次方法是为了减少banner过多的依赖第三方包，所以将这个权限开放给使用者去选择
+                Glide.with(context!!.applicationContext)
+                    .load(Const.IMAHE_URL + path) //Const.IMAHE_URL添加前缀，相当于http://10.0.2.2:8080/images/+图片名
+                    .into(imageView!!)
+            }
+
+        }
+    }
 
     private var mContentView: View? = null
     private var banner: Banner? = null
@@ -127,19 +142,6 @@ class BannerUtil {
 
     interface OnLoadFinish {
         fun onLoadFinish()
-    }
-
-
-    class DataBean(var id: String,var orders: String,var imageUrl: String,var detail: String)
-
-    class GlideImageLoader : ImageLoader() {
-        override fun displayImage(context: Context?, path: Any?, imageView: ImageView?) {
-            //具体方法内容自己去选择，次方法是为了减少banner过多的依赖第三方包，所以将这个权限开放给使用者去选择
-            Glide.with(context!!.applicationContext)
-                .load(Const.IMAHE_URL + path) //Const.IMAHE_URL添加前缀，相当于http://10.0.2.2:8080/images/+图片名
-                .into(imageView!!)
-        }
-
     }
 
 }

@@ -16,24 +16,24 @@ interface MainFragmentContract {
 
         fun getBannerList(header: Map<String, String>?,
                           parame: Map<String, String>?
-        ): Observable<ApiResult<List<BannerUtil.DataBean>?>?>?
+        ): Observable<ApiResult<List<BannerUtil.Companion.DataBean>?>?>?
 
         fun getRecommendGoodsList(
             header: Map<String, String>?,
-            parame: Map<String, String>?
+            param: Map<String, String>?
         ): Observable<ApiResult<List<GoodsDetailBean>?>?>?
 
         fun getCategoriesList(header: Map<String, String>?): Observable<ApiResult<List<CategoryListBean>?>?>?
 
         fun addShoppingCar(
             header: Map<String, String>?,
-            parame: RequestBody?
+            param: RequestBody?
         ): Observable<ApiResult<Void>?>?
     }
 
     interface MainFragmentView : BaseViewInterface {
 
-        fun setBannerList(bannerList: List<BannerUtil.DataBean>?)
+        fun setBannerList(bannerList: List<BannerUtil.Companion.DataBean>?)
 
         fun setRecommendGoodsList(goodsDetailBeanList: List<GoodsDetailBean>?)
 
@@ -46,7 +46,7 @@ interface MainFragmentContract {
 
         abstract fun getBannerList(
             header: Map<String, String>?,
-            parame: Map<String, String>?
+            param: Map<String, String>?
         )
 
         //abstract fun getRecommendGoodsList(header: Map<String?, String?>?,parame: Map<String?, String?>?)
@@ -55,7 +55,7 @@ interface MainFragmentContract {
 
         abstract fun addShoppingCar(
             header: Map<String, String>?,
-            parame: RequestBody?
+            param: RequestBody?
         )
     }
 

@@ -19,7 +19,7 @@ open class ServerException : Exception{
 
     fun ToastError(context: Context) {
         if (null != mErrorMsg) {
-            ToastUtil().showShort(context, mErrorMsg!!)
+            ToastUtil.showShort(context, mErrorMsg!!)
         }
     }
 }
