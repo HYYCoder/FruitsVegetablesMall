@@ -36,7 +36,7 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
     private var mXRecyclerViewOne: XRecyclerView? = null
     private var classificationDetaiListAdapter: ClassificationDetaiListAdapter? = null
     private var common_layout: CommonLayout? = null
-    private val categoryId = 0
+    private var categoryId = 0
     companion object{
 
         private var ID = "id"
@@ -59,7 +59,7 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
     }
 
     override fun initArgumentsData() {
-
+        categoryId = arguments!!.getInt(ID)
     }
 
     override fun initToolBar() {
