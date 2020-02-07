@@ -9,6 +9,7 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
+import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.contract.ClassificationDetailFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.model.ClassificationDetailFragmentModel
@@ -18,9 +19,8 @@ class CassificationTwoFragment : ClassificationDetailFragmentContract.Classifica
     , View.OnClickListener,BaseFragment<ClassificationDetailFragmentModel
             , ClassificationDetailFragmentPresenter>() {
 
-    private val tabLayout: TabLayout? = null
-    private val viewPager: ViewPager? = null
-    private val BEAN = "bean"
+    private var tabLayout: TabLayout? = null
+    private var viewPager: ViewPager? = null
     private var categoryListBean: CategoryListBean? = null
 
     companion object{
@@ -61,15 +61,34 @@ class CassificationTwoFragment : ClassificationDetailFragmentContract.Classifica
     }
 
     override fun initView() {
+        tabLayout = layout?.findViewById(R.id.tab_layout)
+        viewPager = layout?.findViewById(R.id.vp_detail)
+        viewPager?.offscreenPageLimit = 3
+        tabLayout?.tabGravity = TabLayout.GRAVITY_FILL
+        tabLayout?.tabMode = TabLayout.MODE_SCROLLABLE
+        tabLayout?.setupWithViewPager(viewPager)
 
-    }
-
-    override fun initData() {
-        viewPager!!.adapter =
+        viewPager?.adapter =
             ViewPagerAdapter(
                 childFragmentManager,
                 categoryListBean?.subCategories!!
             )
+    }
+
+    override fun initData() {
+
+    }
+
+    override fun setCategoriesDetailList(categoryListBean: List<GoodsDetailBean>?) {
+
+    }
+
+    override fun addShoppingCar() {
+
+    }
+
+    override fun setGoodsDetail(bean: GoodsDetailBean?) {
+
     }
 
     class ViewPagerAdapter : FragmentPagerAdapter{
@@ -85,7 +104,12 @@ class CassificationTwoFragment : ClassificationDetailFragmentContract.Classifica
         }
 
         override fun getCount(): Int {
-            return list!!.size
+            return list?.size!!
+        }
+
+        override fun getPageTitle(position: Int): CharSequence? {
+            return list?.get(position)?.name
         }
     }
+
 }

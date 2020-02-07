@@ -1,6 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall.bean
 
-data class RecommendGoodsBean(
+data class GoodsDetailBean(
 //    var pageNum:Int,
 //    var pageSize:Int,
 //    var size:Int,
@@ -23,7 +23,7 @@ data class RecommendGoodsBean(
 //    var lastPage:Int
     var id:Int,
     var imageUrls:String,
-    var type:String,
+    var categoryId:Int,
     var name:String,
     var price:Double,
     var stock:Double,

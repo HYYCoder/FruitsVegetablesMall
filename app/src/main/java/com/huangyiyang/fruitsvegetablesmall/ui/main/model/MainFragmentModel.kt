@@ -4,7 +4,7 @@ import com.huangyiyang.fruitsvegetablesmall.api.ApiResult
 import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
 import com.huangyiyang.fruitsvegetablesmall.api.HttpApi
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
-import com.huangyiyang.fruitsvegetablesmall.bean.RecommendGoodsBean
+import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.rxevent.RxSchedulers
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
@@ -20,8 +20,8 @@ class MainFragmentModel : MainFragmentContract.MainFragmentModel{
     override fun getRecommendGoodsList(
         header: Map<String, String>?,
         parame: Map<String, String>?
-    ): Observable<ApiResult<List<RecommendGoodsBean>?>?>? {
-        return FrameConst.apiService(HttpApi::class.java).getRecommendList(header,parame)
+    ): Observable<ApiResult<List<GoodsDetailBean>?>?>? {
+        return FrameConst.apiService(HttpApi::class.java).getGoodsList(header,parame)
             ?.compose(RxSchedulers.io_main())
     }
 

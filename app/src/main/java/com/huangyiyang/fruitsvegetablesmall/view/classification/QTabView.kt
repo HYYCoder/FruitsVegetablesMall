@@ -37,7 +37,7 @@ class QTabView :
         } else {
             intArrayOf(R.attr.selectableItemBackground)
         }
-        val a = mContext!!.theme.obtainStyledAttributes(attrs)
+        val a = mContext?.theme.obtainStyledAttributes(attrs)
         mDefaultBackground = a.getDrawable(0)
         a.recycle()
         setDefaultBackground()
@@ -61,25 +61,23 @@ class QTabView :
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     override fun setPaddingRelative(@Px start: Int, @Px top: Int, @Px end: Int, @Px bottom: Int) {
-        mTitle!!.setPaddingRelative(start, top, end, bottom)
+        mTitle?.setPaddingRelative(start, top, end, bottom)
     }
 
     override fun setPadding(@Px left: Int, @Px top: Int, @Px right: Int, @Px bottom: Int) {
-        mTitle!!.setPadding(left, top, right, bottom)
+        mTitle?.setPadding(left, top, right, bottom)
     }
 
     private fun initBadge() {
-        mBadgeView = TabBadgeView(
-            context
-        ).bindTab(this)
+        mBadgeView = TabBadgeView.bindTab(this)
         if (mTabBadge?.backgroundColor !== -0x17b1c0) {
             mBadgeView!!.badgeBackgroundColor = mTabBadge!!.backgroundColor
         }
         if (mTabBadge?.badgeTextColor !== -0x1) {
             mBadgeView!!.badgeTextColor = mTabBadge!!.badgeTextColor
         }
-        if (mTabBadge?.strokeWidth as Int !== Color.TRANSPARENT || mTabBadge?.strokeWidth as Int !== 0 ) {
-            mBadgeView!!.stroke(mTabBadge?.strokeWidth as Int, mTabBadge?.strokeWidth as Float, true)
+        if (mTabBadge?.strokeWidth?.toInt() !== Color.TRANSPARENT || mTabBadge?.strokeWidth?.toInt() !== 0 ) {
+            mBadgeView!!.stroke(mTabBadge?.strokeWidth?.toInt()!!, mTabBadge?.strokeWidth!!, true)
         }
         if (mTabBadge?.drawableBackground != null || mTabBadge?.isDrawableBackgroundClip!!) {
             mBadgeView!!.setBadgeBackground(
@@ -87,13 +85,13 @@ class QTabView :
                 mTabBadge?.isDrawableBackgroundClip!!
             )
         }
-        if (mTabBadge?.badgeTextSize as Int !== 11) {
+        if (mTabBadge?.badgeTextSize?.toInt() !== 11) {
             mBadgeView!!.setBadgeTextSize(mTabBadge?.badgeTextSize!!, true)
         }
-        if (mTabBadge?.badgePadding as Int !== 5) {
+        if (mTabBadge?.badgePadding?.toInt() !== 5) {
             mBadgeView!!.setBadgePadding(mTabBadge?.badgePadding!!, true)
         }
-        if (mTabBadge?.badgeNumber as Int !== 0) {
+        if (mTabBadge?.badgeNumber?.toInt() !== 0) {
             mBadgeView!!.badgeNumber = mTabBadge?.badgeNumber!!
         }
         if (mTabBadge?.badgeText != null) {
@@ -104,8 +102,8 @@ class QTabView :
         }
         if (mTabBadge?.gravityOffsetX !== 5 || mTabBadge?.gravityOffsetY !== 5) {
             mBadgeView!!.setGravityOffset(
-                mTabBadge?.gravityOffsetX as Float,
-                mTabBadge?.gravityOffsetY as Float,
+                mTabBadge?.gravityOffsetX?.toFloat()!!,
+                mTabBadge?.gravityOffsetY?.toFloat()!!,
                 true
             )
         }
@@ -121,8 +119,8 @@ class QTabView :
     }
 
     private fun initTitleView() {
-        mTitle?.setTextColor(if (isChecked) mTabTitle?.colorSelected as Int else mTabTitle?.colorNormal as Int)
-        mTitle!!.textSize = mTabTitle?.titleTextSize!! as Float
+        mTitle?.setTextColor(if (isChecked) mTabTitle?.colorSelected!! else mTabTitle?.colorNormal!!)
+        mTitle!!.textSize = mTabTitle?.titleTextSize?.toFloat()!!
         mTitle?.text = mTabTitle?.content
         mTitle!!.gravity = Gravity.CENTER
         mTitle!!.ellipsize = TextUtils.TruncateAt.END
@@ -248,7 +246,7 @@ class QTabView :
         mChecked = checked
         isSelected = checked
         refreshDrawableState()
-        mTitle?.setTextColor(if (checked) mTabTitle?.colorSelected as Int else mTabTitle?.colorNormal as Int)
+        mTitle?.setTextColor(if (checked) mTabTitle?.colorSelected!! else mTabTitle?.colorNormal!!)
         initIconView()
     }
 

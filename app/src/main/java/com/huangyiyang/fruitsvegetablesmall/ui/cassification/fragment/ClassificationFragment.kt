@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.huangyiyang.fruitsvegetablesmall.R
+import com.huangyiyang.fruitsvegetablesmall.api.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.contract.ClassificationFragmentContract
@@ -20,7 +21,7 @@ class ClassificationFragment : ClassificationFragmentContract.ClassificationFrag
     BaseFragment<ClassificationFragmentModel,ClassificationFragmentPresenter>() {
 
     private var verticalTabLayout: VerticalTabLayout? = null
-    private var MainViewPager: ViewPager? = null
+    private var viewPager: ViewPager? = null
     private var mSearchBar: TextView? = null
     private var mCommonLayout: CommonLayout? = null
     private var index = 0
@@ -45,53 +46,54 @@ class ClassificationFragment : ClassificationFragmentContract.ClassificationFrag
 
         mCommonLayout = layout!!.findViewById(R.id.common_content)
         verticalTabLayout = layout!!.findViewById(R.id.classification_one_content)
-        MainViewPager = layout!!.findViewById(R.id.vp)
-        MainViewPager?.offscreenPageLimit = 3
+        viewPager = layout!!.findViewById(R.id.vp)
+        viewPager?.offscreenPageLimit = 3
         mSearchBar = layout!!.findViewById(R.id.search_bar)
         mSearchBar?.setOnClickListener(this)
 
         //首页分类点击过来===>跳转
-        //首页分类点击过来===>跳转
         mRxManager.on("1", Action1<Void> {
             //接收设置选中分类页面
-            // MainViewPager.setCurrentItem(0);
+            viewPager?.currentItem = 0
             index = 0
         })
         mRxManager.on("2", Action1<Void> {
             //接收设置选中分类页面
-            //   MainViewPager.setCurrentItem(1);
+            viewPager?.currentItem = 1
             index = 1
         })
         mRxManager.on("3", Action1<Void> {
             //接收设置选中分类页面
-            //    MainViewPager.setCurrentItem(2);
+            viewPager?.currentItem = 2
             index = 2
         })
         mRxManager.on("4", Action1<Void> {
             //接收设置选中分类页面
-            //    MainViewPager.setCurrentItem(3);
+            viewPager?.currentItem = 3
             index = 3
         })
         mRxManager.on("5", Action1<Void> {
             //接收设置选中分类页面
-            // MainViewPager.setCurrentItem(4);
+            viewPager?.currentItem = 4
             index = 4
         })
         mRxManager.on("6", Action1<Void> {
             //接收设置选中分类页面
-            //  MainViewPager.setCurrentItem(5);
+            viewPager?.currentItem = 5
             index = 5
         })
         mRxManager.on("7", Action1<Void> {
             //接收设置选中分类页面
-            //    MainViewPager.setCurrentItem(6);
+            viewPager?.currentItem = 6
             index = 6
         })
         mRxManager.on("8", Action1<Void> {
             //接收设置选中分类页面
-            //   MainViewPager.setCurrentItem(7);
+            viewPager?.currentItem = 7
             index = 7
         })
+
+        mPresenter!!.getCategoriesList(Const.header())
     }
 
     override fun initData() {
@@ -102,6 +104,17 @@ class ClassificationFragment : ClassificationFragmentContract.ClassificationFrag
 //        when (v!!.id) {
 //            R.id.search_bar -> SearchResultListActivity.goTo(activity)
 //        }
+    }
+
+    override fun setCategoriesList(categoryListBean: List<CategoryListBean>?) {
+        viewPager?.adapter =
+            ViewPagerAdapter(
+                activity?.supportFragmentManager!!,
+                categoryListBean!!
+            )
+        verticalTabLayout?.setupWithViewPager(viewPager)
+        viewPager?.currentItem = index
+        index = 0
     }
 
     class ViewPagerAdapter : FragmentPagerAdapter{
@@ -117,8 +130,12 @@ class ClassificationFragment : ClassificationFragmentContract.ClassificationFrag
         }
 
         override fun getCount(): Int {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return list?.size!!
         }
 
+        override fun getPageTitle(position: Int): CharSequence? {
+            return list!![position].category?.name
+        }
     }
+
 }

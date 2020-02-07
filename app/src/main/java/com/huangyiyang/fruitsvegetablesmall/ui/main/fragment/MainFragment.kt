@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.api.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
-import com.huangyiyang.fruitsvegetablesmall.bean.RecommendGoodsBean
+import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
+import com.huangyiyang.fruitsvegetablesmall.event.EventParams
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.goods.activity.GoodsDetailActivity
@@ -57,6 +58,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
     private var ivItemMainHomeMerchantIcon8: ImageView? = null
     private var tvItemMainHomeMerchantTitle8: TextView? = null
     private var bannerLists: List<BannerUtil.DataBean>? = null
+    var categoryListBean: List<CategoryListBean> = ArrayList()
 
     fun scrollToTop() {
         if (mXRecyclerView == null) return
@@ -179,23 +181,24 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 //            )
         })
 
+        val bannerListParames: MutableMap<String, String> =
+            HashMap()
+        bannerListParames["current"] = java.lang.String.valueOf(0)
+        bannerListParames["pageSize"] = java.lang.String.valueOf(mPresenter?.mPageSize)
+        mPresenter!!.getBannerList(Const.header(),bannerListParames)
+
+        mPresenter!!.getCategoriesList(Const.header())
+
         val goodsDetailParames: MutableMap<String, String> =
             HashMap()
-        goodsDetailParames["type"] = ""
+        goodsDetailParames["categoryId"] = ""
         goodsDetailParames["name"] = ""
         goodsDetailParames["price"] = ""
         goodsDetailParames["stock"] = ""
         goodsDetailParames["reducedPrice"] = ""
         goodsDetailParames["pageSize"] = java.lang.String.valueOf(mPresenter?.mPageSize)
         mPresenter!!.initLoadParams(Const.header(), goodsDetailParames)
-
         mPresenter!!.initLoadView(mCommonLayout, mXRecyclerView, mAdapter)
-
-        val bannerListParames: MutableMap<String, String> =
-            HashMap()
-        bannerListParames["current"] = java.lang.String.valueOf(0)
-        bannerListParames["pageSize"] = java.lang.String.valueOf(mPresenter?.mPageSize)
-        mPresenter!!.getBannerList(Const.header(),bannerListParames)
     }
 
     override fun initData() {
@@ -204,39 +207,39 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-//            R.id.search_bar -> SearchResultListActivity.goTo(activity)
-//            R.id.iv_item_main_home_merchant_icon_1 -> if (categoryListBean != null && categoryListBean.get(
-//                    0
-//                ) != null && categoryListBean.get(0).getCategory().getId() !== 0
-//            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_1, null) //跳转分类页面
-//            R.id.iv_item_main_home_merchant_icon_2 -> if (categoryListBean != null && categoryListBean.get(
-//                    1
-//                ) != null && categoryListBean.get(1).getCategory().getId() !== 0
-//            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_2, null) //跳转分类页面
-//            R.id.iv_item_main_home_merchant_icon_3 -> if (categoryListBean != null && categoryListBean.get(
-//                    2
-//                ) != null && categoryListBean.get(2).getCategory().getId() !== 0
-//            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_3, null) //跳转分类页面
-//            R.id.iv_item_main_home_merchant_icon_4 -> if (categoryListBean != null && categoryListBean.get(
-//                    3
-//                ) != null && categoryListBean.get(3).getCategory().getId() !== 0
-//            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_4, null) //跳转分类页面
-//            R.id.iv_item_main_home_merchant_icon_5 -> if (categoryListBean != null && categoryListBean.get(
-//                    4
-//                ) != null && categoryListBean.get(4).getCategory().getId() !== 0
-//            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_5, null) //跳转分类页面
-//            R.id.iv_item_main_home_merchant_icon_6 -> if (categoryListBean != null && categoryListBean.get(
-//                    5
-//                ) != null && categoryListBean.get(5).getCategory().getId() !== 0
-//            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_6, null) //跳转分类页面
-//            R.id.iv_item_main_home_merchant_icon_7 -> if (categoryListBean != null && categoryListBean.get(
-//                    6
-//                ) != null && categoryListBean.get(6).getCategory().getId() !== 0
-//            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_7, null) //跳转分类页面
-//            R.id.iv_item_main_home_merchant_icon_8 -> if (categoryListBean != null && categoryListBean.get(
-//                    7
-//                ) != null && categoryListBean.get(7).getCategory().getId() !== 0
-//            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_8, null) //跳转分类页面
+            R.id.search_bar -> println("search_bar")//SearchResultListActivity.goTo(activity)
+            R.id.iv_item_main_home_merchant_icon_1 -> if (categoryListBean != null && categoryListBean.get(
+                    0
+                ) != null && categoryListBean[0].category?.id !== 0
+            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_1, null) //跳转分类页面
+            R.id.iv_item_main_home_merchant_icon_2 -> if (categoryListBean != null && categoryListBean.get(
+                    1
+                ) != null && categoryListBean[1].category?.id !== 0
+            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_2, null) //跳转分类页面
+            R.id.iv_item_main_home_merchant_icon_3 -> if (categoryListBean != null && categoryListBean.get(
+                    2
+                ) != null && categoryListBean[2].category?.id !== 0
+            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_3, null) //跳转分类页面
+            R.id.iv_item_main_home_merchant_icon_4 -> if (categoryListBean != null && categoryListBean.get(
+                    3
+                ) != null && categoryListBean[3].category?.id !== 0
+            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_4, null) //跳转分类页面
+            R.id.iv_item_main_home_merchant_icon_5 -> if (categoryListBean != null && categoryListBean.get(
+                    4
+                ) != null && categoryListBean[4].category?.id !== 0
+            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_5, null) //跳转分类页面
+            R.id.iv_item_main_home_merchant_icon_6 -> if (categoryListBean != null && categoryListBean.get(
+                    5
+                ) != null && categoryListBean[5].category?.id !== 0
+            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_6, null) //跳转分类页面
+            R.id.iv_item_main_home_merchant_icon_7 -> if (categoryListBean != null && categoryListBean.get(
+                    6
+                ) != null && categoryListBean[6].category?.id !== 0
+            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_7, null) //跳转分类页面
+            R.id.iv_item_main_home_merchant_icon_8 -> if (categoryListBean != null && categoryListBean.get(
+                    7
+                ) != null && categoryListBean[7].category?.id !== 0
+            ) mRxManager.post(EventParams.EVENT_TYPE_TO_CASSIFICATION_8, null) //跳转分类页面
         }
     }
 
@@ -264,20 +267,80 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
         }
     }
 
-    override fun setRecommendGoodsList(goodsBeanList: List<RecommendGoodsBean>?) {
+    override fun setRecommendGoodsList(goodsDetailBeanList: List<GoodsDetailBean>?) {
 
     }
 
 
     override fun setCategoriesList(categoryListBean: List<CategoryListBean>?) {
-
+        this.categoryListBean = categoryListBean!!
+        for (i in 0..7) {
+            when (i) {
+                0 -> {
+                    ImageLoaderUtil.getInstance()?.load(
+                        ivItemMainHomeMerchantIcon1!!,
+                        categoryListBean[i].category?.imageUrl
+                    )
+                    tvItemMainHomeMerchantTitle1?.text = categoryListBean[i].category?.name
+                }
+                1 -> {
+                    ImageLoaderUtil.getInstance()?.load(
+                        ivItemMainHomeMerchantIcon2!!,
+                        categoryListBean[i].category?.imageUrl
+                    )
+                    tvItemMainHomeMerchantTitle2?.text = categoryListBean[i].category?.name
+                }
+                2 -> {
+                    ImageLoaderUtil.getInstance()?.load(
+                        ivItemMainHomeMerchantIcon3!!,
+                        categoryListBean[i].category?.imageUrl
+                    )
+                    tvItemMainHomeMerchantTitle3?.text = categoryListBean[i].category?.name
+                }
+                3 -> {
+                    ImageLoaderUtil.getInstance()?.load(
+                        ivItemMainHomeMerchantIcon4!!,
+                        categoryListBean[i].category?.imageUrl
+                    )
+                    tvItemMainHomeMerchantTitle4?.text = categoryListBean[i].category?.name
+                }
+                4 -> {
+                    ImageLoaderUtil.getInstance()?.load(
+                        ivItemMainHomeMerchantIcon5!!,
+                        categoryListBean[i].category?.imageUrl
+                    )
+                    tvItemMainHomeMerchantTitle5?.text = categoryListBean[i].category?.name
+                }
+                5 -> {
+                    ImageLoaderUtil.getInstance()?.load(
+                        ivItemMainHomeMerchantIcon6!!,
+                        categoryListBean[i].category?.imageUrl
+                    )
+                    tvItemMainHomeMerchantTitle6?.text = categoryListBean[i].category?.name
+                }
+                6 -> {
+                    ImageLoaderUtil.getInstance()?.load(
+                        ivItemMainHomeMerchantIcon7!!,
+                        categoryListBean[i].category?.imageUrl
+                    )
+                    tvItemMainHomeMerchantTitle7?.text = categoryListBean[i].category?.name
+                }
+                7 -> {
+                    ImageLoaderUtil.getInstance()?.load(
+                        ivItemMainHomeMerchantIcon8!!,
+                        categoryListBean[i].category?.imageUrl
+                    )
+                    tvItemMainHomeMerchantTitle8?.text = categoryListBean[i].category?.name
+                }
+            }
+        }
     }
 
     override fun addShoppingCar() {
 
     }
 
-    private class SearchListAdapter : BaseQuickAdapter<RecommendGoodsBean> {
+    private class SearchListAdapter : BaseQuickAdapter<GoodsDetailBean> {
 
         var context: Context? = null
 
@@ -288,7 +351,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
         override fun HelperBindData(
             viewHolder: HelperRecyclerViewHolder?,
             position: Int,
-            item: RecommendGoodsBean?
+            item: GoodsDetailBean?
         ) {
             val mGoodsImg =
                 viewHolder?.getView<ImageView>(R.id.iv_item_goods_img) //商品图

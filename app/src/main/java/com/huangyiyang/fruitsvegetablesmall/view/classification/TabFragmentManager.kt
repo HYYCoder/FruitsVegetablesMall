@@ -23,7 +23,7 @@ class TabFragmentManager {
         mTabLayout = tabLayout
         mListener =
             OnFragmentTabSelectedListener()
-        mTabLayout!!.addOnTabSelectedListener(mListener)
+        mTabLayout?.addOnTabSelectedListener(mListener)
     }
 
     constructor(
@@ -38,14 +38,14 @@ class TabFragmentManager {
 
     fun changeFragment() {
         val ft: FragmentTransaction = mManager?.beginTransaction()!!
-        val position = mTabLayout!!.getSelectedTabPosition()
+        val position = mTabLayout?.getSelectedTabPosition()
         val addedFragments: List<Fragment> = mManager?.fragments!!
-        for (i in mFragments!!.indices) {
+        for (i in mFragments?.indices!!) {
             val fragment: Fragment = mFragments!![i]
             if ((!addedFragments.contains(fragment)) && mContainerResid != 0) {
                 ft.add(mContainerResid, fragment)
             }
-            if (mFragments!!.size > position && i == position
+            if (mFragments!!.size > position!! && i == position
                 || mFragments!!.size <= position && i == mFragments!!.size - 1
             ) {
                 ft.show(fragment)
@@ -66,7 +66,7 @@ class TabFragmentManager {
         mManager?.executePendingTransactions()
         mManager = null
         mFragments = null
-        mTabLayout!!.removeOnTabSelectedListener(mListener)
+        mTabLayout?.removeOnTabSelectedListener(mListener)
         mListener = null
         mTabLayout = null
     }

@@ -2,7 +2,7 @@ package com.huangyiyang.fruitsvegetablesmall.ui.main.contract
 
 import com.huangyiyang.fruitsvegetablesmall.api.ApiResult
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
-import com.huangyiyang.fruitsvegetablesmall.bean.RecommendGoodsBean
+import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.load.LoadListPresenter
 import com.huangyiyang.fruitsvegetablesmall.mvp.model.BaseModelInterface
 import com.huangyiyang.fruitsvegetablesmall.mvp.view.BaseViewInterface
@@ -21,7 +21,7 @@ interface MainFragmentContract {
         fun getRecommendGoodsList(
             header: Map<String, String>?,
             parame: Map<String, String>?
-        ): Observable<ApiResult<List<RecommendGoodsBean>?>?>?
+        ): Observable<ApiResult<List<GoodsDetailBean>?>?>?
 
         fun getCategoriesList(header: Map<String, String>?): Observable<ApiResult<List<CategoryListBean>?>?>?
 
@@ -35,14 +35,14 @@ interface MainFragmentContract {
 
         fun setBannerList(bannerList: List<BannerUtil.DataBean>?)
 
-        fun setRecommendGoodsList(goodsBeanList: List<RecommendGoodsBean>?)
+        fun setRecommendGoodsList(goodsDetailBeanList: List<GoodsDetailBean>?)
 
         fun setCategoriesList(categoryListBean: List<CategoryListBean>?)
 
         fun addShoppingCar()
     }
 
-    abstract class MainFragmentPresenter : LoadListPresenter<RecommendGoodsBean, MainFragmentModel, MainFragmentView>() {
+    abstract class MainFragmentPresenter : LoadListPresenter<GoodsDetailBean, MainFragmentModel, MainFragmentView>() {
 
         abstract fun getBannerList(
             header: Map<String, String>?,

@@ -21,7 +21,7 @@ import androidx.viewpager.widget.ViewPager
 import com.huangyiyang.fruitsvegetablesmall.R
 import java.util.*
 
-class VerticalTabLayout : ScrollView {
+open class VerticalTabLayout : ScrollView {
     private var mContext: Context? = null
     private var mTabStrip: TabStrip? = null
     private var mColorIndicator = 0
@@ -46,16 +46,12 @@ class VerticalTabLayout : ScrollView {
 
     private var mTabFragmentManager: TabFragmentManager? = null
 
-    constructor(context: Context?) : super(context){
-        mContext = context
-    }
+    constructor(context: Context) : this(context,null)
 
     constructor(
-        context: Context?,
+        context: Context,
         attrs: AttributeSet?
-    ):super(context,attrs) {
-        mContext = context
-    }
+    ):this(context,attrs,0)
 
     constructor(
         context: Context,
@@ -116,20 +112,20 @@ class VerticalTabLayout : ScrollView {
     }
 
     fun removeAllTabs() {
-        mTabStrip!!.removeAllViews()
+        mTabStrip?.removeAllViews()
         mSelectedTab = null
     }
 
     fun getTabAt(position: Int): TabView {
-        return mTabStrip!!.getChildAt(position) as TabView
+        return mTabStrip?.getChildAt(position) as TabView
     }
 
     fun getTabCount(): Int {
-        return mTabStrip!!.childCount
+        return mTabStrip?.childCount!!
     }
 
     fun getSelectedTabPosition(): Int {
-        val index = mTabStrip!!.indexOfChild(mSelectedTab)
+        val index : Int = mTabStrip!!.indexOfChild(mSelectedTab)
         return if (index == -1) 0 else index
     }
 
@@ -139,14 +135,15 @@ class VerticalTabLayout : ScrollView {
             LayoutParams.WRAP_CONTENT
         )
         initTabWithMode(params)
-        mTabStrip!!.addView(tabView, params)
-        if (mTabStrip!!.indexOfChild(tabView) == 0) {
+        mTabStrip?.addView(tabView, params)
+        if (mTabStrip?.indexOfChild(tabView) == 0) {
             tabView.isChecked = true
             params = tabView.layoutParams as LinearLayout.LayoutParams
             params.setMargins(0, 0, 0, 0)
             tabView.layoutParams = params
             mSelectedTab = tabView
-            mTabStrip!!.post { mTabStrip!!.moveIndicator(0f) }
+            mTabStrip?.post {
+                mTabStrip?.moveIndicator(0f) }
         }
     }
 
@@ -197,8 +194,8 @@ class VerticalTabLayout : ScrollView {
         if (tabView != null) {
             addTabWithMode(tabView)
             tabView.setOnClickListener(OnClickListener { view ->
-                val position = mTabStrip!!.indexOfChild(view)
-                setTabSelected(position)
+                val position = mTabStrip?.indexOfChild(view)
+                setTabSelected(position!!)
             })
         } else {
             throw IllegalStateException("tabview can't be null")
@@ -230,13 +227,13 @@ class VerticalTabLayout : ScrollView {
             }
             view.isChecked = true
             if (updataIndicator) {
-                mTabStrip!!.moveIndicatorWithAnimator(position)
+                mTabStrip?.moveIndicatorWithAnimator(position)
             }
             mSelectedTab = view
             scrollToTab(position)
         }
         if (callListener) {
-            for (i in mTabSelectedListeners!!.indices) {
+            for (i in mTabSelectedListeners?.indices!!) {
                 val listener = mTabSelectedListeners!![i]
                 if (listener != null) {
                     if (selected) {
@@ -261,18 +258,18 @@ class VerticalTabLayout : ScrollView {
         check(!(mode != TAB_MODE_FIXED && mode != TAB_MODE_SCROLLABLE)) { "only support TAB_MODE_FIXED or TAB_MODE_SCROLLABLE" }
         if (mode == mTabMode) return
         mTabMode = mode
-        for (i in 0 until mTabStrip!!.childCount) {
-            val view = mTabStrip!!.getChildAt(i)
+        for (i in 0 until mTabStrip?.childCount!!) {
+            val view = mTabStrip?.getChildAt(i)
             val params =
-                view.layoutParams as LinearLayout.LayoutParams
+                view?.layoutParams as LinearLayout.LayoutParams
             initTabWithMode(params)
             if (i == 0) {
                 params.setMargins(0, 0, 0, 0)
             }
             view.layoutParams = params
         }
-        mTabStrip!!.invalidate()
-        mTabStrip!!.post { mTabStrip!!.updataIndicator() }
+        mTabStrip?.invalidate()
+        mTabStrip?.post { mTabStrip?.updataIndicator() }
     }
 
     /**
@@ -284,15 +281,17 @@ class VerticalTabLayout : ScrollView {
         if (margin == mTabMargin) return
         mTabMargin = margin
         if (mTabMode == TAB_MODE_FIXED) return
-        for (i in 0 until mTabStrip!!.childCount) {
-            val view = mTabStrip!!.getChildAt(i)
+        for (i in 0 until mTabStrip?.childCount!!) {
+            val view = mTabStrip?.getChildAt(i)
             val params =
-                view.layoutParams as LinearLayout.LayoutParams
+                view?.layoutParams as LinearLayout.LayoutParams
             params.setMargins(0, if (i == 0) 0 else mTabMargin, 0, 0)
             view.layoutParams = params
         }
-        mTabStrip!!.invalidate()
-        mTabStrip!!.post { mTabStrip!!.updataIndicator() }
+        mTabStrip?.invalidate()
+        mTabStrip?.post {
+                    mTabStrip?.updataIndicator()
+            }
     }
 
     /**
@@ -304,30 +303,30 @@ class VerticalTabLayout : ScrollView {
         if (height == mTabHeight) return
         mTabHeight = height
         if (mTabMode == TAB_MODE_FIXED) return
-        for (i in 0 until mTabStrip!!.childCount) {
-            val view = mTabStrip!!.getChildAt(i)
+        for (i in 0 until mTabStrip?.childCount!!) {
+            val view = mTabStrip?.getChildAt(i)
             val params =
-                view.layoutParams as LinearLayout.LayoutParams
+                view?.layoutParams as LinearLayout.LayoutParams
             params.height = mTabHeight
             view.layoutParams = params
         }
-        mTabStrip!!.invalidate()
-        mTabStrip!!.post { mTabStrip!!.updataIndicator() }
+        mTabStrip?.invalidate()
+        mTabStrip?.post { mTabStrip?.updataIndicator() }
     }
 
     fun setIndicatorColor(color: Int) {
         mColorIndicator = color
-        mTabStrip!!.invalidate()
+        mTabStrip?.invalidate()
     }
 
     fun setIndicatorWidth(width: Int) {
         mIndicatorWidth = width
-        mTabStrip!!.setIndicatorGravity()
+        mTabStrip?.setIndicatorGravity()
     }
 
     fun setIndicatorCorners(corners: Int) {
         mIndicatorCorners = corners.toFloat()
-        mTabStrip!!.invalidate()
+        mTabStrip?.invalidate()
     }
 
     /**
@@ -336,7 +335,7 @@ class VerticalTabLayout : ScrollView {
     fun setIndicatorGravity(gravity: Int) {
         if (gravity == Gravity.LEFT || gravity == Gravity.RIGHT || Gravity.FILL == gravity) {
             mIndicatorGravity = gravity
-            mTabStrip!!.setIndicatorGravity()
+            mTabStrip?.setIndicatorGravity()
         } else {
             throw IllegalStateException("only support Gravity.LEFT,Gravity.RIGHT,Gravity.FILL")
         }
@@ -350,22 +349,15 @@ class VerticalTabLayout : ScrollView {
 //
 //    }
 
-    //    public void setTabPadding(int padding) {
-//
-//    }
-//
-//    public void setTabPadding(int start, int top, int end, int bottom) {
-//
-//    }
     fun addOnTabSelectedListener(listener: OnTabSelectedListener?) {
         if (listener != null) {
-            mTabSelectedListeners!!.add(listener)
+            mTabSelectedListeners?.add(listener)
         }
     }
 
     fun removeOnTabSelectedListener(listener: OnTabSelectedListener?) {
         if (listener != null) {
-            mTabSelectedListeners!!.remove(listener)
+            mTabSelectedListeners?.remove(listener)
         }
     }
 
@@ -514,58 +506,44 @@ class VerticalTabLayout : ScrollView {
         }
     }
 
-    private class TabStrip(context: Context?) :
-        LinearLayout(context) {
+    private inner class TabStrip :
+        LinearLayout{
         private var mIndicatorTopY = 0f
         private var mIndicatorX = 0f
         private var mIndicatorBottomY = 0f
         private var mLastWidth = 0
-        private val mIndicatorPaint: Paint
-        private val mIndicatorRect: RectF
+        private var mIndicatorPaint: Paint
+        private var mIndicatorRect: RectF
         private var mIndicatorAnimatorSet: AnimatorSet? = null
+
+        constructor(context: Context?) : super(context){
+            setWillNotDraw(false)
+            orientation = VERTICAL
+            mIndicatorPaint = Paint()
+            mIndicatorPaint.isAntiAlias = true
+            mIndicatorGravity = if (mIndicatorGravity == 0) Gravity.LEFT else mIndicatorGravity
+            mIndicatorRect = RectF()
+            setIndicatorGravity()
+        }
+
         fun setIndicatorGravity() {
-            if (VerticalTabLayout(
-                    context
-                ).mIndicatorGravity == Gravity.LEFT) {
+            if (mIndicatorGravity == Gravity.LEFT) {
                 mIndicatorX = 0f
-                if (mLastWidth != 0) VerticalTabLayout(
-                    context
-                ).mIndicatorWidth = mLastWidth
-                setPadding(
-                    VerticalTabLayout(
-                        context
-                    ).mIndicatorWidth, 0, 0, 0)
-            } else if (VerticalTabLayout(
-                    context
-                ).mIndicatorGravity == Gravity.RIGHT) {
-                if (mLastWidth != 0) VerticalTabLayout(
-                    context
-                ).mIndicatorWidth = mLastWidth
-                setPadding(0, 0, VerticalTabLayout(
-                    context
-                ).mIndicatorWidth, 0)
-            } else if (VerticalTabLayout(
-                    context
-                ).mIndicatorGravity == Gravity.FILL) {
+                if (mLastWidth != 0) mIndicatorWidth = mLastWidth
+                setPadding(mIndicatorWidth, 0, 0, 0)
+            } else if (mIndicatorGravity == Gravity.RIGHT) {
+                if (mLastWidth != 0) mIndicatorWidth = mLastWidth
+                setPadding(0, 0, mIndicatorWidth, 0)
+            } else if (mIndicatorGravity == Gravity.FILL) {
                 mIndicatorX = 0f
                 setPadding(0, 0, 0, 0)
             }
             post {
-                if (VerticalTabLayout(
-                        context
-                    ).mIndicatorGravity == Gravity.RIGHT) {
-                    mIndicatorX = width - VerticalTabLayout(
-                        context
-                    ).mIndicatorWidth.toFloat()
-                } else if (VerticalTabLayout(
-                        context
-                    ).mIndicatorGravity == Gravity.FILL) {
-                    mLastWidth = VerticalTabLayout(
-                        context
-                    ).mIndicatorWidth
-                    VerticalTabLayout(
-                        context
-                    ).mIndicatorWidth = width
+                if (mIndicatorGravity == Gravity.RIGHT) {
+                    mIndicatorX = width - mIndicatorWidth.toFloat()
+                } else if (mIndicatorGravity == Gravity.FILL) {
+                    mLastWidth = mIndicatorWidth
+                    mIndicatorWidth = width
                 }
                 invalidate()
             }
@@ -590,10 +568,7 @@ class VerticalTabLayout : ScrollView {
         }
 
         fun updataIndicator() {
-            moveIndicatorWithAnimator(
-                VerticalTabLayout(
-                    context
-                ).getSelectedTabPosition())
+            moveIndicatorWithAnimator(getSelectedTabPosition())
         }
 
         fun moveIndicator(offset: Float) {
@@ -607,9 +582,7 @@ class VerticalTabLayout : ScrollView {
          * @param index tab location's index
          */
         fun moveIndicatorWithAnimator(index: Int) {
-            val direction: Int = index - VerticalTabLayout(
-                context
-            ).getSelectedTabPosition()
+            val direction: Int = index - getSelectedTabPosition()
             val childView = getChildAt(index)
             val targetTop = childView.top.toFloat()
             val targetBottom = childView.bottom.toFloat()
@@ -658,26 +631,16 @@ class VerticalTabLayout : ScrollView {
 
         override fun onDraw(canvas: Canvas) {
             super.onDraw(canvas)
-            mIndicatorPaint.color = VerticalTabLayout(
-                context
-            ).mColorIndicator
+            mIndicatorPaint.color = mColorIndicator
             mIndicatorRect.left = mIndicatorX
             mIndicatorRect.top = mIndicatorTopY
-            mIndicatorRect.right = mIndicatorX + VerticalTabLayout(
-                context
-            ).mIndicatorWidth
+            mIndicatorRect.right = mIndicatorX + mIndicatorWidth
             mIndicatorRect.bottom = mIndicatorBottomY
-            if (VerticalTabLayout(
-                    context
-                ).mIndicatorCorners != 0f) {
+            if (mIndicatorCorners != 0f) {
                 canvas.drawRoundRect(
                     mIndicatorRect,
-                    VerticalTabLayout(
-                        context
-                    ).mIndicatorCorners,
-                    VerticalTabLayout(
-                        context
-                    ).mIndicatorCorners,
+                    mIndicatorCorners,
+                    mIndicatorCorners,
                     mIndicatorPaint
                 )
             } else {
@@ -690,23 +653,19 @@ class VerticalTabLayout : ScrollView {
             orientation = VERTICAL
             mIndicatorPaint = Paint()
             mIndicatorPaint.isAntiAlias = true
-            VerticalTabLayout(
-                context
-            )
-                .mIndicatorGravity = if (VerticalTabLayout(
-                    context
-                ).mIndicatorGravity == 0) Gravity.LEFT else VerticalTabLayout(
-                context
-            ).mIndicatorGravity
+            mIndicatorGravity = if (mIndicatorGravity == 0) Gravity.LEFT else mIndicatorGravity
             mIndicatorRect = RectF()
             setIndicatorGravity()
         }
     }
 
-    private class OnTabPageChangeListener : ViewPager.OnPageChangeListener {
+    private inner class OnTabPageChangeListener : ViewPager.OnPageChangeListener {
         private var mPreviousScrollState = 0
         private var mScrollState = 0
         var mUpdataIndicator = false
+
+        constructor()
+
         override fun onPageScrollStateChanged(state: Int) {
             mPreviousScrollState = mScrollState
             mScrollState = state
@@ -719,34 +678,24 @@ class VerticalTabLayout : ScrollView {
             positionOffsetPixels: Int
         ) {
             if (mUpdataIndicator) {
-                VerticalTabLayout(
-                    this as Context
-                ).mTabStrip?.moveIndicator(positionOffset + position)
+                mTabStrip?.moveIndicator(positionOffset + position)
             }
         }
 
         override fun onPageSelected(position: Int) {
-            if (position != VerticalTabLayout(
-                    this as Context
-                ).getSelectedTabPosition()) {
-                VerticalTabLayout(
-                    this as Context
-                ).setTabSelected(position, !mUpdataIndicator, true)
+            if (position != getSelectedTabPosition()) {
+                setTabSelected(position, !mUpdataIndicator, true)
             }
         }
     }
 
-    private class PagerAdapterObserver : DataSetObserver() {
+    private inner class PagerAdapterObserver : DataSetObserver() {
         override fun onChanged() {
-            VerticalTabLayout(
-                this as Context
-            ).populateFromPagerAdapter()
+            populateFromPagerAdapter()
         }
 
         override fun onInvalidated() {
-            VerticalTabLayout(
-                this as Context
-            ).populateFromPagerAdapter()
+            populateFromPagerAdapter()
         }
     }
 

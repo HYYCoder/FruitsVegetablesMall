@@ -7,18 +7,20 @@ import android.widget.ImageView
 import android.widget.TextView
 import q.rorbin.badgeview.Badge
 
-abstract class TabView(context: Context) : Checkable,
-    ITabView, FrameLayout(context) {
+open abstract class TabView : Checkable,
+    ITabView, FrameLayout {
+
+    constructor(context: Context) : super(context)
 
     override fun getTabView(): TabView? {
         return this
     }
 
     @Deprecated("")
-    abstract fun getIconView(): ImageView?
+    open abstract fun getIconView(): ImageView?
 
-    abstract fun getTitleView(): TextView?
+    open abstract fun getTitleView(): TextView?
 
-    abstract fun getBadgeView(): Badge?
+    open abstract fun getBadgeView(): Badge?
 
 }
