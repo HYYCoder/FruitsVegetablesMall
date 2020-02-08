@@ -1,5 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall.api
 
+import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
 import java.util.*
 
 class Const {
@@ -13,8 +14,7 @@ class Const {
         fun header(): Map<String, String>? {
             val header: MutableMap<String, String> =
                 HashMap()
-//            header["auth-" + UserManager.getInstance().getUserId()] =
-//                UserManager.getInstance().getUserToken()
+            header["Authorization"] = UserManager.getInstance()?.getUserToken()!!
 //            header["User-Agent"] =
 //                Build.BRAND + " " + Build.MODEL + " " + Build.VERSION.RELEASE + " " + Build.VERSION.SDK_INT + " " + BuildConfig.VERSION_NAME
             return header

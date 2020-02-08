@@ -10,13 +10,14 @@ import android.os.Process
 import android.provider.Settings
 import android.text.TextUtils
 import android.util.Log
-import androidx.core.content.ContextCompat
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.huangyiyang.fruitsvegetablesmall.api.Const
 import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
 import com.huangyiyang.fruitsvegetablesmall.manage.AppForegroundStateManager
 import com.huangyiyang.fruitsvegetablesmall.ui.login.activity.LoginActivity
+import com.huangyiyang.fruitsvegetablesmall.util.ContextUtils
+import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
 import com.youth.banner.loader.ImageLoader
 import java.io.BufferedReader
 import java.io.FileReader
@@ -113,13 +114,13 @@ class MVPApplication : AppForegroundStateManager.OnAppForegroundStateChangeListe
 //                errorCode["999999"] = "严重错误"
             }
             return if (errorCode!!.containsKey(code)) {
-                if (code == "401001") { // UserManager.getInstance().clearCache();
+                if (code == "500") { // UserManager.getInstance().clearCache();
                     //UserManager.getInstance().saveToken_EXPIRED("t")
                     val intent = Intent(context, LoginActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     context.startActivity(intent)
                     Process.killProcess(Process.myPid())
-                    //LoginActivity.isL = true
+                    LoginActivity.isL = true
                 }
                 errorCode!![code]
             } else {
@@ -170,16 +171,16 @@ class MVPApplication : AppForegroundStateManager.OnAppForegroundStateChangeListe
             contentResolver,
             Settings.System.ANDROID_ID
         )
-        //ImageLoader.init(getDrawable(R.drawable.place_holder))
+        ImageLoaderUtil.init(getDrawable(R.drawable.place_holder))
         //框架初始化
         FrameConst.init(this, Const.BASE_URL)
-//        //初始化工具类
-//        ContextUtils.init(this)
+         //初始化工具类
+        ContextUtils.init(this)
         //初始化ImageLoader
         //ImageLoader.init(ContextCompat.getDrawable(this, 0))
-//初始化CommonLayout  空图片  loading
+        //初始化CommonLayout  空图片  loading
 //        CommonLayout.setResources(R.drawable.icon_empty_view, 0);
-//监听前后台
+        //监听前后台
         AppForegroundStateManager.getInstance()?.addListener(this)
         //handleSSLHandshake();
 //极光

@@ -29,7 +29,6 @@ import java.util.*
 class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView, View.OnClickListener, BaseActivity<GoodsDetailActivityModel,
         GoodsDetailActivityPresenter>(){
 
-    private val ID = "goods_id"
     private var mBannerUtil //Banner控制类
             : BannerUtil? = null
     private var mShoppingCar: ImageView? = null
@@ -55,10 +54,13 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
     private var mGoodsUnit: TextView? = null
     private var goodsDetailBean: GoodsDetailBean? = null
 
-    fun goTo(context: Context, goodsId: String?) {
-        val intent = Intent(context, GoodsDetailActivity::class.java)
-        intent.putExtra(ID, goodsId)
-        context.startActivity(intent)
+    companion object {
+        private val ID = "goods_id"
+        fun goTo(context: Context, goodsId: String?) {
+            val intent = Intent(context, GoodsDetailActivity::class.java)
+            intent.putExtra(ID, goodsId)
+            context.startActivity(intent)
+        }
     }
 
     override fun getLayoutResId(): Int {
@@ -209,7 +211,7 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
             }
             R.id.shopping_car -> {
                 mRxManager.post(EventParams.EVENT_TYPE_TO_SHOPPING_CAR_FRAGMENT, null) //跳转首页===>购物车
-                MainActivity().goTo(this)
+                MainActivity.goTo(this)
             }
             R.id.back -> finish()
             R.id.cb_goods_detail_activity_minus -> {

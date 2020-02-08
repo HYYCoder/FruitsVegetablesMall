@@ -386,7 +386,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
             }
             viewHolder?.itemView?.setOnClickListener {
                 //跳转商品详情
-                GoodsDetailActivity().goTo(context!!, java.lang.String.valueOf(item?.id))
+                GoodsDetailActivity.goTo(context!!, java.lang.String.valueOf(item?.id))
             }
             shoppingCar?.setOnClickListener {
                 // 对最大下单量，最小下单量进行判断

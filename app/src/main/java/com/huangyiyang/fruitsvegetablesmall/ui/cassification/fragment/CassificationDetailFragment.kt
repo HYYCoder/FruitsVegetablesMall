@@ -38,6 +38,7 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
     private var classificationDetaiListAdapter: ClassificationDetaiListAdapter? = null
     private var common_layout: CommonLayout? = null
     private var categoryId = 0
+
     companion object{
 
         private var ID = "id"
@@ -494,7 +495,7 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
             }
 
             viewHolder?.itemView?.setOnClickListener {
-                GoodsDetailActivity().goTo(
+                GoodsDetailActivity.goTo(
                     context!!,
                     java.lang.String.valueOf(data.id)
                 )

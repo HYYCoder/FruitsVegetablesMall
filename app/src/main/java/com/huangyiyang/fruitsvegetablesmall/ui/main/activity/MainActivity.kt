@@ -1,8 +1,13 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.main.activity
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -12,14 +17,18 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
+import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.fragment.ShoppingCarFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.fragment.ClassificationFragment
+import com.huangyiyang.fruitsvegetablesmall.ui.login.activity.LoginActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainActivityContract
 import com.huangyiyang.fruitsvegetablesmall.ui.main.fragment.MainFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainActivityModel
 import com.huangyiyang.fruitsvegetablesmall.ui.main.presenter.MainActivityPresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.mine.fragment.MineFragment
+import com.huangyiyang.fruitsvegetablesmall.util.PermissionUtil
+import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.NoSwipeableViewPager
 import rx.functions.Action1
 
@@ -36,20 +45,40 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
     private var tvShoppingCount: TextView? = null
 
     companion object {
+        var isForeground = false
         var mMainFragment: Fragment? = null
         var mMainClassificationFragment: Fragment? = null
         var mShoppingCarFragment: Fragment? = null
         var mMineFragment: Fragment? = null
-    }
 
-
-    fun goTo(context: Activity) {
-        val intent = Intent(context, MainActivity::class.java)
-        context.startActivity(intent)
+        fun goTo(context: Activity) {
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // 动态权限申请
+        PermissionUtil.ApplyWithOutCallBack(
+            this, Manifest.permission.READ_EXTERNAL_STORAGE
+            , Manifest.permission.WRITE_EXTERNAL_STORAGE
+            , Manifest.permission.CAMERA
+            , Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.CALL_PHONE
+        )
+
+        // 5.0以上系统状态栏透明
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window = window
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = Color.TRANSPARENT
+        }
+
         mRxManager.on(EventParams.EVENT_TYPE_TO_MAIN_FRAGMENT, Action1 {
             //接收设置选中首页
             mRadioGroup?.check(R.id.main_activity_bottom_main)
@@ -109,6 +138,30 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
             mViewPage?.currentItem = 1
         })
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        isForeground = true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        //EventBus.getDefault().unregister(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (UserManager.getInstance()?.getToken_EXPIRED() != null && UserManager.getInstance()?.getToken_EXPIRED().equals(
+                "t"
+            )
+        ) {
+            ToastUtil.showLong(this, "登录已过期，请重新登录")
+            LoginActivity.isL = false
+        }
+        if (!LoginActivity.isR) {
+            //checkAppVersionCode()
+        }
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {

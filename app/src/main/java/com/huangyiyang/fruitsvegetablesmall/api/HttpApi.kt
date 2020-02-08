@@ -2,6 +2,7 @@ package com.huangyiyang.fruitsvegetablesmall.api
 
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
+import com.huangyiyang.fruitsvegetablesmall.bean.LoginBean
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
 import okhttp3.RequestBody
@@ -10,6 +11,10 @@ import rx.Observable
 
 
 interface HttpApi {
+
+    //登录接口
+    @POST("/login")
+    fun login(@Body body: RequestBody?): Observable<ApiResult<LoginBean>?>?
 
     //获取首页Banner列表
     @GET("/specialoffers")
