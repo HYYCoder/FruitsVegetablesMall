@@ -9,6 +9,7 @@ import okhttp3.RequestBody
 import rx.Observable
 
 interface ClassificationDetailFragmentContract {
+
     interface ClassificationDetailFragmentModel : BaseModelInterface{
         fun getCategoriesDetailList(
             header: Map<String, String>?,

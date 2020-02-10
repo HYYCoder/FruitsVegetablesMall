@@ -23,6 +23,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.main.presenter.MainFragmentPresen
 import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
 import com.huangyiyang.fruitsvegetablesmall.util.DoubleUtil
 import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
+import com.huangyiyang.fruitsvegetablesmall.util.ParamsUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import com.youth.banner.listener.OnBannerListener
@@ -404,14 +405,14 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
                 ) { // 最小增减量 < 最小下单量
                     count = item.minimunOrderQuantity
                 }
-                val map: MutableMap<String, String> =
+                val map: MutableMap<String, Number> =
                     HashMap()
-                map["skuId"] = item?.id.toString()
-                map["quantity"] = "1" //count
-//                mPresenter?.addShoppingCar(
-//                    Const.header(),
-//                    map
-//                )
+                map["goodsId"] = item?.id
+                map["quantity"] = count
+                mPresenter?.addShoppingCar(
+                    Const.header(),
+                    ParamsUtil.getInstance()?.getBodyNumber(map)
+                )
                 LoadingDialog.showDialogForLoading(
                     context as Activity,
                     context?.getString(R.string.call_back_loading),

@@ -9,6 +9,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.cassification.contract.Classifica
 import rx.Observable
 
 class ClassificationFragmentModel : ClassificationFragmentContract.ClassificationFragmentModel {
+
     override fun getCategoriesList(header: Map<String, String>?): Observable<ApiResult<List<CategoryListBean>?>?>? {
         return FrameConst.apiService(HttpApi::class.java).getCategoriesList(header)
             ?.compose(RxSchedulers.io_main())

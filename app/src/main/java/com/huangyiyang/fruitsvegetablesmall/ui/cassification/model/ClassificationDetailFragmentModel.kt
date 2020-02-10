@@ -10,19 +10,20 @@ import okhttp3.RequestBody
 import rx.Observable
 
 class ClassificationDetailFragmentModel : ClassificationDetailFragmentContract.ClassificationDetailFragmentModel{
+
     override fun getCategoriesDetailList(
         header: Map<String, String>?,
-        parame: Map<String, String>?
+        param: Map<String, String>?
     ): Observable<ApiResult<List<GoodsDetailBean>?>?>? {
-        return FrameConst.apiService(HttpApi::class.java).getGoodsList(header,parame)
+        return FrameConst.apiService(HttpApi::class.java).getGoodsList(header,param)
             ?.compose(RxSchedulers.io_main())
     }
 
     override fun addShoppingCar(
         header: Map<String, String>?,
-        parame: RequestBody?
+        param: RequestBody?
     ): Observable<ApiResult<Void>?>? {
-        return FrameConst.apiService(HttpApi::class.java).addShoppingCar(header,parame)
+        return FrameConst.apiService(HttpApi::class.java).addShoppingCar(header,param)
             ?.compose(RxSchedulers.io_main())
     }
 

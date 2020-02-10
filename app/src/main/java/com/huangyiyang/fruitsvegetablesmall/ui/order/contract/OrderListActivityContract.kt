@@ -5,6 +5,7 @@ import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
 import com.huangyiyang.fruitsvegetablesmall.mvp.view.BaseViewInterface
 
 interface OrderListActivityContract {
+
     interface OrderListActivityyModel : BaseModelInterface{
 
     }

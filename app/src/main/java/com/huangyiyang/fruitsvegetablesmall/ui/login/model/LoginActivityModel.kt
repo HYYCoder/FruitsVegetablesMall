@@ -10,6 +10,7 @@ import okhttp3.RequestBody
 import rx.Observable
 
 class LoginActivityModel : LoginActivityContract.LoginActivityModel{
+
     override fun getLogin(param: RequestBody?): Observable<ApiResult<LoginBean>?>? {
         return FrameConst.apiService(HttpApi::class.java).login(param)
             ?.compose(RxSchedulers.io_main())

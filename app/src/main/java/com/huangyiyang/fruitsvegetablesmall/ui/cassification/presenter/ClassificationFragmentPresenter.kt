@@ -9,6 +9,7 @@ import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
 
 class ClassificationFragmentPresenter :
     ClassificationFragmentContract.ClassificationFragmentPresenter() {
+
     override fun getCategoriesList(header: Map<String, String>?) {
         mManager!!.add(mModel?.getCategoriesList(header)?.subscribe(object :
             ApiCallBack<List<CategoryListBean>?>(mContext) {

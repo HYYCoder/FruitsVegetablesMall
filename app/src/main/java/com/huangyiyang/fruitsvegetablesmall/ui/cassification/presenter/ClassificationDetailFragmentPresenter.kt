@@ -9,18 +9,19 @@ import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
 import okhttp3.RequestBody
 
 class ClassificationDetailFragmentPresenter : ClassificationDetailFragmentContract.MainClassificationFragmentPresenter(){
+
     override fun getCategoriesDetailList(
         header: Map<String, String>?,
-        parame: Map<String, String>?
+        param: Map<String, String>?
     ) {
-        mManager!!.add(mModel!!.getCategoriesDetailList(header, parame)!!.subscribe(
+        mManager!!.add(mModel?.getCategoriesDetailList(header, param)?.subscribe(
             object :
                 ApiCallBack<List<GoodsDetailBean>?>(mContext) {
                 override fun _onNext(
-                    categoryListBean: List<GoodsDetailBean>?,
+                    t: List<GoodsDetailBean>?,
                     message: String?
                 ) {
-                    mView!!.setCategoriesDetailList(categoryListBean)
+                    mView!!.setCategoriesDetailList(t)
                 }
 
                 override fun _onError(e: ServerException?) {
@@ -32,8 +33,8 @@ class ClassificationDetailFragmentPresenter : ClassificationDetailFragmentContra
             }))
     }
 
-    override fun addShoppingCar(header: Map<String, String>?, parame: RequestBody?) {
-        mManager!!.add(mModel?.addShoppingCar(header,parame)?.subscribe(object :
+    override fun addShoppingCar(header: Map<String, String>?, param: RequestBody?) {
+        mManager!!.add(mModel?.addShoppingCar(header,param)?.subscribe(object :
             ApiCallBack<Void>(mContext) {
 
             override fun _onNext(t: Void?, message: String?) {

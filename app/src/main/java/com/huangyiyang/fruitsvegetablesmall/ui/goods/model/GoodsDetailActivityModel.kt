@@ -11,6 +11,7 @@ import okhttp3.RequestBody
 import rx.Observable
 
 class GoodsDetailActivityModel : GoodsDetailActivityContract.GoodsDetailActivityModel{
+
     override fun getGoodsDetail(
         header: Map<String, String>?,
         goodsId: String?

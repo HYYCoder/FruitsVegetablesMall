@@ -8,6 +8,7 @@ import com.huangyiyang.fruitsvegetablesmall.mvp.view.BaseViewInterface
 import rx.Observable
 
 interface ClassificationFragmentContract {
+
     interface ClassificationFragmentModel : BaseModelInterface {
         fun getCategoriesList(header: Map<String, String>?): Observable<ApiResult<List<CategoryListBean>?>?>?
     }

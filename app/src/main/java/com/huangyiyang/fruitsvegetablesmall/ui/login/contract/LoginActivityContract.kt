@@ -9,6 +9,7 @@ import okhttp3.RequestBody
 import rx.Observable
 
 interface LoginActivityContract {
+
     interface LoginActivityModel : BaseModelInterface{
         fun getLogin(param: RequestBody?): Observable<ApiResult<LoginBean>?>?
     }

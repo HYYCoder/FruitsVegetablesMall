@@ -10,6 +10,7 @@ import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
 import okhttp3.RequestBody
 
 class GoodsDetailActivityPresenter : GoodsDetailActivityContract.GoodsDetailActivityPresenter(){
+
     override fun getGoodsDetail(header: Map<String, String>?, goodsId: String?) {
         mManager!!.add(mModel?.getGoodsDetail(header,goodsId)?.subscribe(object :
             ApiCallBack<GoodsDetailBean>(mContext) {

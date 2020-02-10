@@ -197,7 +197,7 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
             R.id.add_shopping_car -> {
                 val map: MutableMap<String, Number> =
                     HashMap()
-                map["skuId"] = goodsId!!.toInt()
+                map["goodsId"] = goodsId!!.toInt()
                 map["quantity"] = mEtGoodsCount!!.text.toString().toDouble()
                 mPresenter!!.addShoppingCar(
                     Const.header(),

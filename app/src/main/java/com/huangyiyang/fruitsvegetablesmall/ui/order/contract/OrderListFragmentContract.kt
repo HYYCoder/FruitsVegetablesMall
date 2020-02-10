@@ -6,6 +6,7 @@ import com.huangyiyang.fruitsvegetablesmall.mvp.model.BaseModelInterface
 import com.huangyiyang.fruitsvegetablesmall.mvp.view.BaseViewInterface
 
 interface OrderListFragmentContract {
+
     interface OrderListFragmentModel : BaseModelInterface{
 
     }

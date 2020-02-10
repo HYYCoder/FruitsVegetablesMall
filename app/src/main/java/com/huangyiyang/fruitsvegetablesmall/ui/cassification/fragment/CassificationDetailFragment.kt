@@ -410,16 +410,16 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
             }
             val map: MutableMap<String, Number> =
                 HashMap()
-            map["skuId"] = data.id
+            map["goodsId"] = data.id
             map["quantity"] = etShoppingCount.text.toString().toDouble()
+            mPresenter!!.addShoppingCar(
+                Const.header(),
+                ParamsUtil.getInstance()?.getBodyNumber(map)
+            )
             LoadingDialog.showDialogForLoading(
                 activity!!,
                 activity!!.getString(R.string.call_back_loading),
                 false
-            )
-            mPresenter!!.addShoppingCar(
-                Const.header(),
-                ParamsUtil.getInstance()?.getBodyNumber(map)
             )
             dialog.cancel()
         })

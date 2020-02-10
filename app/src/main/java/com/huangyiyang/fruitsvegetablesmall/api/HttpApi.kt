@@ -1,9 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall.api
 
-import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
-import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
-import com.huangyiyang.fruitsvegetablesmall.bean.LoginBean
-import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
+import com.huangyiyang.fruitsvegetablesmall.bean.*
 import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -37,11 +34,34 @@ interface HttpApi {
     ): Observable<ApiResult<GoodsDetailBean>?>?
 
     //加入购物车
-    @PUT("/cart/items")
+    @POST("/cart/items")
     fun addShoppingCar(@HeaderMap header: Map<String, String>?, @Body body: RequestBody?): Observable<ApiResult<Void>?>?
+
+    //购物车列表
+    @GET("/cart/items")
+    fun getShoppingCarList(@HeaderMap header: Map<String, String>?): Observable<ApiResult<ShoppingCarListBean>?>?
+
+    //购物车删除单个商品
+    @DELETE("/cart/item/{itemId}")
+    fun deleteShoppingCarGood(
+        @HeaderMap header: Map<String, String>?, @Path(
+            "itemId"
+        ) itemId: String?
+    ): Observable<ApiResult<Void>?>?
+
+    //购物车批量删除商品
+    @POST("/cart/items/bacthdel")
+    fun deleteShoppingCarGoods(@HeaderMap header: Map<String, String>?, @Body body: RequestBody?): Observable<ApiResult<Void>?>?
 
     //购物车内商品数量
     @GET("/cart/items/count")
     fun getShoppingCarCount(@HeaderMap header: Map<String, String>?): Observable<ApiResult<ShoppingCarCountBean>?>?
 
+    //更新购物车商品购买数量
+    @PUT("/cart/item/{itemId}")
+    fun updateShoppingCarCount(
+        @HeaderMap header: Map<String, String>?, @Path(
+            "itemId"
+        ) itemId: String?, @Body body: RequestBody?
+    ): Observable<ApiResult<Void>?>?
 }

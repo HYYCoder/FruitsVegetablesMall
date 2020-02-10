@@ -6,6 +6,8 @@
     <string name="main_activity_bottom_shopping_car">购物车</string>
     <string name="main_activity_bottom_mine">我的</string>
     <string name="common_money">￥%1$s</string>
+    <string name="main_alert_cancel">取消</string>
+    <string name="main_alert_delete">删除</string>
     <string name="common_exit_app">再按一次退出应用</string>
     <string name="common_no_more_date">无更多数据</string>
     <string name="common_netdata_error"> 网络数据出错，\n请检查网络设置或联系相关人员</string>
@@ -56,4 +58,15 @@
     <string name="toast_for_LoginActivity_content_3">修改密码成功</string>
     <string name="toast_for_LoginActivity_content_4">绑定手机成功</string>
     <string name="toast_for_LoginActivity_content_5">两次密码不一致，请确认</string>
+    <string name="btn_clear_overdue">清空失效商品</string>
+    <string name="item_overdue">失效</string>
+    <string name="shopping_car_item_goods_unit">单位：%1$s</string>
+    <string name="shoppingCar_title">购物车</string>
+    <string name="decimalformate">######0.00</string>
+    <string name="delete_sure_num">确认将这%d个商品删除？</string>
+    <string name="delete_sure">确认删除选中商品？</string>
+    <string name="delete_all_sure">确认清空失效商品？</string>
+    <string name="delete_all_success">清空无效商品成功</string>
+    <string name="delete_success">删除成功</string>
+    <string name="shoppingcar_select_empty">没有选择要删除的商品</string>
 </resources>
