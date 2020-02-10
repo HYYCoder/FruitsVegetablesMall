@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.contract
+package com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.contract
 
 import com.huangyiyang.fruitsvegetablesmall.api.ApiResult
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean

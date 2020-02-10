@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.fragment
+package com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.fragment
 
 import android.content.Context
 import android.graphics.Color
@@ -16,10 +16,10 @@ import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarListBean
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
-import com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.contract.ShoppingCarFragmentContract
-import com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.model.ShoppingCarFragmentModel
-import com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.presenter.ShoppingCarFragmentPresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.order.activity.ConfirmOrderActivity
+import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.contract.ShoppingCarFragmentContract
+import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.model.ShoppingCarFragmentModel
+import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.presenter.ShoppingCarFragmentPresenter
 import com.huangyiyang.fruitsvegetablesmall.util.DoubleUtil
 import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
 import com.huangyiyang.fruitsvegetablesmall.util.ParamsUtil
@@ -297,19 +297,19 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
     }
 
     override fun deleteSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun updateSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun setShoppingCarCount(bean: ShoppingCarCountBean?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun onClick(v: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     /**

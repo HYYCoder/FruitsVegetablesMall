@@ -1,11 +1,11 @@
-package com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.presenter
+package com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.presenter
 
 import com.huangyiyang.fruitsvegetablesmall.MVPApplication
 import com.huangyiyang.fruitsvegetablesmall.api.ApiCallBack
 import com.huangyiyang.fruitsvegetablesmall.api.ServerException
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarListBean
-import com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.contract.ShoppingCarFragmentContract
+import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.contract.ShoppingCarFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
 import okhttp3.RequestBody
 

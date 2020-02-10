@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.model
+package com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.model
 
 import com.huangyiyang.fruitsvegetablesmall.api.ApiResult
 import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
@@ -6,7 +6,7 @@ import com.huangyiyang.fruitsvegetablesmall.api.HttpApi
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarListBean
 import com.huangyiyang.fruitsvegetablesmall.rxevent.RxSchedulers
-import com.huangyiyang.fruitsvegetablesmall.ui.ShoppingCar.contract.ShoppingCarFragmentContract
+import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.contract.ShoppingCarFragmentContract
 import okhttp3.RequestBody
 import rx.Observable
 
