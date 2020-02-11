@@ -342,10 +342,9 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
         mTvGoodsName?.text = bean.name
         mGoodsUnit!!.text = "/" + bean.specification
 
-        val price: Double = bean.price
         val reducePrice: Double = bean.reducedPrice
         if (reducePrice > 0.0) {
-            mTvGoodsPrice!!.text = getString(R.string.common_amount, bean.reducedPrice)
+            mTvGoodsPrice!!.text = getString(R.string.common_amount, bean.price-bean.reducedPrice)
             mTvGoodsOldPrice!!.text = getString(R.string.common_amount, bean.price)
             mTvGoodsOldPrice!!.paint.flags = Paint.STRIKE_THRU_TEXT_FLAG //中划线
         } else {

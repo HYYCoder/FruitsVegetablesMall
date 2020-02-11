@@ -165,11 +165,16 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.btn_confirm -> {
-                val map: MutableMap<String, Any> =
-                    HashMap()
-                map["cartItemsIds"] = shoppingCarIds
-                map["note"] = mMemo!!.text.toString().trim { it <= ' ' }
-                map["coupons"] = couponIdsStutes()
+                val shoppingCarIdsList : MutableList<String> = arrayListOf()
+                shoppingCarIds.map {
+                    shoppingCarIdsList.add(it.toString())
+                }
+                val notes : MutableList<String> = arrayListOf()
+                notes.add(mMemo!!.text.toString().trim { it <= ' ' })
+                val map: MutableMap<String, Any> = HashMap()
+                map["ids"] = shoppingCarIdsList
+                map["note"] = notes
+                //map["coupons"] = couponIdsStutes()
                 mPresenter?.placeOrder(Const.header(), ParamsUtil.getInstance()!!.getBodyObj(map))
                 LoadingDialog.showDialogForLoading(
                     this,
@@ -188,8 +193,8 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
     private fun getCouponList() { //==========第一次打开结算页面时的自动选择可用的优惠券============
         val map: MutableMap<String, MutableList<Int>?> =
             HashMap()
-        map["cartItemsIds"] = shoppingCarIds
-        map["selectedCouponsIds"] = couponIds
+        map["ids"] = shoppingCarIds
+        //map["selectedCouponsIds"] = couponIds
         //mPresenter.getCouponList(Const.header(), ParamsUtil.getInstance()!!.getBodyIntegerList(map))
     }
 

@@ -1,6 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall.bean
 
-data class GoodsDetailBean(
+class GoodsDetailBean(
     var id:Int,
     var imageUrls:String,
     var categoryId:Int,

@@ -381,7 +381,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 //            }
             if (item?.reducedPrice != 0.0) { //判断是否有优惠价格
                 mGoodsOldPrice?.visibility = View.VISIBLE
-                mGoodsPrice?.text = getString(R.string.common_amount, item?.reducedPrice)
+                mGoodsPrice?.text = getString(R.string.common_amount, item?.price!!-item?.reducedPrice!!)
                 mGoodsOldPrice?.paint?.flags = Paint.STRIKE_THRU_TEXT_FLAG //中划线
                 mGoodsOldPrice?.text = getString(R.string.common_amount, item?.price)
             } else {

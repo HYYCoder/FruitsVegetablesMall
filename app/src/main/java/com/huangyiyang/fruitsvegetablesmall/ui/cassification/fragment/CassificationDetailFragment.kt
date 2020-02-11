@@ -465,7 +465,7 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
             if (reducePrice > 0.0) {
                 tvItemGoodsPrice?.text = context?.getString(
                     R.string.common_amount,
-                    data.reducedPrice
+                    data.price-data.reducedPrice
                 )
                 tvItemGoodsOldPrice?.text = context?.getString(R.string.common_amount, data.price)
                 tvItemGoodsOldPrice?.paint?.flags = Paint.STRIKE_THRU_TEXT_FLAG //中划线

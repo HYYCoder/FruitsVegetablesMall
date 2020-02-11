@@ -3,7 +3,7 @@ package com.huangyiyang.fruitsvegetablesmall.bean
 import android.os.Parcel
 import android.os.Parcelable
 
-data class CategoryListBean(var category: CategoryBean?,var subCategories: List<SubCategoriesBean>?) : Parcelable {
+class CategoryListBean(var category: CategoryBean?,var subCategories: List<SubCategoriesBean>?) : Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readParcelable(CategoryBean::class.java.classLoader),
