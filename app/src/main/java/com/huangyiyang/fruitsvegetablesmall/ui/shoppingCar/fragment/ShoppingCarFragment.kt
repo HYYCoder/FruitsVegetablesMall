@@ -2,7 +2,6 @@ package com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.fragment
 
 import android.content.Context
 import android.graphics.Color
-import android.os.Bundle
 import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.view.View.OnTouchListener
@@ -45,14 +44,12 @@ import kotlin.collections.ArrayList
 class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,View.OnClickListener, BaseFragment<ShoppingCarFragmentModel,ShoppingCarFragmentPresenter>() {
 
     private var mShoppingCarList: XRecyclerView? = null
-    private var mOverdueList: XRecyclerView? = null
     private var rlEmpty: RelativeLayout? = null
     private var btnEmpty: Button? = null
     private var mAdapter: ShoppingCarAdapter? = null
     private var btnSettlement: Button? = null
     private var mTvTotal: TextView? = null
     private var toolbarUtil: ToolbarUtil? = null
-    private var mBtnClearOverdue: TextView? = null
     private var mCheckAll: CheckBox? = null
     private var shoppingCarListBean: ShoppingCarListBean? = null
     private var overdueShoppingCarId: MutableList<Int> = arrayListOf()
@@ -73,18 +70,18 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
 //        super.onViewCreated(view, savedInstanceState)
 //        btnSettlement = view.findViewById(R.id.btn_settlement)
 //        btnSettlement?.setOnClickListener {
-//            val order = ArrayList<Int?>()
+//            val shoppingCar = ArrayList<Int?>()
 //            for (itemsBean in shoppingCarListBean?.normalItems!!) {
 //                    if (itemsBean.isChecked) {
-//                        order.add(itemsBean.shoppingCarId)
+//                        shoppingCar.add(itemsBean.shoppingCarId)
 //                    }
 //            }
-//            if (order.size == 0) {
+//            if (shoppingCar.size == 0) {
 //                ToastUtil.showShort(mPresenter?.mContext!!, "没有选择商品")
 //            } else {
-//                ConfirmOrderActivity.goTo(mPresenter?.mContext!!, order)
+//                ConfirmOrderActivity.goTo(mPresenter?.mContext!!, shoppingCar)
 //            }
-//            ConfirmOrderActivity.goTo(mPresenter?.mContext!!, order)
+//            ConfirmOrderActivity.goTo(mPresenter?.mContext!!, shoppingCar)
 //        }
 //        btnEmpty = view.findViewById(R.id.btn_empty)
 //        btnEmpty?.setOnClickListener {
@@ -325,16 +322,16 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.btn_settlement -> {
-                val order = java.util.ArrayList<Int?>()
+                val shoppingCar = java.util.ArrayList<Int?>()
                 for (itemsBean in shoppingCarListBean?.normalItems!!) {
                     if (itemsBean.isChecked) {
-                        order.add(itemsBean.shoppingCarId)
+                        shoppingCar.add(itemsBean.shoppingCarId)
                     }
                 }
-                if (order.size == 0) {
+                if (shoppingCar.size == 0) {
                     ToastUtil.showShort(activity!!, "没有选择商品")
                 } else {
-                    ConfirmOrderActivity.goTo(activity!!, order)
+                    ConfirmOrderActivity.goTo(activity!!, shoppingCar)
                 }
             }
             R.id.btn_empty -> mRxManager.post(EventParams.EVENT_TYPE_TO_MAIN_FRAGMENT, null) //跳转首页

@@ -31,22 +31,10 @@ import java.util.*
 class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityView,BaseActivity<ConfirmOrderActivityModel
         ,ConfirmOrderActivityPresenter>(), View.OnClickListener {
 
-
-    private val ID = "goods_ids"
-    private val COUPON_ID = "coupons_ids"
     private var shoppingCarIds : MutableList<Int> = arrayListOf()
-    private var couponIds : MutableList<Int> = arrayListOf() //每次打开后初始化可用优惠券
-
-    private var couponIds2 =
-        ArrayList<Int>() //用来记录打开优惠券页面选择的优惠券id
-
-    private var isGotoUse = false //用来标记是否加入过优惠券页面
-
     private var mCommonLayout: CommonLayout? = null
-    private var mOrderGoodsListAdapter: OrderGoodsListAdapter? =
-        null
-    private var mOrderGiftsListAdapter: OrderGiftsListAdapter? =
-        null
+    private var mOrderGoodsListAdapter: OrderGoodsListAdapter? = null
+    private var mOrderGiftsListAdapter: OrderGiftsListAdapter? = null
     private var mOrderListRecyclerView: XRecyclerView? = null
     private var toolbarUtil: ToolbarUtil? = null
     private var rlChooseCoupon: RelativeLayout? = null
@@ -63,19 +51,21 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
     companion object{
 
         private val ID = "order_ids"
-
         private val COUPON_ID = "coupons_ids"
+        private var couponIds : MutableList<Int> = arrayListOf() //每次打开后初始化可用优惠券
+        private var couponIds2 : MutableList<Int> = arrayListOf() //用来记录打开优惠券页面选择的优惠券id
+        private var isGotoUse = false //用来标记是否加入过优惠券页面
 
         fun goTo(
             context: Context,
-            shoppingCarIds: ArrayList<Int?>?,
-            couponsId: ArrayList<Int?>
+            shoppingCarIds: ArrayList<Int>?,
+            couponsId: ArrayList<Int>
         ) {
             val intent = Intent(context, ConfirmOrderActivity::class.java)
             intent.putIntegerArrayListExtra(ID, shoppingCarIds)
             intent.putIntegerArrayListExtra(COUPON_ID, couponsId)
-//            ConfirmOrderActivity.couponIds2 = couponsId
-//            ConfirmOrderActivity.isGotoUse = true
+            couponIds2 = couponsId
+            isGotoUse = true
             context.startActivity(intent)
         }
 
