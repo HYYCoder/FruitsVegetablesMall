@@ -15,6 +15,7 @@ import com.huangyiyang.fruitsvegetablesmall.api.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
+import com.huangyiyang.fruitsvegetablesmall.event.ShoppingCountEvent
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.goods.contract.GoodsDetailActivityContract
 import com.huangyiyang.fruitsvegetablesmall.ui.goods.model.GoodsDetailActivityModel
@@ -23,6 +24,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.main.activity.MainActivity
 import com.huangyiyang.fruitsvegetablesmall.util.*
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
+import org.greenrobot.eventbus.EventBus
 import java.math.BigDecimal
 import java.util.*
 
@@ -458,7 +460,7 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
             mShoppingCarCount!!.visibility = View.VISIBLE
         }
         mShoppingCarCount?.setText(java.lang.String.valueOf(bean?.count))
-        //EventBus.getDefault().post(ShoppingCountEvent(bean?.count))
+        EventBus.getDefault().post(ShoppingCountEvent(bean?.count!!))
     }
 
 //    private class DiscountsAdapter internal constructor(context: Context?) :

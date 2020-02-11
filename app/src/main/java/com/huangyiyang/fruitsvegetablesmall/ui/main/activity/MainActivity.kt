@@ -17,9 +17,9 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
+import com.huangyiyang.fruitsvegetablesmall.event.ShoppingCountEvent
 import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
-import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.fragment.ShoppingCarFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.fragment.ClassificationFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.login.activity.LoginActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainActivityContract
@@ -27,9 +27,13 @@ import com.huangyiyang.fruitsvegetablesmall.ui.main.fragment.MainFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainActivityModel
 import com.huangyiyang.fruitsvegetablesmall.ui.main.presenter.MainActivityPresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.mine.fragment.MineFragment
+import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.fragment.ShoppingCarFragment
 import com.huangyiyang.fruitsvegetablesmall.util.PermissionUtil
 import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.NoSwipeableViewPager
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import rx.functions.Action1
 
 class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnCheckedChangeListener, BaseActivity<MainActivityModel,MainActivityPresenter>() {
@@ -138,16 +142,7 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
             mViewPage?.currentItem = 1
         })
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        isForeground = true
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        //EventBus.getDefault().unregister(this)
+        EventBus.getDefault().register(this)
     }
 
     override fun onStart() {
@@ -162,6 +157,16 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
         if (!LoginActivity.isR) {
             //checkAppVersionCode()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        isForeground = true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
@@ -219,6 +224,20 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
 
             override fun onPageScrollStateChanged(state: Int) {}
         })
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun setShoppingCount(event: ShoppingCountEvent) {
+        val count: Int = event.count
+        if (count == 0) {
+            tvShoppingCount!!.visibility = View.GONE
+        } else if (count >= 100) {
+            tvShoppingCount!!.visibility = View.VISIBLE
+            tvShoppingCount!!.text = "99+"
+        } else {
+            tvShoppingCount!!.visibility = View.VISIBLE
+            tvShoppingCount!!.text = count.toString()
+        }
     }
 
     private class ViewPageAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {

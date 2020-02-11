@@ -14,6 +14,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.api.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
+import com.huangyiyang.fruitsvegetablesmall.event.ShoppingCarRefreshEvent
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.contract.ClassificationDetailFragmentContract
@@ -27,6 +28,7 @@ import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import com.zhouyou.recyclerview.XRecyclerView
 import com.zhouyou.recyclerview.XRecyclerView.LoadingListener
 import com.zhouyou.recyclerview.adapter.HelperRecyclerViewHolder
+import org.greenrobot.eventbus.EventBus
 import java.math.BigDecimal
 import java.util.*
 
@@ -117,12 +119,12 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
 
     override fun addShoppingCar() {
         LoadingDialog.cancelDialogForLoading()
-        //EventBus.getDefault().post(ShoppingCarRefreshEvent(true))
+        EventBus.getDefault().post(ShoppingCarRefreshEvent(true))
     }
 
     override fun setGoodsDetail(data: GoodsDetailBean?) {
         LoadingDialog.cancelDialogForLoading()
-        //EventBus.getDefault().post(ShoppingCarRefreshEvent(true))
+        EventBus.getDefault().post(ShoppingCarRefreshEvent(true))
         val dialog =
             BottomSheetDialog(this.context!!)
         val view: View = layoutInflater.inflate(R.layout.dialog_shopping, null)

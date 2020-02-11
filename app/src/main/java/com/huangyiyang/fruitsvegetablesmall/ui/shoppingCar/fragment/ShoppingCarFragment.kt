@@ -14,6 +14,8 @@ import com.huangyiyang.fruitsvegetablesmall.api.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarListBean
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
+import com.huangyiyang.fruitsvegetablesmall.event.ShoppingCarRefreshEvent
+import com.huangyiyang.fruitsvegetablesmall.event.ShoppingCountEvent
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.order.activity.ConfirmOrderActivity
@@ -32,6 +34,9 @@ import com.zhouyou.recyclerview.XRecyclerView.LoadingListener
 import com.zhouyou.recyclerview.adapter.AnimationType
 import com.zhouyou.recyclerview.adapter.HelperRecyclerViewHolder
 import com.zhouyou.recyclerview.refresh.ProgressStyle
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.util.*
@@ -139,7 +144,7 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
     }
 
     override fun initView() {
-        //EventBus.getDefault().register(this)
+        EventBus.getDefault().register(this)
         deleteAlertDialog = DeleteAlertDialog(activity, getString(R.string.delete_sure))
         deleteAlertDialog?.setOnConfirmListener(object : DeleteAlertDialog.onConfirmListenerWithId {
            override fun onConfirm(id: String?) {
@@ -228,6 +233,11 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
         )
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
+    }
+
     override fun setShoppingCarList(bean: ShoppingCarListBean?) {
         LoadingDialog.cancelDialogForLoading()
 
@@ -283,8 +293,8 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
             mShoppingCarList!!.visibility = View.GONE
         }
         //设置底部红点
-//        EventBus.getDefault()
-//            .post(ShoppingCountEvent(shoppingCarListBean.getNormalItems().size() + shoppingCarListBean.getAbnormalItems().size()))
+       EventBus.getDefault()
+            .post(ShoppingCountEvent(shoppingCarListBean?.normalItems?.size!! + shoppingCarListBean?.abnormalItems?.size!!))
         //设置顶部删除按钮图标和事件
         if (shoppingCarListBean?.normalItems?.size === 0) {
             toolbarUtil!!.setRightImage(R.drawable.shooping_delete_gray)
@@ -305,7 +315,7 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
     }
 
     override fun setShoppingCarCount(bean: ShoppingCarCountBean?) {
-
+        EventBus.getDefault().post(ShoppingCountEvent(bean?.count!!))
     }
 
     override fun onClick(v: View?) {
@@ -351,6 +361,13 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
             btnSettlement?.isEnabled = false
         } else {
             btnSettlement?.isEnabled = true
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onShoppingCarUpdate(event: ShoppingCarRefreshEvent) {
+        if (event.isFresh) {
+            mPresenter!!.getShoppingCarCount(Const.header())
         }
     }
 

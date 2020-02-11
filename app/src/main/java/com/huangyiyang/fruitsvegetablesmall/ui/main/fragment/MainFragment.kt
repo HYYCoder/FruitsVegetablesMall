@@ -14,6 +14,7 @@ import com.huangyiyang.fruitsvegetablesmall.api.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
+import com.huangyiyang.fruitsvegetablesmall.event.ShoppingCarRefreshEvent
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.goods.activity.GoodsDetailActivity
@@ -31,6 +32,7 @@ import com.zhouyou.recyclerview.XRecyclerView
 import com.zhouyou.recyclerview.XRecyclerView.LoadingListener
 import com.zhouyou.recyclerview.adapter.AnimationType
 import com.zhouyou.recyclerview.adapter.HelperRecyclerViewHolder
+import org.greenrobot.eventbus.EventBus
 import java.util.*
 
 class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
@@ -339,7 +341,8 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
     }
 
     override fun addShoppingCar() {
-
+        EventBus.getDefault().post(ShoppingCarRefreshEvent(true))
+        LoadingDialog.cancelDialogForLoading()
     }
 
     private inner class SearchListAdapter : BaseQuickAdapter<GoodsDetailBean> {
