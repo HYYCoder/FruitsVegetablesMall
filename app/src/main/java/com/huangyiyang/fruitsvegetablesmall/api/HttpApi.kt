@@ -58,10 +58,23 @@ interface HttpApi {
     fun getShoppingCarCount(@HeaderMap header: Map<String, String>?): Observable<ApiResult<ShoppingCarCountBean>?>?
 
     //更新购物车商品购买数量
-    @PUT("/cart/item/{itemId}")
+    @PUT("/cart/item/{id}")
     fun updateShoppingCarCount(
         @HeaderMap header: Map<String, String>?, @Path(
-            "itemId"
-        ) itemId: String?, @Body body: RequestBody?
+            "id"
+        ) id: String?, @Body body: RequestBody?
     ): Observable<ApiResult<Void>?>?
+
+    //获取确认订单详情
+    @POST("/cart/settle")
+    fun getConfirmOrder(@HeaderMap header: Map<String, String>?, @Body body: RequestBody?): Observable<ApiResult<ConfirmOrderBean>?>?
+
+    //下单
+    @PUT("/orders")
+    fun placeOrder(@HeaderMap header: Map<String, String>?, @Body body: RequestBody?): Observable<ApiResult<OrderBean>?>?
+
+//    //获取优惠券金额
+//    @POST("/counpans/calculate")
+//    fun putCalculate(@HeaderMap header: Map<String, String>?, @Body body: RequestBody?): Observable<ApiResult<ConfirmOrderBean>?>?
+
 }

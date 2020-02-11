@@ -11,7 +11,7 @@ import rx.Observable
 
 interface ShoppingCarFragmentContract {
 
-    interface ShoppingCarFragmentModel : BaseModelInterface{
+    interface ShoppingCarFragmentModel : BaseModelInterface {
 
         fun getShoppingCarList(header: Map<String, String>?): Observable<ApiResult<ShoppingCarListBean>?>?
 
@@ -27,28 +27,23 @@ interface ShoppingCarFragmentContract {
 
         fun updateShoppingCarCount(
             header: Map<String, String>?,
-            itemId: Int,
+            id: Int,
             body: RequestBody?
         ): Observable<ApiResult<Void>?>?
 
         fun getShoppingCarCount(header: Map<String, String>?): Observable<ApiResult<ShoppingCarCountBean>?>?
     }
 
-    interface ShoppingCarFragmentView : BaseViewInterface{
-
+    interface ShoppingCarFragmentView : BaseViewInterface {
         fun setShoppingCarList(bean: ShoppingCarListBean?)
-
         fun deleteSuccess()
-
         fun updateSuccess()
-
         fun setShoppingCarCount(bean: ShoppingCarCountBean?)
     }
 
-    abstract class ShoppingCarFragmentPresenter : BasePresenter<ShoppingCarFragmentModel,ShoppingCarFragmentView>(){
-
+    abstract class ShoppingCarFragmentPresenter :
+        BasePresenter<ShoppingCarFragmentModel, ShoppingCarFragmentView>() {
         abstract fun getShoppingCarList(header: Map<String, String>?)
-
         abstract fun deleteShoppingCarGoods(
             header: Map<String, String>?,
             param: RequestBody?,
@@ -62,7 +57,7 @@ interface ShoppingCarFragmentContract {
 
         abstract fun updateShoppingCarCount(
             header: Map<String, String>?,
-            itemId: Int,
+            id: Int,
             body: RequestBody?
         )
 

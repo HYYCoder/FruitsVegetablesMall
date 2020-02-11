@@ -476,7 +476,7 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
             }
 
             ImageLoaderUtil.getInstance()
-                ?.load(img!!, data.imageUrls?.split("&&")?.get(1))
+                ?.load(img!!, data.imageUrls.split("&&")[1])
 
             tvItemGoodsName?.text = data.name
             tvItemGoodsUnit?.text = "/" + data.specification

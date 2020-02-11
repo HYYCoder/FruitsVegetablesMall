@@ -5,6 +5,7 @@
     <string name="main_activity_bottom_inventory">盘库</string>
     <string name="main_activity_bottom_shopping_car">购物车</string>
     <string name="main_activity_bottom_mine">我的</string>
+    <string name="common_count">x%1$s</string>
     <string name="common_money">￥%1$s</string>
     <string name="main_alert_cancel">取消</string>
     <string name="main_alert_delete">删除</string>
@@ -69,4 +70,5 @@
     <string name="delete_all_success">清空无效商品成功</string>
     <string name="delete_success">删除成功</string>
     <string name="shoppingcar_select_empty">没有选择要删除的商品</string>
+    <string name="coupon_amount">优惠%.2f元</string>
 </resources>

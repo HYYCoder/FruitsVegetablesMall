@@ -14,6 +14,9 @@
     <color name="grey_bdbdbd">#bdbdbd</color>
     <color name="grey_aaaaaa">#aaaaaa</color>
     <color name="grey_d8d8d8">#d8d8d8</color>
+    <color name="black_39000000">#39000000</color>
+    <color name="black_77000000">#77000000</color>
+    <color name="black_99000000">#99000000</color>
     <color name="black_333333">#333333</color>
     <color name="black_646464">#646464</color>
     <color name="black_686868">#686868</color>

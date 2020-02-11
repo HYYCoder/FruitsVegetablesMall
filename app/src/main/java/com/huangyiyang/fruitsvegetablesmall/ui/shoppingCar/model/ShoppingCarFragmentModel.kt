@@ -10,7 +10,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.contract.ShoppingCarF
 import okhttp3.RequestBody
 import rx.Observable
 
-abstract class ShoppingCarFragmentModel : ShoppingCarFragmentContract.ShoppingCarFragmentModel{
+class ShoppingCarFragmentModel : ShoppingCarFragmentContract.ShoppingCarFragmentModel{
 
     override fun getShoppingCarList(header: Map<String, String>?): Observable<ApiResult<ShoppingCarListBean>?>? {
         return FrameConst.apiService(HttpApi::class.java).getShoppingCarList(header)
@@ -35,10 +35,10 @@ abstract class ShoppingCarFragmentModel : ShoppingCarFragmentContract.ShoppingCa
 
     override fun updateShoppingCarCount(
         header: Map<String, String>?,
-        itemId: Int,
+        id: Int,
         body: RequestBody?
     ): Observable<ApiResult<Void>?>? {
-        return FrameConst.apiService(HttpApi::class.java).updateShoppingCarCount(header, itemId.toString(), body)
+        return FrameConst.apiService(HttpApi::class.java).updateShoppingCarCount(header, id.toString(), body)
             ?.compose(RxSchedulers.io_main())
     }
 
@@ -46,5 +46,4 @@ abstract class ShoppingCarFragmentModel : ShoppingCarFragmentContract.ShoppingCa
         return FrameConst.apiService(HttpApi::class.java).getShoppingCarCount(header)
             ?.compose(RxSchedulers.io_main())
     }
-
 }

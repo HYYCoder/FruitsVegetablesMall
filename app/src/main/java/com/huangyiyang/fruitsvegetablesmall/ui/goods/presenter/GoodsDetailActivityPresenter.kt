@@ -34,6 +34,7 @@ class GoodsDetailActivityPresenter : GoodsDetailActivityContract.GoodsDetailActi
 
             override fun _onNext(t: Void?, message: String?) {
                 mView!!.addShoppingCar()
+                ToastUtil.showShort(mContext, "加入购物车成功")
             }
 
             override fun _onError(e: ServerException?) {

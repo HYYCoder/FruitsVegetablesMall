@@ -55,7 +55,7 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
     private var mBtnClearOverdue: TextView? = null
     private var mCheckAll: CheckBox? = null
     private var shoppingCarListBean: ShoppingCarListBean? = null
-    private var overdueGoodsId: MutableList<Int> = arrayListOf()
+    private var overdueShoppingCarId: MutableList<Int> = arrayListOf()
     private var deleteAlertDialog: DeleteAlertDialog? = null
     private var deleteOverdueAlertDialog: DeleteAlertDialog? = null
     //初始化DecimalFormat
@@ -69,28 +69,28 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
     private var isR = false
     private var isR2 = false
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        btnSettlement = view.findViewById(R.id.btn_settlement)
-        btnSettlement?.setOnClickListener {
-            val goods = ArrayList<Int?>()
-//            for (itemsBean in shoppingCarListBean().normalItems!!) {
-//                    if (itemsBean.isChecked()) {
-//                        goods.add(itemsBean.getId())
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        btnSettlement = view.findViewById(R.id.btn_settlement)
+//        btnSettlement?.setOnClickListener {
+//            val order = ArrayList<Int?>()
+//            for (itemsBean in shoppingCarListBean?.normalItems!!) {
+//                    if (itemsBean.isChecked) {
+//                        order.add(itemsBean.shoppingCarId)
 //                    }
 //            }
-            if (goods.size == 0) {
-                ToastUtil.showShort(mPresenter?.mContext!!, "没有选择商品")
-            } else {
-                ConfirmOrderActivity.goTo(mPresenter?.mContext!!, goods)
-            }
-            ConfirmOrderActivity.goTo(mPresenter?.mContext!!, goods)
-        }
-        btnEmpty = view.findViewById(R.id.btn_empty)
-        btnEmpty?.setOnClickListener {
-            mRxManager.post(EventParams.EVENT_TYPE_TO_MAIN_FRAGMENT, null)
-        }
-    }
+//            if (order.size == 0) {
+//                ToastUtil.showShort(mPresenter?.mContext!!, "没有选择商品")
+//            } else {
+//                ConfirmOrderActivity.goTo(mPresenter?.mContext!!, order)
+//            }
+//            ConfirmOrderActivity.goTo(mPresenter?.mContext!!, order)
+//        }
+//        btnEmpty = view.findViewById(R.id.btn_empty)
+//        btnEmpty?.setOnClickListener {
+//            mRxManager.post(EventParams.EVENT_TYPE_TO_MAIN_FRAGMENT, null)
+//        }
+//    }
 
     override fun getLayoutResId(): Int {
         return R.layout.fragment_shopping_car
@@ -118,7 +118,7 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
             for (itemsBean in shoppingCarListBean?.normalItems!!) {
                 if (itemsBean.isChecked) {
                     num++
-                    items.add(itemsBean.id)
+                    items.add(itemsBean.shoppingCarId)
                 }
             }
             if (num > 0) {
@@ -157,7 +157,7 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
             override fun onConfirm() {
                 val map: MutableMap<String, List<Int>> =
                     HashMap()
-                map["ids"] = overdueGoodsId
+                map["ids"] = overdueShoppingCarId
                 mPresenter!!.deleteShoppingCarGoods(
                     Const.header(),
                     ParamsUtil.getInstance()!!.getBodyIntegerList(map),
@@ -270,12 +270,12 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
 
         list?.addAll(shoppingCarListBean?.normalItems!!)
         //失效商品列表
-        overdueGoodsId.clear()
+        overdueShoppingCarId.clear()
         for (abnormalItemsBean in shoppingCarListBean?.abnormalItems!!) {
-            overdueGoodsId.add(abnormalItemsBean.id)
+            overdueShoppingCarId.add(abnormalItemsBean.shoppingCarId)
         }
 
-        if (overdueGoodsId?.size == 0) {
+        if (overdueShoppingCarId?.size == 0) {
         } else {
             list?.addAll(shoppingCarListBean?.abnormalItems!!)
         }
@@ -307,11 +307,15 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
     }
 
     override fun deleteSuccess() {
-
+        list2 = java.util.ArrayList<ShoppingCarListBean.Companion.NormalItemsBean>()
+        list2?.addAll(list!!)
+        mPresenter?.getShoppingCarList(Const.header())
     }
 
     override fun updateSuccess() {
-
+        list2 = java.util.ArrayList<ShoppingCarListBean.Companion.NormalItemsBean>()
+        list2?.addAll(list!!)
+        mPresenter?.getShoppingCarList(Const.header())
     }
 
     override fun setShoppingCarCount(bean: ShoppingCarCountBean?) {
@@ -319,7 +323,22 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
     }
 
     override fun onClick(v: View?) {
-
+        when (v!!.id) {
+            R.id.btn_settlement -> {
+                val order = java.util.ArrayList<Int?>()
+                for (itemsBean in shoppingCarListBean?.normalItems!!) {
+                    if (itemsBean.isChecked) {
+                        order.add(itemsBean.shoppingCarId)
+                    }
+                }
+                if (order.size == 0) {
+                    ToastUtil.showShort(activity!!, "没有选择商品")
+                } else {
+                    ConfirmOrderActivity.goTo(activity!!, order)
+                }
+            }
+            R.id.btn_empty -> mRxManager.post(EventParams.EVENT_TYPE_TO_MAIN_FRAGMENT, null) //跳转首页
+        }
     }
 
     /**
@@ -510,7 +529,7 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
                 map["quantity"] = count1
                 mPresenter?.updateShoppingCarCount(
                     Const.header(),
-                    data.id,
+                    data.shoppingCarId,
                     ParamsUtil.getInstance()?.getBodyNumber(map)
                 )
             }
@@ -575,7 +594,7 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
                 map["quantity"] = count1
                 mPresenter!!.updateShoppingCarCount(
                     Const.header(),
-                    data.id,
+                    data.shoppingCarId,
                     ParamsUtil.getInstance()?.getBodyNumber(map)
                 )
             }
@@ -670,7 +689,7 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
                         map["quantity"] = newCount
                         mPresenter!!.updateShoppingCarCount(
                             Const.header(),
-                            data.id,
+                            data.shoppingCarId,
                             ParamsUtil.getInstance()?.getBodyNumber(map)
                         )
                     }

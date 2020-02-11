@@ -93,7 +93,6 @@ class ClassificationFragment : ClassificationFragmentContract.ClassificationFrag
             index = 7
         })
 
-        mPresenter!!.getCategoriesList(Const.header())
     }
 
     override fun initData() {
@@ -104,6 +103,11 @@ class ClassificationFragment : ClassificationFragmentContract.ClassificationFrag
 //        when (v!!.id) {
 //            R.id.search_bar -> SearchResultListActivity.goTo(activity)
 //        }
+    }
+
+    override fun onVisible() {
+        super.onVisible()
+        mPresenter!!.getCategoriesList(Const.header())
     }
 
     override fun setCategoriesList(categoryListBean: List<CategoryListBean>?) {

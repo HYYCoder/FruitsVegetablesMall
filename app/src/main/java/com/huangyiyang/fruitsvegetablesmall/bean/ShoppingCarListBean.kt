@@ -5,6 +5,7 @@ class ShoppingCarListBean(var normalItems:List<NormalItemsBean>,var abnormalItem
     companion object {
         class NormalItemsBean(
             var id:Int,
+            var shoppingCarId:Int,
             var imageUrls:String,
             var name:String,
             var price:Double,
