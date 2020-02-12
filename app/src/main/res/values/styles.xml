@@ -61,4 +61,15 @@
         <item name="cardCornerRadius">@dimen/spacing_14</item>
         <item name="cardElevation">1dp</item>
     </style>
+
+    <style name="btn_style_write">
+        <item name="android:layout_marginTop">@dimen/spacing_10</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_10</item>
+        <item name="android:background">@drawable/btn_common_100_radius_button</item>
+        <item name="android:enabled">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">填写实收</item>
+        <item name="android:textColor">@color/white_ffffff</item>
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
 </resources>

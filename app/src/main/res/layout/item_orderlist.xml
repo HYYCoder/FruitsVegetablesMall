@@ -130,6 +130,7 @@
 
         <Button
             android:id="@+id/btn_orderlist"
+            style="@style/btn_style_write"
             android:layout_width="80dp"
             android:layout_height="30dp"
             app:layout_constraintBottom_toBottomOf="parent"

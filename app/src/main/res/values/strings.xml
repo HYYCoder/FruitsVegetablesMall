@@ -75,6 +75,7 @@
     <string name="order_delivery">AWAITING_DELIVERY</string>
     <string name="order_complete">COMPLETE</string>
     <string name="order_cancel">CANCEL</string>
+    <string name="order_payment_overdue">PAYMENT_OVERDUE</string>
     <string name="AWAITING_PAYMENT">待支付</string>
     <string name="AWAITING_DELIVERY">待收货</string>
     <string name="COMPLETE">已完成</string>

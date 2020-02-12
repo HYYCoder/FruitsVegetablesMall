@@ -87,9 +87,7 @@ class OrderListActivity : OrderListActivityContract.OrderListActivityView, View.
     }
 
     override fun onClick(v: View?) {
-//        when (v!!.id) {
-//            R.id.tv_order_detail -> showOrderDetail()
-//        }
+
     }
 
     inner class ViewPagerAdapter : FragmentPagerAdapter{

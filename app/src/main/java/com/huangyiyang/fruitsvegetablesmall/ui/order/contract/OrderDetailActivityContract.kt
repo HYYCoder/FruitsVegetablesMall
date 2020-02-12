@@ -1,20 +1,33 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.order.contract
 
+import com.huangyiyang.fruitsvegetablesmall.api.ApiResult
+import com.huangyiyang.fruitsvegetablesmall.bean.OrderDetailBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.model.BaseModelInterface
 import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
 import com.huangyiyang.fruitsvegetablesmall.mvp.view.BaseViewInterface
+import retrofit2.http.HeaderMap
+import rx.Observable
 
 interface OrderDetailActivityContract {
 
     interface OrderDetailActivityModel : BaseModelInterface{
 
+        fun getOrderDetail(
+            @HeaderMap header: Map<String, String>?,
+            orderId: String?
+        ): Observable<ApiResult<OrderDetailBean>?>?
     }
 
     interface OrderDetailActivityView : BaseViewInterface{
 
+        fun setOrderDetail(param: OrderDetailBean?)
     }
 
     abstract class OrderDetailActivityPresenter : BasePresenter<OrderDetailActivityModel, OrderDetailActivityView>(){
 
+        abstract fun getOrderDetail(
+            @HeaderMap header: Map<String, String>?,
+            orderId: String?
+        )
     }
 }

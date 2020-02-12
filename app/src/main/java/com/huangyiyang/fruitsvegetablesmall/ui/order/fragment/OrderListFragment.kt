@@ -37,7 +37,7 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
         private const val ID = "id"
         fun newInstance(id: Int): OrderListFragment? {
             val args = Bundle()
-            args.putInt(OrderListFragment.ID, id)
+            args.putInt(ID, id)
             val fragment = OrderListFragment()
             fragment.arguments = args
             return fragment
@@ -121,8 +121,6 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
             val tvOrderNum = viewHolder.getView<TextView>(R.id.tv_orderlist_num)
             val tvOrderPrice = viewHolder.getView<TextView>(R.id.tv_orderlist_price)
             val tvOrderStatus = viewHolder.getView<TextView>(R.id.tv_orderlist_status)
-            val ivOrderAlert =
-                viewHolder.getView<ImageView>(R.id.iv_orderlist_alert)
             btnOrder = viewHolder.getView<Button>(R.id.btn_orderlist)
 
             tvOrderTime.setText(item?.data!!)
@@ -132,10 +130,8 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
                 tvOrderPrice.text = "¥0.00"
             } else tvOrderPrice.text = getString(R.string.order_price, item.payAmount)
             if (!item.status.equals("COMPLETE")) {
-                ivOrderAlert.visibility = View.VISIBLE
                 tvOrderStatus.visibility = View.GONE
             } else {
-                ivOrderAlert.visibility = View.GONE
                 tvOrderStatus.visibility = View.VISIBLE
             }
             tvOrderStatus.setText(getStringByStatus(item.status))
@@ -181,126 +177,33 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
             when (item.status) {
                 "AWAITING_CONFIRMATION" -> {
                     setStyle("查看订单", R.color.grey_666666, R.drawable.bg_button_read)
-                    viewHolder.itemView.setOnClickListener {
-                        OrderDetailActivity.goTo(
-                            context!!,
-                            item.id
-                        )
-                    }
-                    btnOrder?.setOnClickListener(View.OnClickListener {
-                        //备用
-                        OrderDetailActivity.goTo(context!!, item.id)
-                    })
                 }
                 "AWAITING_PAYMENT" -> {
-                    setStyle("支付", R.color.white_ffffff, R.drawable.bg_button_payment)
-                    viewHolder.itemView.setOnClickListener {
-//                        OpenOrderActivity.goTo(
-//                            context!!,
-//                            item.id
-//                        )
-                    }
-                    btnOrder?.setOnClickListener(View.OnClickListener {
-//                        OpenOrderActivity.goTo(
-//                            context!!,
-//                            item.id
-//                        )
-                    })
+                    setStyle("立即支付", R.color.white_ffffff, R.drawable.bg_button_payment)
                 }
                 "AWAITING_DELIVERY" -> {
-                    setStyle("填写实收", R.color.white_ffffff, R.drawable.btn_common_100_radius_button)
-                    viewHolder.itemView.setOnClickListener {
-//                        OpenOrderActivity.goTo(
-//                            context!!,
-//                            item.id
-//                        )
-                    }
-                    btnOrder?.setOnClickListener(View.OnClickListener {
-//                        OpenOrderActivity.goTo(
-//                            context!!,
-//                            item.id
-//                        )
-                    })
+                    setStyle("等待收货", R.color.white_ffffff, R.drawable.btn_common_100_radius_button)
                 }
                 "COMPLETE" -> {
-                    setStyle("再来一单", R.color.grey_666666, R.drawable.bg_button_read)
-                    viewHolder.itemView.setOnClickListener {
-//                        CompleteDetailActivity.goTo(
-//                            activity,
-//                            item.getId(),
-//                            item.getCode()
-//                        )
-                    }
-                    btnOrder?.setOnClickListener(View.OnClickListener {
-//                        CompleteDetailActivity.goTo(
-//                            activity,
-//                            item.getId(),
-//                            item.getCode()
-//                        )
-                    })
+                    setStyle("查看订单", R.color.grey_666666, R.drawable.bg_button_read)
                 }
                 "CANCEL" -> {
-                    setStyle("再来一单", R.color.grey_666666, R.drawable.bg_button_read)
-                    viewHolder.itemView.setOnClickListener {
-                        OrderDetailActivity.goTo(
-                            context!!,
-                            item.id
-                        )
-                    }
-                    btnOrder?.setOnClickListener(View.OnClickListener {
-                        OrderDetailActivity.goTo(
-                            context!!,
-                            item.id
-                        )
-                    })
+                    setStyle("查看详情", R.color.grey_666666, R.drawable.bg_button_read)
                     tvOrderStatus.text = "已取消"
-                    setStyle("再来一单", R.color.grey_666666, R.drawable.bg_button_read)
-                    viewHolder.itemView.setOnClickListener {
-                        OrderDetailActivity.goTo(
-                            context!!,
-                            id
-                        )
-                    }
-                    btnOrder?.setOnClickListener(View.OnClickListener {
-                        OrderDetailActivity.goTo(
-                            context!!,
-                            item.id
-                        )
-                    })
-                }
-                "PAYMENT_OVERDUE" -> {
-                    tvOrderStatus.text = "已取消"
-                    setStyle("再来一单", R.color.grey_666666, R.drawable.bg_button_read)
-                    viewHolder.itemView.setOnClickListener {
-                        OrderDetailActivity.goTo(
-                            context!!,
-                            item.id
-                        )
-                    }
-                    btnOrder?.setOnClickListener(View.OnClickListener {
-                        OrderDetailActivity.goTo(
-                            context!!,
-                            item.id
-                        )
-                    })
-                }
-                "SPLIT_FAILURE" -> {
-                    setStyle("查看订单", R.color.grey_666666, R.drawable.bg_button_read)
-                    tvOrderStatus.setTextColor(Color.RED)
-                    viewHolder.itemView.setOnClickListener {
-                        OrderDetailActivity.goTo(
-                            context!!,
-                            item.id
-                        )
-                    }
-                    btnOrder?.setOnClickListener(View.OnClickListener {
-                        OrderDetailActivity.goTo(
-                            context!!,
-                            item.id
-                        )
-                    })
                 }
             }
+            viewHolder.itemView.setOnClickListener {
+                OrderDetailActivity.goTo(
+                    context!!,
+                    item.id
+                )
+            }
+            btnOrder?.setOnClickListener(View.OnClickListener {
+                OrderDetailActivity.goTo(
+                    context!!,
+                    item.id
+                )
+            })
         }
 
         private fun setStyle(
@@ -309,7 +212,7 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
             background: Int
         ) {
             btnOrder!!.text = btnString
-            btnOrder!!.setTextColor(activity!!.resources.getColor(textColor))
+            btnOrder!!.setTextColor(mContext.getColor(textColor))
             btnOrder!!.setBackgroundResource(background)
         }
 

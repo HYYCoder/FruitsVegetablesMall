@@ -26,53 +26,44 @@ class MineFragment : MineFragmentContract.MineFragmentView, BaseFragment<MineFra
         }
         btnReceivedOrderList = view.findViewById(R.id.rl_order_to_be_received)
         btnReceivedOrderList?.setOnClickListener {
-            OrderListActivity.goTo(mPresenter?.mContext!!, 1)
+            OrderListActivity.goTo(mPresenter?.mContext!!, 2)
         }
 
-        when (view?.id) {
-            R.id.tv_mine_membership -> {
+//        when (view?.id) {
+//            R.id.tv_mine_membership -> {
 //                MembershipActivity.goTo(activity)
-            }
-            R.id.tv_mine_mybeed -> {
-//                MineBeedActivity.goTo(activity, mineBeedCount)
-            }
-            R.id.rl_order_all -> {
-                OrderListActivity.goTo(context!!, 0)
-            }
-            R.id.rl_order_to_be_received -> {
-//                (UserManager.getInstance().getUserLevel().equals(
-//                    Const.CORPORATE_OWNED
-//                )
-//            ) { //CORPORATE_OWNED:直营
-//                OrderListActivity.goTo(activity, 2)
-//            } else if (UserManager.getInstance().getUserLevel().equals(Const.FRANCHISED)) { //FRANCHISED:加盟店
-//                OrderListActivity.goTo(activity, 2)
-//                //                    ToastUtil.showShort(getActivity(), "测试金额 : 999");
-////                    PayActivity.goTo(getActivity(), 999, 999,0); // 999 测试金额
 //            }
-            }
-            R.id.rl_mine_discounts_center -> {
+//            R.id.tv_mine_mybeed -> {
+//                MineBeedActivity.goTo(activity, mineBeedCount)
+//            }
+//            R.id.rl_order_all -> {
+//                OrderListActivity.goTo(context!!, 0)
+//            }
+//            R.id.rl_order_to_be_received -> {
+//                OrderListActivity.goTo(mPresenter?.mContext!!, 2)
+//            }
+//            R.id.rl_mine_discounts_center -> {
 //                DiscountCenterActivity.goTo(activity)
-            }
-            R.id.mine_address -> {
+//            }
+//            R.id.mine_address -> {
 //                AddressActivity.goTo(activity)
-            }
-            R.id.mine_help -> {
+//            }
+//            R.id.mine_help -> {
 //                WebViewActivity.goTo(
 //                activity,
 //                getString(R.string.mine_help),
 //                "/about/help")
-            }
-            R.id.mine_connect_us -> {
+//            }
+//            R.id.mine_connect_us -> {
 //                WebViewActivity.goTo(
 //                activity,
 //                getString(R.string.mine_connect_us),
 //                "/about/contact")
-            }
-            R.id.mine_feedback -> {
+//            }
+//            R.id.mine_feedback -> {
 //                FeedbackActivity.goTo(activity)
-            }
-            R.id.btn_logout -> {
+//            }
+//            R.id.btn_logout -> {
 //                val name: String = UserManager.getInstance().getName()
 //                val pwd: String = UserManager.getInstance().getUserPassword()
 //                UserManager.getInstance().clearCache()
@@ -82,8 +73,8 @@ class MineFragment : MineFragmentContract.MineFragmentView, BaseFragment<MineFra
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
 //                activity!!.startActivity(intent)
 //                activity!!.finish()
-            }
-        }
+//            }
+//        }
     }
 
     override fun getLayoutResId(): Int {

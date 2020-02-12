@@ -3,14 +3,47 @@ package com.huangyiyang.fruitsvegetablesmall.ui.order.activity
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.view.View
+import android.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.huangyiyang.fruitsvegetablesmall.R
+import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.bean.OrderDetailBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
+import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.ui.order.contract.OrderDetailActivityContract
 import com.huangyiyang.fruitsvegetablesmall.ui.order.model.OrderDetailActivityModel
 import com.huangyiyang.fruitsvegetablesmall.ui.order.presenter.OrderDetailActivityPresenter
+import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
+import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
+import com.huangyiyang.fruitsvegetablesmall.view.shoppingCar.ToolbarUtil
+import com.zhouyou.recyclerview.XRecyclerView
+import com.zhouyou.recyclerview.adapter.HelperRecyclerViewHolder
+import java.util.*
 
 class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,BaseActivity<OrderDetailActivityModel
         , OrderDetailActivityPresenter>(){
+
+    var tvOrderDetailId: TextView? = null
+    var tvOrderDetailTime: TextView? = null
+    var orderRecyclerView: XRecyclerView? = null
+    var commonContent: CommonLayout? = null
+    var tvOrderDetailPrice: TextView? = null
+    var tvOrderDetailCoupon: TextView? = null
+    var tvOrderDetailTotal: TextView? = null
+    var tvOrderDetailPeople: TextView? = null
+    var tvOrderDetailPhone: TextView? = null
+    var tvOrderDetailAddress: TextView? = null
+    var btnOrderDetail: Button? = null
+    var tvOrderDetailNote: TextView? = null
+    var flOrderDetailCoupon : FrameLayout ? = null
+    private var toolbarUtil: ToolbarUtil? = null
+    private var mOrderId = 0
+    private var detailListAdapter: DetailListAdapter? = null
+    private var orderDetail: OrderDetailBean? = null
+    private var mCommonLayout: CommonLayout? = null
+//    private var mOrderGiftsListAdapter: OrderGiftsListAdapter? = null
 
     companion object{
         private const val KEY_ORDER_ID = "order_id"
@@ -43,14 +76,187 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
     }
 
     override fun initIntentData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mOrderId = intent.getIntExtra(KEY_ORDER_ID, 0)
     }
 
     override fun initToolBar() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        toolbarUtil = ToolbarUtil(this,mContext)
+        toolbarUtil!!.setLightBackTheme("订单详情")
+        toolbarUtil!!.setLineBackgroundColor(R.color.white_ffffff)
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        tvOrderDetailId = findViewById(R.id.tv_order_detail_id)
+        tvOrderDetailTime = findViewById(R.id.tv_order_detail_time)
+        orderRecyclerView = findViewById(R.id.order_recyclerView)
+        commonContent = findViewById(R.id.common_content)
+        tvOrderDetailPrice = findViewById(R.id.tv_order_detail_price)
+        tvOrderDetailCoupon = findViewById(R.id.tv_order_detail_coupon)
+        tvOrderDetailTotal = findViewById(R.id.tv_order_detail_total)
+        tvOrderDetailPeople = findViewById(R.id.tv_order_detail_people)
+        tvOrderDetailPhone = findViewById(R.id.tv_order_detail_phone)
+        tvOrderDetailAddress = findViewById(R.id.tv_order_detail_address)
+        btnOrderDetail = findViewById(R.id.btn_order_detail)
+        tvOrderDetailNote = findViewById(R.id.tv_order_detail_note)
+        flOrderDetailCoupon = findViewById(R.id.fl_order_detail_coupon)
+        orderRecyclerView?.setLayoutManager(LinearLayoutManager(this))
+        orderRecyclerView?.setPullRefreshEnabled(false)
+        orderRecyclerView?.setLoadingMoreEnabled(false)
+        detailListAdapter = DetailListAdapter(this)
+        orderRecyclerView?.setAdapter(detailListAdapter)
+        orderRecyclerView?.setPullRefreshEnabled(false)
+        //==============满赠列表========================
+//        mCommonLayout = findViewById(R.id.common_contentGfit)
+//        mOrderGiftsListAdapter = OrderGiftsListAdapter(this)
+//        orderRecyclerView = findViewById(R.id.gfit_recyclerView)
+//        orderRecyclerView?.setLayoutManager(LinearLayoutManager(this))
+//        orderRecyclerView?.setAdapter(mOrderGiftsListAdapter)
+//        orderRecyclerView?.setLoadingMoreEnabled(false)
+//        orderRecyclerView?.setPullRefreshEnabled(false)
+
+        mPresenter?.getOrderDetail(Const.header(), mOrderId.toString())
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        OrderListActivity.goTo(this, 0)
+    }
+
+    private fun setStyle(
+        btnString: String,
+        textColor: Int,
+        background: Int
+    ) {
+        btnOrderDetail!!.text = btnString
+        btnOrderDetail!!.setTextColor(getColor(textColor))
+        btnOrderDetail!!.setBackgroundResource(background)
+    }
+
+    override fun setOrderDetail(param: OrderDetailBean?) {
+        orderDetail = param
+        val giftDatas: ArrayList<OrderDetailBean.Companion.DetailsBean> = ArrayList<OrderDetailBean.Companion.DetailsBean>()
+        val goodsDatas: ArrayList<OrderDetailBean.Companion.DetailsBean> = ArrayList<OrderDetailBean.Companion.DetailsBean>()
+        val tvGift: TextView = findViewById(R.id.discount_giftTitle)
+        for (i in 0 until param?.details?.size!!) {
+            if (param.details.get(i).type.equals("GIFT")) {
+                tvGift.visibility = View.VISIBLE
+                giftDatas.add(param.details.get(i))
+            } else if (param.details.get(i).type.equals("GOODS")) {
+                goodsDatas.add(param.details.get(i))
+            } else if (i >= param.details.size) {
+                tvGift.visibility = View.GONE
+            }
+        }
+        btnOrderDetail!!.visibility = View.VISIBLE
+        if (param != null) {
+            detailListAdapter?.setListAll(goodsDatas)
+            tvOrderDetailId!!.text = "订单编号：" + param.code
+            tvOrderDetailTime?.setText(param.date)
+            tvOrderDetailPrice!!.text = getString(R.string.common_amount, param.amount)
+            if (param.discountAmount !== 0.0) {
+                tvOrderDetailCoupon!!.text = "-" + getString(
+                    R.string.common_amount,
+                    param.discountAmount
+                )
+                flOrderDetailCoupon?.setVisibility(View.VISIBLE)
+            } else {
+                flOrderDetailCoupon?.setVisibility(View.GONE)
+            }
+            if (param.paidAmount < 0) {
+                tvOrderDetailTotal!!.text = "¥0.00"
+            } else tvOrderDetailTotal!!.text = getString(
+                R.string.common_amount,
+                param.paidAmount
+            )
+            tvOrderDetailPeople?.setText(param.receiver)
+            tvOrderDetailPhone?.setText(param.mobile)
+            tvOrderDetailAddress?.setText(param.address)
+            tvOrderDetailNote?.setText(param.note)
+        }
+        if (param.status.equals(getString(R.string.order_cancel)) || param.status.equals(
+                getString(R.string.order_complete)
+            )
+        ) {
+            setStyle("查看订单", R.color.grey_666666, R.drawable.bg_button_read)
+        }
+        if (param.status.equals(getString(R.string.order_payment))) {
+            setStyle("立即支付", R.color.white_ffffff, R.drawable.bg_button_payment)
+        }
+        if (param.status.equals(getString(R.string.order_delivery))) {
+            setStyle("等待收货", R.color.white_ffffff, R.drawable.btn_common_100_radius_button)
+        }
+        if (param.status.equals(getString(R.string.order_payment_overdue))) {
+            setStyle("查看订单", R.color.grey_666666, R.drawable.bg_button_read)
+            tvOrderDetailTime!!.text = "支付超时，订单已取消"
+            tvOrderDetailTime!!.setTextColor(Color.GRAY)
+        }
+        //mOrderGiftsListAdapter.setListAll(giftDatas)
+    }
+
+    inner class DetailListAdapter : BaseQuickAdapter<OrderDetailBean.Companion.DetailsBean> {
+
+        constructor(context: Context?) : super(
+            context,
+            R.layout.item_order_gifts_goods_list
+        )
+
+        override fun HelperBindData(
+            viewHolder: HelperRecyclerViewHolder,
+            position: Int,
+            data: OrderDetailBean.Companion.DetailsBean
+        ) {
+            if (data.type.equals("GOODS")) {
+                val mGoodsImg =
+                    viewHolder.getView<ImageView>(R.id.gift_img) //商品图
+                ImageLoaderUtil.getInstance()?.load(
+                    mGoodsImg,
+                    data.imageUrl.split("&&").get(1)
+                )
+                val mGoodsName =
+                    viewHolder.getView<TextView>(R.id.tv_item_gift_name) //商品名称
+                mGoodsName.setText(data.name)
+                val mGoodsPrice =
+                    viewHolder.getView<TextView>(R.id.tv_item_gift_price) //商品价格
+                mGoodsPrice.setText(getString(R.string.common_amount, data.price))
+                val mGoodsCount =
+                    viewHolder.getView<TextView>(R.id.tv_item_gift_count) //商品数量
+                mGoodsCount.text = "x" + getString(R.string.common_amount2, data.quantity)
+            }
+        }
+    }
+
+//    inner class OrderGiftsListAdapter : BaseQuickAdapter<OrderDetailBean.DetailsBean?>{
+//
+//        constructor(context: Context?) : super(
+//            context,
+//            R.layout.item_order_gifts_goods_list
+//        )
+//
+//        override fun HelperBindData(
+//            viewHolder: HelperRecyclerViewHolder,
+//            position: Int,
+//            data: OrderDetailBean.DetailsBean?
+//        ) {
+//            if (data != null) {
+//                if (data.getType().equals("GIFT")) {
+//                    val mGoodsImg =
+//                        viewHolder.getView<ImageView>(R.id.gift_img) //赠品图
+//                    ImageLoaderUtil.getInstance()?.load(
+//                        mGoodsImg,
+//                        data.getImageUrl().toString()
+//                    )
+//                    val mGoodsName =
+//                        viewHolder.getView<TextView>(R.id.tv_item_gift_name) //赠品名称
+//                    mGoodsName.setText(data.getName())
+//                    val mGoodsPrice =
+//                        viewHolder.getView<TextView>(R.id.tv_item_gift_price) //赠品价格
+//                    mGoodsPrice.setText(getString(R.string.common_amount, data.getPrice()))
+//                    val mGoodsCount =
+//                        viewHolder.getView<TextView>(R.id.tv_item_gift_count) //商品数量
+//                    val giftQuantity: Double = data.getQuantity() * 1.0
+//                    mGoodsCount.text = "x" + getString(R.string.common_amount2, giftQuantity)
+//                }
+//            }
+//        }
+//    }
 }

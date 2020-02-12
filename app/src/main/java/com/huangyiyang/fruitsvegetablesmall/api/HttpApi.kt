@@ -42,11 +42,11 @@ interface HttpApi {
     fun getShoppingCarList(@HeaderMap header: Map<String, String>?): Observable<ApiResult<ShoppingCarListBean>?>?
 
     //购物车删除单个商品
-    @DELETE("/cart/item/{itemId}")
+    @DELETE("/cart/item/{id}")
     fun deleteShoppingCarGood(
         @HeaderMap header: Map<String, String>?, @Path(
-            "itemId"
-        ) itemId: String?
+            "id"
+        ) id: String?
     ): Observable<ApiResult<Void>?>?
 
     //购物车批量删除商品
@@ -81,5 +81,12 @@ interface HttpApi {
     @GET("/orders")
     fun getOrderList(@HeaderMap header: Map<String, String>?, @QueryMap body: Map<String, String>?): Observable<ApiResult<List<OrderListBean>?>?>?
 
+    //订单详情
+    @GET("/order/{id}")
+    fun getOrderDetail(
+        @HeaderMap header: Map<String, String>?, @Path(
+            "id"
+        ) id: String?
+    ): Observable<ApiResult<OrderDetailBean>?>?
 
 }
