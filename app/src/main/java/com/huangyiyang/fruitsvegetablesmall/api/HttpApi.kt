@@ -77,4 +77,9 @@ interface HttpApi {
 //    @POST("/counpans/calculate")
 //    fun putCalculate(@HeaderMap header: Map<String, String>?, @Body body: RequestBody?): Observable<ApiResult<ConfirmOrderBean>?>?
 
+    //获取订单列表
+    @GET("/orders")
+    fun getOrderList(@HeaderMap header: Map<String, String>?, @QueryMap body: Map<String, String>?): Observable<ApiResult<List<OrderListBean>?>?>?
+
+
 }

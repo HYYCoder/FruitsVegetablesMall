@@ -40,6 +40,7 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                style="@style/cardview_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_15"

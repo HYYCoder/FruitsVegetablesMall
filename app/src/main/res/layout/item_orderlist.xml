@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/cardview_style"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_5">
@@ -64,42 +65,42 @@
             app:layout_constraintStart_toStartOf="@id/tv_orderlist_id"
             app:layout_constraintTop_toBottomOf="@id/tv_orderlist_time">
 
-            <com.huangyiyang.fruitsvegetablesmall.view.main.ImageViewSquare
+            <ImageView
                 android:id="@+id/iv_imgs1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/spacing_5"
                 android:layout_weight="1" />
 
-            <com.huangyiyang.fruitsvegetablesmall.view.main.ImageViewSquare
+            <ImageView
                 android:id="@+id/iv_imgs2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/spacing_5"
                 android:layout_weight="1" />
 
-            <com.huangyiyang.fruitsvegetablesmall.view.main.ImageViewSquare
+            <ImageView
                 android:id="@+id/iv_imgs3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/spacing_5"
                 android:layout_weight="1" />
 
-            <com.huangyiyang.fruitsvegetablesmall.view.main.ImageViewSquare
+            <ImageView
                 android:id="@+id/iv_imgs4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/spacing_5"
                 android:layout_weight="1" />
 
-            <com.huangyiyang.fruitsvegetablesmall.view.main.ImageViewSquare
+            <ImageView
                 android:id="@+id/iv_imgs5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/spacing_5"
                 android:layout_weight="1" />
 
-            <com.huangyiyang.fruitsvegetablesmall.view.main.ImageViewSquare
+            <ImageView
                 android:id="@+id/iv_imgs6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

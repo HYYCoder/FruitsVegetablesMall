@@ -9,7 +9,7 @@
    >
 
 
-    <com.infoloop.ygf.shop.view.ImageViewSquare
+    <ImageView
         android:id="@+id/gift_img"
         android:layout_width="90dp"
         android:layout_height="90dp"

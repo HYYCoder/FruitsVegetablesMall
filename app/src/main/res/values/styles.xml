@@ -48,4 +48,17 @@
         <item name="android:backgroundDimAmount">0.6</item>
     </style>
 
+    <style name="cardview_style">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginStart">@dimen/spacing_15</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_15</item>
+        <item name="contentPaddingLeft">@dimen/spacing_10</item>
+        <item name="contentPaddingRight">@dimen/spacing_10</item>
+        <item name="contentPaddingTop">@dimen/spacing_15</item>
+        <item name="contentPaddingBottom">@dimen/spacing_15</item>
+        <item name="android:background">@color/white_ffffff</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="cardCornerRadius">@dimen/spacing_14</item>
+        <item name="cardElevation">1dp</item>
+    </style>
 </resources>
