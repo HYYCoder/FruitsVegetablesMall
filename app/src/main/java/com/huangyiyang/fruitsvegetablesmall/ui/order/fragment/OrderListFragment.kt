@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.OrderListBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment

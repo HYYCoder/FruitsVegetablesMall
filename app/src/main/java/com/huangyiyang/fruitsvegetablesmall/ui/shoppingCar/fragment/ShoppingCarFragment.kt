@@ -9,7 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarListBean
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams

@@ -11,7 +11,7 @@ import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams

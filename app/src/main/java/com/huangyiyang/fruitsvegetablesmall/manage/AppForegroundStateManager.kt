@@ -14,8 +14,7 @@ class AppForegroundStateManager// 在主线程创建一个 handler
    {
 
     private var mForegroundActivity: Reference<Activity?>? = null
-    private val mListeners: MutableSet<OnAppForegroundStateChangeListener> =
-        HashSet()
+    private val mListeners: MutableSet<OnAppForegroundStateChangeListener> = HashSet<OnAppForegroundStateChangeListener>()
     private var mAppForegroundState =
         AppForegroundState.NOT_IN_FOREGROUND
     private var mHandler: NotifyListenersHandler

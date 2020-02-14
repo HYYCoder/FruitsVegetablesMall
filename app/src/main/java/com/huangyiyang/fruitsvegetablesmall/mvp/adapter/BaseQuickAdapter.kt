@@ -42,11 +42,6 @@ abstract class BaseQuickAdapter<T> :
 //        super.onBindViewHolder(holder, position, payloads);
 //    }
 
-    //    @Override
-//    public void onBindViewHolder(BH holder, int position, List<Object> payloads) {
-//        addAnimation(holder);
-//        super.onBindViewHolder(holder, position, payloads);
-//    }
     override fun onBindViewHolder(holder: BH, position: Int) {
         super.onBindViewHolder(holder, position)
         addAnimation(holder)

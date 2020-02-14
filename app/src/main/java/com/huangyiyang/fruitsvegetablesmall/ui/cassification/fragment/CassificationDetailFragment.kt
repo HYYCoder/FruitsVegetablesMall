@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.event.ShoppingCarRefreshEvent
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
@@ -23,7 +23,6 @@ import com.huangyiyang.fruitsvegetablesmall.ui.cassification.presenter.Classific
 import com.huangyiyang.fruitsvegetablesmall.ui.goods.activity.GoodsDetailActivity
 import com.huangyiyang.fruitsvegetablesmall.util.*
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
-import com.huangyiyang.fruitsvegetablesmall.view.main.ImageViewSquare
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import com.zhouyou.recyclerview.XRecyclerView
 import com.zhouyou.recyclerview.XRecyclerView.LoadingListener

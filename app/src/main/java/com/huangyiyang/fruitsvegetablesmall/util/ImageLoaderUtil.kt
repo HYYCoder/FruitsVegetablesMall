@@ -6,7 +6,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.Const
 
 class ImageLoaderUtil {
     companion object {
@@ -29,8 +29,6 @@ class ImageLoaderUtil {
     }
 
     constructor()
-
-
 
     // view不能设置tag
     fun load(view: ImageView, uri: String?) {

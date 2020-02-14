@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams

@@ -20,7 +20,7 @@ import android.widget.TextView
 import com.huangyiyang.fruitsvegetablesmall.BuildConfig
 import com.huangyiyang.fruitsvegetablesmall.MVPApplication
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.login.contract.LoginActivityContract

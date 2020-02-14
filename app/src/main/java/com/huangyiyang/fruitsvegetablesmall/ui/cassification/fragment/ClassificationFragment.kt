@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.contract.ClassificationFragmentContract

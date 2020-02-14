@@ -10,7 +10,7 @@ import com.youth.banner.BannerConfig
 import com.youth.banner.listener.OnBannerListener
 import com.youth.banner.loader.ImageLoader
 import com.bumptech.glide.Glide
-import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.Const
 
 import java.util.*
 

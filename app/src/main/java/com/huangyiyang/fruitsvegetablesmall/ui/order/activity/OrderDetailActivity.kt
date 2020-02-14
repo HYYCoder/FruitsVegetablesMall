@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.api.Const
+import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.OrderDetailBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter

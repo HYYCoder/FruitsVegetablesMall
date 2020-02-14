@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.api
+package com.huangyiyang.fruitsvegetablesmall
 
 import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
 import java.util.*
