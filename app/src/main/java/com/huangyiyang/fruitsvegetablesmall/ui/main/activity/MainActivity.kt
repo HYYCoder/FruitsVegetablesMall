@@ -77,6 +77,7 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
         immersionBar {
             statusBarColor(R.color.blue_4289ff)
             navigationBarColor(R.color.blue_4289ff)
+            autoDarkModeEnable(true)
         }
 
         mRxManager.on(EventParams.EVENT_TYPE_TO_MAIN_FRAGMENT, Action1 {
