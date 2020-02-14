@@ -15,6 +15,7 @@ import androidx.multidex.MultiDexApplication
 import com.huangyiyang.fruitsvegetablesmall.api.Const
 import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
 import com.huangyiyang.fruitsvegetablesmall.manage.AppForegroundStateManager
+import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.ui.login.activity.LoginActivity
 import com.huangyiyang.fruitsvegetablesmall.util.ContextUtils
 import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
@@ -45,7 +46,7 @@ class MVPApplication : AppForegroundStateManager.OnAppForegroundStateChangeListe
 
         fun checkLogin(context: Context): Boolean {
             val isLogin: Boolean = true
-                //UserManager.checkUser(context)
+                UserManager.checkUser(context)
             if (!isLogin) {
                 val intent = Intent(context, LoginActivity::class.java)
                 if (context !is Activity) {
@@ -115,7 +116,7 @@ class MVPApplication : AppForegroundStateManager.OnAppForegroundStateChangeListe
             }
             return if (errorCode!!.containsKey(code)) {
                 if (code == "500") { // UserManager.getInstance().clearCache();
-                    //UserManager.getInstance().saveToken_EXPIRED("t")
+                    UserManager.getInstance()?.saveToken_EXPIRED("t")
                     val intent = Intent(context, LoginActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     context.startActivity(intent)
