@@ -103,7 +103,7 @@ class SuccessActivity : SuccessActivityContract.SuccessActivityView, View.OnClic
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.tv_order_detail -> {
-                //mPresenter.getOrderDetail(id.toString() + "")
+                OrderDetailActivity.goTo(this, id)
                 LoadingDialog.showDialogForLoading(
                     this,
                     getString(R.string.call_back_loading),

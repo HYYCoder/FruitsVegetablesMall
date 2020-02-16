@@ -16,6 +16,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.order.contract.OrderDetailActivit
 import com.huangyiyang.fruitsvegetablesmall.ui.order.model.OrderDetailActivityModel
 import com.huangyiyang.fruitsvegetablesmall.ui.order.presenter.OrderDetailActivityPresenter
 import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
+import com.huangyiyang.fruitsvegetablesmall.util.ParamsUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.huangyiyang.fruitsvegetablesmall.view.shoppingCar.ToolbarUtil
 import com.zhouyou.recyclerview.XRecyclerView
@@ -148,31 +149,31 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
             }
         }
         btnOrderDetail!!.visibility = View.VISIBLE
-        if (param != null) {
-            detailListAdapter?.setListAll(goodsDatas)
-            tvOrderDetailId!!.text = "订单编号：" + param.code
-            tvOrderDetailTime?.setText(param.date)
-            tvOrderDetailPrice!!.text = getString(R.string.common_amount, param.amount)
-            if (param.discountAmount !== 0.0) {
-                tvOrderDetailCoupon!!.text = "-" + getString(
-                    R.string.common_amount,
-                    param.discountAmount
-                )
-                flOrderDetailCoupon?.setVisibility(View.VISIBLE)
-            } else {
-                flOrderDetailCoupon?.setVisibility(View.GONE)
-            }
-            if (param.paidAmount < 0) {
-                tvOrderDetailTotal!!.text = "¥0.00"
-            } else tvOrderDetailTotal!!.text = getString(
+        detailListAdapter?.setListAll(goodsDatas)
+        tvOrderDetailId!!.text = "订单编号：" + param.code
+        tvOrderDetailTime?.setText(param.date)
+        tvOrderDetailPrice!!.text = getString(R.string.common_amount, param.amount)
+        if (param.discountAmount !== 0.0) {
+            tvOrderDetailCoupon!!.text = "-" + getString(
                 R.string.common_amount,
-                param.paidAmount
+                param.discountAmount
             )
-            tvOrderDetailPeople?.setText(param.receiver)
-            tvOrderDetailPhone?.setText(param.mobile)
-            tvOrderDetailAddress?.setText(param.address)
-            tvOrderDetailNote?.setText(param.note)
+            flOrderDetailCoupon?.setVisibility(View.VISIBLE)
+        } else {
+            flOrderDetailCoupon?.setVisibility(View.GONE)
         }
+        if (param.paidAmount < 0) {
+            tvOrderDetailTotal!!.text = "¥0.00"
+        } else {
+            tvOrderDetailTotal!!.text = getString(
+            R.string.common_amount,
+            param.paidAmount
+        )
+        }
+        tvOrderDetailPeople?.setText(param.receiver)
+        tvOrderDetailPhone?.setText(param.mobile)
+        tvOrderDetailAddress?.setText(param.address)
+        tvOrderDetailNote?.setText(param.note)
         if (param.status.equals(getString(R.string.order_cancel)) || param.status.equals(
                 getString(R.string.order_complete)
             )
@@ -181,9 +182,25 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
         }
         if (param.status.equals(getString(R.string.order_payment))) {
             setStyle("立即支付", R.color.white_ffffff, R.drawable.bg_button_payment)
+            btnOrderDetail?.setOnClickListener {
+                val map: MutableMap<String, String> = HashMap()
+                map["status"] = "AWAITING_DELIVERY"
+                mPresenter!!.updateOrderDetail(
+                    Const.header(),param.id,
+                    ParamsUtil.getInstance()?.getBody(map)
+                )
+            }
         }
         if (param.status.equals(getString(R.string.order_delivery))) {
             setStyle("等待收货", R.color.white_ffffff, R.drawable.btn_common_100_radius_button)
+            btnOrderDetail?.setOnClickListener {
+                val map: MutableMap<String, String> = HashMap()
+                map["status"] = "COMPLETE"
+                mPresenter!!.updateOrderDetail(
+                    Const.header(),param.id,
+                    ParamsUtil.getInstance()?.getBody(map)
+                )
+            }
         }
         if (param.status.equals(getString(R.string.order_payment_overdue))) {
             setStyle("查看订单", R.color.grey_666666, R.drawable.bg_button_read)
@@ -191,6 +208,10 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
             tvOrderDetailTime!!.setTextColor(Color.GRAY)
         }
         //mOrderGiftsListAdapter.setListAll(giftDatas)
+    }
+
+    override fun updateSuccess() {
+
     }
 
     inner class DetailListAdapter : BaseQuickAdapter<OrderDetailBean.Companion.DetailsBean> {

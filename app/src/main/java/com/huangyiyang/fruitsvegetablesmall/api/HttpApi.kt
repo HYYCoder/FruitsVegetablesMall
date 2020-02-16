@@ -89,4 +89,11 @@ interface HttpApi {
         ) id: String?
     ): Observable<ApiResult<OrderDetailBean>?>?
 
+    //更新订单详情
+    @PUT("/order/{id}")
+    fun updateOrderDetail(
+        @HeaderMap header: Map<String, String>?, @Path(
+            "id"
+        ) id: String?, @Body body: RequestBody?
+    ): Observable<ApiResult<Void>?>?
 }
