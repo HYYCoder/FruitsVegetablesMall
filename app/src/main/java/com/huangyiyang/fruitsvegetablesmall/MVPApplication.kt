@@ -43,15 +43,14 @@ class MVPApplication : AppForegroundStateManager.OnAppForegroundStateChangeListe
         }
 
         fun checkLogin(context: Context): Boolean {
-            val isLogin: Boolean = true
-                UserManager.checkUser(context)
-            if (!isLogin) {
-                val intent = Intent(context, LoginActivity::class.java)
-                if (context !is Activity) {
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                }
-                context.startActivity(intent)
-            }
+            var isLogin: Boolean = UserManager.checkUser(context)
+//            if (!isLogin) {
+//                val intent = Intent(context, LoginActivity::class.java)
+//                if (context !is Activity) {
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                }
+//                context.startActivity(intent)
+//            }
             return isLogin
         }
 
@@ -178,13 +177,13 @@ class MVPApplication : AppForegroundStateManager.OnAppForegroundStateChangeListe
         //初始化ImageLoader
         //ImageLoader.init(ContextCompat.getDrawable(this, 0))
         //初始化CommonLayout  空图片  loading
-//        CommonLayout.setResources(R.drawable.icon_empty_view, 0);
+        //CommonLayout.setResources(R.drawable.icon_empty_view, 0);
         //监听前后台
         AppForegroundStateManager.getInstance()?.addListener(this)
         //handleSSLHandshake();
-//极光
-//        JPushInterface.setDebugMode(false) // 设置开启日志,发布时请关闭日志
-//        JPushInterface.init(this)
+        //极光
+        //JPushInterface.setDebugMode(false) // 设置开启日志,发布时请关闭日志
+        //JPushInterface.init(this)
         //用ANDROID_ID作为别名设置
         setAlias()
     }

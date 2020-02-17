@@ -17,10 +17,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.gyf.immersionbar.ktx.immersionBar
 import com.huangyiyang.fruitsvegetablesmall.BuildConfig
+import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.MVPApplication
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.login.contract.LoginActivityContract
@@ -62,6 +63,17 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
             , Manifest.permission.CAMERA
             , Manifest.permission.READ_PHONE_STATE
         )
+
+        if (MVPApplication.checkLogin(this)) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+
+        immersionBar {
+            statusBarColor(R.color.green_4CAF65)
+            navigationBarColor(R.color.green_4CAF65)
+            autoDarkModeEnable(true)
+        }
     }
 
     override fun onStart() {
