@@ -19,6 +19,7 @@ class MineFragment : MineFragmentContract.MineFragmentView, BaseFragment<MineFra
 
     private var btnAllOrderList: RelativeLayout? = null
     private var btnReceivedOrderList: RelativeLayout? = null
+    private var btnCompleteOrderList: RelativeLayout? = null
     private var btnLogout: Button? = null
     private var toolbarUtil: ToolbarUtil? = null
 
@@ -32,6 +33,10 @@ class MineFragment : MineFragmentContract.MineFragmentView, BaseFragment<MineFra
         btnReceivedOrderList = view.findViewById(R.id.rl_order_to_be_received)
         btnReceivedOrderList?.setOnClickListener {
             OrderListActivity.goTo(mPresenter?.mContext!!, 2)
+        }
+        btnCompleteOrderList = view.findViewById(R.id.rl_mine_complete)
+        btnCompleteOrderList?.setOnClickListener {
+            OrderListActivity.goTo(mPresenter?.mContext!!, 3)
         }
         btnLogout = view.findViewById(R.id.btn_logout)
         btnLogout?.setOnClickListener {

@@ -228,7 +228,7 @@
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:id="@+id/rl_mine_discounts_center"
+                            android:id="@+id/rl_mine_complete"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
@@ -252,7 +252,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginTop="@dimen/spacing_9"
                                     android:gravity="center"
-                                    android:text="@string/mine_discounts_center"
+                                    android:text="@string/mine_complete"
                                     android:textColor="@color/grey_666666"
                                     android:textSize="@dimen/font_12" />
                             </LinearLayout>

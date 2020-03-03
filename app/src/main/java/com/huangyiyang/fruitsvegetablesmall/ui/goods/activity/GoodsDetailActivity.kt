@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.gyf.immersionbar.ktx.immersionBar
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
@@ -82,6 +83,12 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
     }
 
     override fun initView() {
+
+        immersionBar {
+            statusBarColor(R.color.green_4CAF65)
+            navigationBarColor(R.color.white_ffffff)
+            autoDarkModeEnable(true)
+        }
 
         mCommonLayout = findViewById(R.id.common_content)
         mBannerUtil = BannerUtil(this)
