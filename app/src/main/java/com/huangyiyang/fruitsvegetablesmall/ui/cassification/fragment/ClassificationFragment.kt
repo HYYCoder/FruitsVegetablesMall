@@ -13,6 +13,7 @@ import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.contract.ClassificationFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.model.ClassificationFragmentModel
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.presenter.ClassificationFragmentPresenter
+import com.huangyiyang.fruitsvegetablesmall.ui.search.activity.SearchResultListActivity
 import com.huangyiyang.fruitsvegetablesmall.view.classification.VerticalTabLayout
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import rx.functions.Action1
@@ -100,9 +101,9 @@ class ClassificationFragment : ClassificationFragmentContract.ClassificationFrag
     }
 
     override fun onClick(v: View?) {
-//        when (v!!.id) {
-//            R.id.search_bar -> SearchResultListActivity.goTo(activity)
-//        }
+        when (v!!.id) {
+            R.id.search_bar -> SearchResultListActivity.goTo(context!!)
+        }
     }
 
     override fun onVisible() {

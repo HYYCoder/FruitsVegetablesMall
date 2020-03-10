@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white_ffffff">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/spacing_15"
+                android:src="@drawable/icon_back" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/spacing_60"
+                android:layout_toLeftOf="@id/rv_shopping_car"
+                android:layout_toEndOf="@id/back">
+
+                <EditText
+                    android:id="@+id/keyword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_30"
+                    android:layout_marginStart="@dimen/spacing_10"
+                    android:background="@drawable/bg_search_bar"
+                    android:drawableStart="@drawable/icon_search_bar_grey"
+                    android:drawablePadding="@dimen/spacing_5"
+                    android:hint="@string/search_keyword_activity_hint"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/spacing_10"
+                    android:paddingTop="@dimen/spacing_6"
+                    android:paddingBottom="@dimen/spacing_6"
+                    android:textColor="@color/black_333333"
+                    android:textColorHint="@color/grey_999999"
+                    android:textSize="@dimen/font_12" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rv_shopping_car"
+                android:layout_width="@dimen/spacing_35"
+                android:layout_height="@dimen/spacing_35"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/spacing_16">
+
+                <ImageView
+                    android:id="@+id/shopping_car"
+                    android:layout_width="@dimen/spacing_25"
+                    android:layout_height="@dimen/spacing_25"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/tool_bar_shopping_car" />
+
+                <TextView
+                    android:id="@+id/shopping_car_count"
+                    android:layout_width="@dimen/spacing_13"
+                    android:layout_height="@dimen/spacing_13"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/bg_shopping_car_count"
+                    android:gravity="center"
+                    android:textColor="@color/white_ffffff"
+                    android:textSize="@dimen/font_9" />
+
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_shadow" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_fbfbfb"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/history_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_marginBottom="@dimen/spacing_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/spacing_15"
+                android:layout_marginTop="@dimen/spacing_15"
+                android:text="@string/search_keyword_activity_search_history"
+                android:textColor="@color/black_333333"
+                android:textSize="@dimen/font_12"
+                android:textStyle="normal" />
+
+            <ImageView
+                android:id="@+id/iv_delete_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/spacing_15"
+                android:layout_marginEnd="@dimen/spacing_15"
+                android:src="@drawable/icon_search_delete" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/history_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
+        <com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
+            android:id="@+id/common_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="@color/white_ffffff">
+
+            <com.zhouyou.recyclerview.XRecyclerView
+                android:id="@+id/result_recyclerView"
+                android:background="@color/grey_fbfbfb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

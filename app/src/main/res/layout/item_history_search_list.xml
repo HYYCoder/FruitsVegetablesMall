@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/grey_fbfbfb"
+    android:paddingLeft="@dimen/spacing_15"
+    android:paddingBottom="@dimen/spacing_10"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_item_search_history_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rectangle_radius_10_stroke_1_d4d4d4"
+        android:paddingBottom="@dimen/spacing_2"
+        android:paddingTop="@dimen/spacing_2"
+        android:paddingLeft="@dimen/spacing_10"
+        android:paddingRight="@dimen/spacing_10"
+        android:gravity="center"
+        android:text="张三"
+        android:textColor="@color/grey_666666"
+        android:textSize="@dimen/font_12" />
+
+</LinearLayout>

@@ -21,6 +21,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.goods.activity.GoodsDetailActivit
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainFragmentModel
 import com.huangyiyang.fruitsvegetablesmall.ui.main.presenter.MainFragmentPresenter
+import com.huangyiyang.fruitsvegetablesmall.ui.search.activity.SearchResultListActivity
 import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
 import com.huangyiyang.fruitsvegetablesmall.util.DoubleUtil
 import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
@@ -211,7 +212,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.search_bar -> println("search_bar")//SearchResultListActivity.goTo(activity)
+            R.id.search_bar -> SearchResultListActivity.goTo(context!!)
             R.id.iv_item_main_home_merchant_icon_1 -> if (categoryListBean != null && categoryListBean.get(
                     0
                 ) != null && categoryListBean[0].category?.id !== 0

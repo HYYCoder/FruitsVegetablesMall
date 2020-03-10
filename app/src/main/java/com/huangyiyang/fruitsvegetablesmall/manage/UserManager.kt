@@ -293,7 +293,7 @@ class UserManager {
     fun getKeyWord(): JSONArray? { //        return ACache.get().getAsJSONArray(KEY_WORDS);
     // 返回倒序KeyWords
         val list = ArrayList<String?>()
-        val jsonArray: JSONArray = ACacheUtil.get()?.getAsJSONArray(KEY_WORDS)!!
+        val jsonArray: JSONArray? = ACacheUtil.get()?.getAsJSONArray(KEY_WORDS)
         if (jsonArray != null) {
             val len = jsonArray.length()
             for (i in len - 1 downTo 0) {
