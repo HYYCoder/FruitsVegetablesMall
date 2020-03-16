@@ -51,10 +51,6 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
 
     companion object {
         var isForeground = false
-        var mMainFragment: Fragment? = null
-        var mMainClassificationFragment: Fragment? = null
-        var mShoppingCarFragment: Fragment? = null
-        var mMineFragment: Fragment? = null
 
         fun goTo(context: Activity) {
             val intent = Intent(context, MainActivity::class.java)
@@ -237,7 +233,12 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
         }
     }
 
-    private class ViewPageAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
+    var mMainFragment: Fragment? = null
+    var mMainClassificationFragment: Fragment? = null
+    var mShoppingCarFragment: Fragment? = null
+    var mMineFragment: Fragment? = null
+
+    private inner class ViewPageAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
         override fun getItem(position: Int): Fragment? {
             return when (position) {
                 0 -> {

@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.Const
+import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
@@ -102,6 +102,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
         mXRecyclerView?.isPullRefreshEnabled = true
         mXRecyclerView?.setLoadingListener(object : LoadingListener {
             override fun onRefresh() {
+                mPresenter?.onRefresh()
                 mXRecyclerView?.refreshComplete()
             }
 
@@ -252,6 +253,21 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        scrollToTop()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        scrollToTop()
+    }
+
+    override fun onVisible() {
+        super.onVisible()
+        scrollToTop()
+    }
+
     override fun setBannerList(bannerList: List<BannerUtil.Companion.DataBean>?) {
         val image =
             headerView!!.findViewById<ImageView>(R.id.iv_default_ygf)
@@ -274,6 +290,17 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     override fun setRecommendGoodsList(goodsDetailBeanList: List<GoodsDetailBean>?) {
 
+//        goodsBeanList = null;
+//        if (goodsBeanList == null || goodsBeanList.size() == 0) {
+        // View mEmptyView = getActivity().getLayoutInflater().inflate(R.layout.common_empty, null);
+//            mEmptyImage = mEmptyView.findViewById(R.id.iv_empty);
+//            mEmptyImage.setImageResource(mEmptyImageId);
+        //      mXRecyclerView.setEmptyView(null);
+//            mAdapter.setListAll(goodsBeanList);
+//        } else {
+//            mAdapter.setListAll(goodsBeanList);
+//        }
+        LoadingDialog.cancelDialogForLoading()
     }
 
 

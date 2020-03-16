@@ -47,8 +47,8 @@ class MineFragment : MineFragmentContract.MineFragmentView, BaseFragment<MineFra
             UserManager.getInstance()?.saveUserPassword(pwd)
             val intent = Intent(activity, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            activity!!.startActivity(intent)
-            activity!!.finish()
+            activity?.startActivity(intent)
+            activity?.finish()
         }
 
     }
