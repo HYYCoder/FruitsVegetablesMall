@@ -13,6 +13,10 @@ interface HttpApi {
     @POST("/login")
     fun login(@Body body: RequestBody?): Observable<ApiResult<LoginBean>?>?
 
+    //注册接口
+    @POST("/register")
+    fun register(@Body body: RequestBody?): Observable<ApiResult<LoginBean>?>?
+
     //获取首页Banner列表
     @GET("/specialoffers")
     fun getBannerList(@HeaderMap header: Map<String, String>?, @QueryMap body:Map<String, String>?): Observable<ApiResult<List<BannerUtil.Companion.DataBean>?>?>?

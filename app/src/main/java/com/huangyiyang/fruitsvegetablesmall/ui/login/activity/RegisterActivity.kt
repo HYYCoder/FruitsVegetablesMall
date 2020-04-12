@@ -24,29 +24,37 @@ import com.huangyiyang.fruitsvegetablesmall.MVPApplication
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
-import com.huangyiyang.fruitsvegetablesmall.ui.login.contract.LoginActivityContract
-import com.huangyiyang.fruitsvegetablesmall.ui.login.model.LoginActivityModel
-import com.huangyiyang.fruitsvegetablesmall.ui.login.presenter.LoginActivityPresenter
+import com.huangyiyang.fruitsvegetablesmall.ui.login.contract.RegisterActivityContract
+import com.huangyiyang.fruitsvegetablesmall.ui.login.model.RegisterActivityModel
+import com.huangyiyang.fruitsvegetablesmall.ui.login.presenter.RegisterActivityPresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.main.activity.MainActivity
 import com.huangyiyang.fruitsvegetablesmall.util.*
 import java.util.*
 
-class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListener,BaseActivity<LoginActivityModel,LoginActivityPresenter>(){
+class RegisterActivity : RegisterActivityContract.RegisterActivityView,View.OnClickListener,BaseActivity<RegisterActivityModel,RegisterActivityPresenter>(){
 
-    private var mEtLoginActivityCashierAccount //用户ID
+    private var etRegisterUsername //用户ID
             : EditText? = null
-    private var mEtLoginActivityPassword //密码
+    private var etRegisterPassword //密码
             : EditText? = null
-    private var mBtnLoginActivitySign //确认登录
+    private var etRegisterName //姓名
+            : EditText? = null
+    private var etRegisterMobile //手机号
+            : EditText? = null
+    private var etRegisterAddress //地址
+            : EditText? = null
+    private var etRegisterReceivingPhone //收货手机
+            : EditText? = null
+    private var btnRegister //注册
             : Button? = null
-    private var mBtnLoginActivityForgotPsw //忘记密码
+    private var btnRegisterBack //已有账号，返回
             : TextView? = null
 
     companion object {
         var isR = false
         var isL = false
         fun goTo(context: Context) {
-            val intent = Intent(context, LoginActivity::class.java)
+            val intent = Intent(context, RegisterActivity::class.java)
             if (context !is Activity) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             }
@@ -91,7 +99,7 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
     }
 
     override fun getLayoutResId(): Int {
-        return R.layout.activity_login
+        return R.layout.activity_register
     }
 
     override fun initPresenter() {
@@ -108,9 +116,9 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
 
     override fun initView() {
         //  isR = false;
-        mEtLoginActivityCashierAccount =
-            findViewById(R.id.et_login_activity_cashier_account) as EditText
-        mEtLoginActivityCashierAccount?.addTextChangedListener(object : TextWatcher {
+        etRegisterUsername =
+            findViewById(R.id.et_register_username) as EditText
+        etRegisterUsername?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 s: CharSequence,
                 start: Int,
@@ -126,16 +134,16 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
                 count: Int
             ) {
                 if (!StringUtil.isTrimEmpty(s.toString())) {
-                    mBtnLoginActivitySign!!.isEnabled = true
+                    btnRegister!!.isEnabled = true
                 } else {
-                    mBtnLoginActivitySign!!.isEnabled = false
+                    btnRegister!!.isEnabled = false
                 }
             }
 
             override fun afterTextChanged(s: Editable) {}
         })
-        mEtLoginActivityPassword = findViewById(R.id.et_login_activity_password) as EditText
-        mEtLoginActivityPassword?.addTextChangedListener(object : TextWatcher {
+        etRegisterPassword = findViewById(R.id.et_register_password) as EditText
+        etRegisterPassword?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 s: CharSequence,
                 start: Int,
@@ -151,19 +159,27 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
                 count: Int
             ) {
                 if (!StringUtil.isTrimEmpty(s.toString())) {
-                    mBtnLoginActivitySign!!.isEnabled = true
+                    btnRegister!!.isEnabled = true
                 } else {
-                    mBtnLoginActivitySign!!.isEnabled = false
+                    btnRegister!!.isEnabled = false
                 }
             }
 
             override fun afterTextChanged(s: Editable) {}
         })
-        mBtnLoginActivityForgotPsw =
-            findViewById(R.id.tw_login_activity_register) as TextView
-        mBtnLoginActivityForgotPsw?.setOnClickListener(this)
-        mBtnLoginActivitySign = findViewById(R.id.btn_login) as Button
-        mBtnLoginActivitySign?.setOnClickListener(this)
+        etRegisterName =
+            findViewById(R.id.et_register_name) as EditText
+        etRegisterMobile =
+            findViewById(R.id.et_register_mobile) as EditText
+        etRegisterAddress =
+            findViewById(R.id.et_register_address) as EditText
+        etRegisterReceivingPhone =
+            findViewById(R.id.et_register_receivingPhone) as EditText
+        btnRegisterBack =
+            findViewById(R.id.tw_register_back) as TextView
+        btnRegisterBack?.setOnClickListener(this)
+        btnRegister = findViewById(R.id.btn_register) as Button
+        btnRegister?.setOnClickListener(this)
         if (isL) {
             ToastUtil.showLong(this, "token过期，请重新登录")
             isL = false
@@ -177,18 +193,18 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
         }
         val name = UserManager.getInstance()?.getName()
         if (name != null && name.length > 1) {
-            mEtLoginActivityCashierAccount?.setText(name)
+            etRegisterUsername?.setText(name)
             val pwd = UserManager.getInstance()!!.getUserPassword()
             if (pwd != null && pwd.length > 1) {
-                mEtLoginActivityPassword?.setText(pwd)
+                etRegisterPassword?.setText(pwd)
             }
         } else {
             val code = UserManager.getInstance()!!.getUserCode()
             if (code != null && code.length > 1) {
-                mEtLoginActivityCashierAccount?.setText(code)
+                etRegisterUsername?.setText(code)
                 val pwd = UserManager.getInstance()!!.getUserPassword()
                 if (pwd != null && pwd.length > 1) {
-                    mEtLoginActivityPassword?.setText(pwd)
+                    etRegisterPassword?.setText(pwd)
                 }
             }
         }
@@ -196,40 +212,45 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.btn_login -> submit()
-            R.id.tw_login_activity_register -> RegisterActivity.goTo(this)
+            R.id.btn_register -> submit()
+            R.id.tw_register_back -> super.onBackPressed()
         }
     }
 
     /**
-     * 提交登录用参数
+     * 提交注册用参数
      */
-    private fun submit() { // 账号非空判断
+    private fun submit() {
         val account =
-            mEtLoginActivityCashierAccount!!.text.toString().trim { it <= ' ' }
+            etRegisterUsername!!.text.toString().trim { it <= ' ' }
         if (GsonUtil.isEmpty(account)) {
             ToastUtil.showShort(this, R.string.toast_for_LoginActivity_content_0)
             return
         }
         // 密码非空判断
         val password =
-            mEtLoginActivityPassword!!.text.toString().trim { it <= ' ' }
+            etRegisterPassword!!.text.toString().trim { it <= ' ' }
         if (TextUtils.isEmpty(password)) {
             ToastUtil.showShort(this, R.string.toast_for_LoginActivity_content_1)
             return
         }
+        val name =
+            etRegisterName!!.text.toString().trim { it <= ' ' }
+        val mobile =
+            etRegisterMobile!!.text.toString().trim { it <= ' ' }
+        val address =
+            etRegisterAddress!!.text.toString().trim { it <= ' ' }
+        val receivingPhone =
+            etRegisterReceivingPhone!!.text.toString().trim { it <= ' ' }
         val map: MutableMap<String, String> =
             HashMap()
         map["userName"] = account
         map["password"] = password
-        map["type"] = "android"
-        map["brand"] = Build.BRAND
-        map["model"] = Build.MODEL
-        map["version"] = Build.VERSION.RELEASE
-        map["coreVersion"] = Build.VERSION.SDK_INT.toString() + ""
-        map["softwareVersion"] = BuildConfig.VERSION_NAME
-        map["androidDeviceId"] = MVPApplication.ANDROID_ID!!
-        mPresenter?.getLogin(ParamsUtil.getInstance()?.getBody(map))
+        map["name"] = name
+        map["mobile"] = mobile
+        map["address"] = address
+        map["receivingPhone"] = receivingPhone
+        mPresenter?.getRegister(ParamsUtil.getInstance()?.getBody(map))
     }
 
     fun openWebPage(url: String?) {
@@ -263,15 +284,15 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
         //mPresenter.getVersionCode(map)
     }
 
-    override fun setLogin(isBoundMobile: Boolean) {
+    override fun setRegister(isBoundMobile: Boolean) {
 
         if (!isBoundMobile) { //判断是否需要绑定手机号
             //PhoneBindingActivity.goTo(this)
         } else {
             UserManager.getInstance()
-                ?.saveUserPassword(mEtLoginActivityPassword!!.text.toString().trim { it <= ' ' })
+                ?.saveUserPassword(etRegisterPassword!!.text.toString().trim { it <= ' ' })
             UserManager.getInstance()
-                ?.saveName(mEtLoginActivityCashierAccount!!.text.toString().trim { it <= ' ' })
+                ?.saveName(etRegisterUsername!!.text.toString().trim { it <= ' ' })
             //mPresenter.getConfig()
             startActivity(MainActivity::class.java)
             finish()

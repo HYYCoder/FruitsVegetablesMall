@@ -34,7 +34,7 @@
     <string name="logout">退出登录</string>
     <string name="login_activity_user_id_hint">请输入账号</string>
     <string name="login_activity_password_hint">请输入密码</string>
-    <string name="login_activity_forgot_psw_text">忘记密码？</string>
+    <string name="login_activity_register_text">立即注册</string>
     <string name="login_activity_sign_text">登录</string>
     <string name="add_shopping_car">加入购物车</string>
     <string name="common_confirm">确定</string>
@@ -85,4 +85,12 @@
     <string name="order_total">共%d种商品</string>
     <string name="order_price">支付金额：¥%.2f</string>
     <string name="search_keyword_activity_search_history">历史搜索</string>
+    <string name="register_btn">注册</string>
+    <string name="register_username">账号</string>
+    <string name="register_password">密码</string>
+    <string name="register_name">姓名</string>
+    <string name="register_mobile">手机号</string>
+    <string name="register_address">地址</string>
+    <string name="register_receivingPhone">收货手机号</string>
+    <string name="register_back">已有账号？立即登录</string>
 </resources>
