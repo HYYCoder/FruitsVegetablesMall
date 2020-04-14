@@ -56,7 +56,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/spacing_40"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="35dp"
                         android:text="姓名"
                         android:textColor="@color/white_ffffff"
                         android:textSize="@dimen/font_20"
@@ -76,18 +76,6 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_mine_name" />
 
                     <TextView
-                        android:id="@+id/tv_mine_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="5dp"
-                        android:text="地址"
-                        android:textColor="@color/white_ffffff"
-                        android:textSize="@dimen/font_20"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_mine_mobile" />
-
-                    <TextView
                         android:id="@+id/tv_mine_username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -97,7 +85,7 @@
                         android:textColor="@color/white_ffffff"
                         android:textSize="@dimen/font_20"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_mine_address" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_mine_mobile" />
 
                     <TextView
                         android:id="@+id/tv_mine_receiving_phone"
@@ -110,6 +98,18 @@
                         android:textSize="@dimen/font_20"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_mine_username" />
+
+                    <TextView
+                        android:id="@+id/tv_mine_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="5dp"
+                        android:text="收货地址"
+                        android:textColor="@color/white_ffffff"
+                        android:textSize="@dimen/font_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_mine_receiving_phone" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
