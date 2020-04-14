@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.RelativeLayout
+import android.widget.TextView
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
@@ -22,6 +23,12 @@ class MineFragment : MineFragmentContract.MineFragmentView, BaseFragment<MineFra
     private var btnCompleteOrderList: RelativeLayout? = null
     private var btnLogout: Button? = null
     private var toolbarUtil: ToolbarUtil? = null
+    private var tvMineName: TextView? = null
+    private var tvMineMobile: TextView? = null
+    private var tvMineAddress: TextView? = null
+    private var tvMineUsername: TextView? = null
+    private var tvMineReceivingPhone: TextView? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,7 +57,16 @@ class MineFragment : MineFragmentContract.MineFragmentView, BaseFragment<MineFra
             activity?.startActivity(intent)
             activity?.finish()
         }
-
+        tvMineName = view.findViewById(R.id.tv_mine_name)
+        tvMineName?.text = "姓名："+UserManager.getInstance()?.getName()
+        tvMineMobile = view.findViewById(R.id.tv_mine_mobile)
+        tvMineMobile?.text = "手机号："+UserManager.getInstance()?.getUserPhone()
+        tvMineAddress = view.findViewById(R.id.tv_mine_address)
+        tvMineAddress?.text = "收货地址："+UserManager.getInstance()?.getUserAddress()
+        tvMineUsername = view.findViewById(R.id.tv_mine_username)
+        tvMineUsername?.text = "用户名："+UserManager.getInstance()?.getUserName()
+        tvMineReceivingPhone = view.findViewById(R.id.tv_mine_receiving_phone)
+        tvMineReceivingPhone?.text = "收货手机号："+UserManager.getInstance()?.getReceivingPhone()
     }
 
     override fun getLayoutResId(): Int {

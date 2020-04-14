@@ -49,99 +49,67 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/icon_user_leavel_0"
                         app:layout_constraintTop_toTopOf="parent"
-                        />
+                        tools:layout_editor_absoluteX="0dp" />
 
                     <TextView
                         android:id="@+id/tv_mine_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/spacing_40"
-                        android:layout_marginTop="@dimen/spacing_50"
-                        android:text=""
+                        android:layout_marginTop="40dp"
+                        android:text="姓名"
                         android:textColor="@color/white_ffffff"
-                        android:textSize="@dimen/font_24"
+                        android:textSize="@dimen/font_20"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_mine_code"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_8"
-                        android:text=""
-                        android:textColor="@color/white_ffffff"
-                        android:textSize="@dimen/font_12"
-                        android:visibility="gone"
-                        app:layout_constraintStart_toStartOf="@+id/tv_mine_name"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_mine_name" />
-
-                    <TextView
-                        android:id="@+id/tv_mine_use_corporate_owned_phone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_4"
-                        android:text="100000000"
-                        android:textColor="@color/white_ffffff"
-                        android:textSize="@dimen/font_12"
-                        android:visibility="gone"
-                        app:layout_constraintStart_toStartOf="@+id/tv_mine_code"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_mine_code" />
 
                     <TextView
                         android:id="@+id/tv_mine_mobile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/spacing_10"
-                        android:text="00000000000"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="5dp"
+                        android:text="手机号"
                         android:textColor="@color/white_ffffff"
-                        android:textSize="@dimen/font_12"
-                        app:layout_constraintStart_toEndOf="@id/tv_mine_name"
-                        app:layout_constraintTop_toTopOf="@id/tv_mine_name" />
-
-                    <ProgressBar
-                        android:id="@+id/pb_mine_point"
-                        style="@style/StyleProgressBarMini"
-                        android:layout_width="130dp"
-                        android:layout_height="5dp"
-                        android:layout_marginTop="@dimen/spacing_10"
-                        android:background="@drawable/shape_progressbar_bg"
-                        android:max="100"
-                        android:progress="1"
-                        app:layout_constraintStart_toStartOf="@id/tv_mine_name"
-                        app:layout_constraintTop_toBottomOf="@id/tv_mine_name" />
+                        android:textSize="@dimen/font_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_mine_name" />
 
                     <TextView
-                        android:id="@+id/tv_mine_point"
+                        android:id="@+id/tv_mine_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_5"
-                        android:text="00/00"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="5dp"
+                        android:text="地址"
                         android:textColor="@color/white_ffffff"
-                        android:textSize="@dimen/font_12"
-                        app:layout_constraintStart_toStartOf="@id/tv_mine_name"
-                        app:layout_constraintTop_toBottomOf="@id/pb_mine_point" />
+                        android:textSize="@dimen/font_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_mine_mobile" />
 
                     <TextView
-                        android:id="@+id/tv_mine_mybeed"
+                        android:id="@+id/tv_mine_username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableRight="@mipmap/ic_minebeed_tangle"
-                        android:layout_marginTop="@dimen/spacing_10"
-                        android:text="我的福豆  "
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="5dp"
+                        android:text="账号"
                         android:textColor="@color/white_ffffff"
-                        android:textSize="@dimen/font_12"
-                        app:layout_constraintStart_toStartOf="@id/tv_mine_name"
-                        app:layout_constraintTop_toBottomOf="@id/tv_mine_point" />
+                        android:textSize="@dimen/font_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_mine_address" />
 
                     <TextView
-                        android:id="@+id/tv_mine_beed"
+                        android:id="@+id/tv_mine_receiving_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="5dp"
+                        android:text="收货手机号"
                         android:textColor="@color/white_ffffff"
-                        android:textSize="@dimen/font_24"
-                        app:layout_constraintStart_toStartOf="@id/tv_mine_name"
-                        app:layout_constraintTop_toBottomOf="@id/tv_mine_mybeed" />
+                        android:textSize="@dimen/font_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_mine_username" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
