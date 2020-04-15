@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gyf.immersionbar.ktx.immersionBar
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.ConfirmOrderBean
@@ -106,6 +107,11 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
     }
 
     override fun initView() {
+        immersionBar {
+            statusBarColor(R.color.green_4CAF65)
+            navigationBarColor(R.color.green_4CAF65)
+            autoDarkModeEnable(true)
+        }
         //===================地址信息===================
         user_name = findViewById(R.id.user_name)
         user_phone = findViewById(R.id.user_phone)

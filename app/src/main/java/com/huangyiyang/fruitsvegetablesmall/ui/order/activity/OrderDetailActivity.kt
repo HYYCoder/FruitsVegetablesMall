@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.view.View
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gyf.immersionbar.ktx.immersionBar
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.OrderDetailBean
@@ -87,6 +88,11 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
     }
 
     override fun initView() {
+        immersionBar {
+            statusBarColor(R.color.green_4CAF65)
+            navigationBarColor(R.color.green_4CAF65)
+            autoDarkModeEnable(true)
+        }
         tvOrderDetailId = findViewById(R.id.tv_order_detail_id)
         tvOrderDetailTime = findViewById(R.id.tv_order_detail_time)
         orderRecyclerView = findViewById(R.id.order_recyclerView)

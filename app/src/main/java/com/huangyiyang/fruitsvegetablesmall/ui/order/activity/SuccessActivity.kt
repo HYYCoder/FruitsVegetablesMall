@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.widget.TextView
+import com.gyf.immersionbar.ktx.immersionBar
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.order.contract.SuccessActivityContract
@@ -79,6 +80,11 @@ class SuccessActivity : SuccessActivityContract.SuccessActivityView, View.OnClic
     }
 
     override fun initView() {
+        immersionBar {
+            statusBarColor(R.color.green_4CAF65)
+            navigationBarColor(R.color.green_4CAF65)
+            autoDarkModeEnable(true)
+        }
         var doubleAmount = 0.0
 
         try {

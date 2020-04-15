@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
+import com.gyf.immersionbar.ktx.immersionBar
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.order.contract.OrderListActivityContract
@@ -61,6 +62,11 @@ class OrderListActivity : OrderListActivityContract.OrderListActivityView, View.
     }
 
     override fun initView() {
+        immersionBar {
+            statusBarColor(R.color.green_4CAF65)
+            navigationBarColor(R.color.green_4CAF65)
+            autoDarkModeEnable(true)
+        }
         tabLayout = findViewById(R.id.tab_layout)
         viewPager = findViewById(R.id.vp_detail)
         viewPager?.setOffscreenPageLimit(4)
