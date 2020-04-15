@@ -123,7 +123,8 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal"
-                android:padding="@dimen/spacing_15">
+                android:padding="@dimen/spacing_15"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/coupon_title"
