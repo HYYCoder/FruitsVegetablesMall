@@ -58,13 +58,13 @@ class MineFragment : MineFragmentContract.MineFragmentView, BaseFragment<MineFra
             activity?.finish()
         }
         tvMineName = view.findViewById(R.id.tv_mine_name)
-        tvMineName?.text = "姓名："+UserManager.getInstance()?.getName()
+        tvMineName?.text = "姓名："+UserManager.getInstance()?.getUserName()
         tvMineMobile = view.findViewById(R.id.tv_mine_mobile)
         tvMineMobile?.text = "手机号："+UserManager.getInstance()?.getUserPhone()
         tvMineAddress = view.findViewById(R.id.tv_mine_address)
         tvMineAddress?.text = "收货地址："+UserManager.getInstance()?.getUserAddress()
         tvMineUsername = view.findViewById(R.id.tv_mine_username)
-        tvMineUsername?.text = "用户名："+UserManager.getInstance()?.getUserName()
+        tvMineUsername?.text = "用户名："+UserManager.getInstance()?.getName()
         tvMineReceivingPhone = view.findViewById(R.id.tv_mine_receiving_phone)
         tvMineReceivingPhone?.text = "收货手机号："+UserManager.getInstance()?.getReceivingPhone()
     }
