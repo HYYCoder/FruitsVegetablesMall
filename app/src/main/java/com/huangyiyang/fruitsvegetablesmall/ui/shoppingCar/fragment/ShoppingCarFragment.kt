@@ -219,6 +219,11 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
         LoadingDialog.cancelDialogForLoading()
     }
 
+    override fun onStart() {
+        super.onStart()
+        mPresenter?.getShoppingCarList(Const.header())
+    }
+
     override fun onVisible() {
         super.onVisible()
         isR = false

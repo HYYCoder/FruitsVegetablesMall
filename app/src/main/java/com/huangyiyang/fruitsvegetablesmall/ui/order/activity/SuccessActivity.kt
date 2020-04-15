@@ -94,14 +94,14 @@ class SuccessActivity : SuccessActivityContract.SuccessActivityView, View.OnClic
         } catch (e: NumberFormatException) {
         }
         mTvOrderNum = findViewById(R.id.tv_order_num)
-        mTvOrderNum?.setText(orderNum)
+        mTvOrderNum?.text = orderNum
         mTvOrderName = findViewById(R.id.tv_order_name)
-        mTvOrderName?.setText(name)
+        mTvOrderName?.text = name
         mTvOrderAddress = findViewById(R.id.tv_order_address)
-        mTvOrderAddress?.setText(address)
+        mTvOrderAddress?.text = address
         mTvOrderAmount = findViewById(R.id.tv_order_amount)
         if (doubleAmount < 0) doubleAmount = 0.0
-        mTvOrderAmount?.setText(getString(R.string.common_amount, doubleAmount))
+        mTvOrderAmount?.text = getString(R.string.common_amount, doubleAmount)
         mTvOrderDetail = findViewById(R.id.tv_order_detail)
         mTvOrderDetail?.setOnClickListener(this)
     }
