@@ -8,8 +8,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.Const
+import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.bean.OrderListBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.mvp.fragment.BaseFragment
@@ -30,7 +30,7 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
 
     private var mXRecyclerView: XRecyclerView? = null
     private var commonLayout: CommonLayout? = null
-    private val categoryId = 0
+    private var categoryId = 0
     private var mOrderListListAdapter: OrderListAdapter? = null
 
     companion object{
@@ -53,7 +53,7 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
     }
 
     override fun initArgumentsData() {
-
+        categoryId = arguments?.getInt(ID)!!
     }
 
     override fun initToolBar() {
@@ -123,18 +123,18 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
             val tvOrderStatus = viewHolder.getView<TextView>(R.id.tv_orderlist_status)
             btnOrder = viewHolder.getView<Button>(R.id.btn_orderlist)
 
-            tvOrderTime.setText(item?.data!!)
+            tvOrderTime.text = item?.data!!
             tvOrderID.text = getString(R.string.order_num, item?.code)
             tvOrderNum.text = getString(R.string.order_total, item?.count)
             if (item?.payAmount!! < 0.0) {
                 tvOrderPrice.text = "¥0.00"
             } else tvOrderPrice.text = getString(R.string.order_price, item.payAmount)
-            if (!item.status.equals("COMPLETE")) {
-                tvOrderStatus.visibility = View.GONE
-            } else {
-                tvOrderStatus.visibility = View.VISIBLE
-            }
-            tvOrderStatus.setText(getStringByStatus(item.status))
+//            if (item.status != "COMPLETE") {
+//                tvOrderStatus.visibility = View.GONE
+//            } else {
+//                tvOrderStatus.visibility = View.VISIBLE
+//            }
+            tvOrderStatus.text = getStringByStatus(item.status)
             tvOrderStatus.setTextColor(Color.GRAY)
             //===========商品列表===========
             val ivImg1 =
@@ -219,7 +219,7 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
         private fun getStringByStatus(status: String?): String? {
             return when (status) {
                 getString(R.string.order_payment) -> getString(R.string.AWAITING_PAYMENT)
-                getString(R.string.order_delivery) -> getString(R.string.AWAITING_PAYMENT)
+                getString(R.string.order_delivery) -> getString(R.string.AWAITING_DELIVERY)
                 getString(R.string.order_complete) -> getString(R.string.COMPLETE)
                 getString(R.string.order_cancel) -> getString(R.string.CANCEL)
                 else -> getString(R.string.order_complete)
