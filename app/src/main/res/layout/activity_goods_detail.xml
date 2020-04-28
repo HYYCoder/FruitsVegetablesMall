@@ -256,6 +256,31 @@
                         android:visibility="visible" />
 
                 </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white_ffffff"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/spacing_15"
+                android:paddingTop="@dimen/font_10"
+                android:paddingRight="@dimen/spacing_15"
+                android:paddingBottom="@dimen/font_10">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="商品描述"
+                    android:textColor="@color/black_333333"
+                    android:textSize="@dimen/font_16" />
+
+                <TextView
+                    android:id="@+id/tv_goods_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_10"
+                    android:text="TextView" />
+            </LinearLayout>
             </LinearLayout>
         </ScrollView>
 

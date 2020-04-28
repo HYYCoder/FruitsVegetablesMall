@@ -56,6 +56,7 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
     private var mShoppingCarCount: TextView? = null
     private var mGoodsUnit: TextView? = null
     private var goodsDetailBean: GoodsDetailBean? = null
+    private var mTvGoodsDetails : TextView? = null
 
     companion object {
         private val ID = "goods_id"
@@ -99,7 +100,7 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
         mSoldOut = findViewById(R.id.iv_sold_out)
         mTvGoodsName = findViewById(R.id.tv_goods_detail_name)
         mGoodsUnit = findViewById(R.id.tv_goods_price_unit)
-
+        mTvGoodsDetails  = findViewById(R.id.tv_goods_details)
         mTvGoodsPrice = findViewById(R.id.tv_goods_price)
         mTvGoodsOldPrice = findViewById(R.id.tv_goods_old_price)
         mTvGoodsStock = findViewById(R.id.tv_goods_stock)
@@ -359,7 +360,7 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
             mTvGoodsOldPrice!!.visibility = View.GONE
         }
 
-
+        mTvGoodsDetails?.text = bean.detail
 
         mTvGoodsStock!!.text = getString(
             R.string.shopping_stock_text,

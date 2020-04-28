@@ -18,6 +18,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.order.model.OrderDetailActivityMo
 import com.huangyiyang.fruitsvegetablesmall.ui.order.presenter.OrderDetailActivityPresenter
 import com.huangyiyang.fruitsvegetablesmall.mvp.util.ImageLoaderUtil
 import com.huangyiyang.fruitsvegetablesmall.mvp.util.ParamsUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ToastUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.huangyiyang.fruitsvegetablesmall.view.shoppingCar.ToolbarUtil
 import com.zhouyou.recyclerview.XRecyclerView
@@ -193,10 +194,12 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
                     Const.header(),param.id,
                     ParamsUtil.getInstance()?.getBody(map)
                 )
+                ToastUtil.showShort(mContext, "支付成功！")
+                super.onBackPressed()
             }
         }
         if (param.status.equals(getString(R.string.order_delivery))) {
-            setStyle("等待收货", R.color.white_ffffff, R.drawable.btn_common_100_radius_button)
+            setStyle("确认收货", R.color.white_ffffff, R.drawable.btn_common_100_radius_button)
             btnOrderDetail?.setOnClickListener {
                 val map: MutableMap<String, String> = HashMap()
                 map["status"] = "COMPLETE"
@@ -204,6 +207,8 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
                     Const.header(),param.id,
                     ParamsUtil.getInstance()?.getBody(map)
                 )
+                ToastUtil.showShort(mContext, "收货成功！")
+                super.onBackPressed()
             }
         }
         if (param.status.equals(getString(R.string.order_payment_overdue))) {

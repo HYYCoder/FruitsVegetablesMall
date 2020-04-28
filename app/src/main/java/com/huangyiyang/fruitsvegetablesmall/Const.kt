@@ -5,11 +5,9 @@ import java.util.*
 
 class Const {
     companion object {
-        const val verType = 0 //0是测试1是正式
-        val BASE_URL =
-            if (verType == 0) "http://10.0.2.2:8080/" else "http://10.0.2.2:8080/"
+        val BASE_URL = "http://10.0.2.2:8080/"
 
-        val IMAHE_URL ="http://10.0.2.2:8080/images/"
+        val IMAHE_URL = BASE_URL+"images/"
 
         fun header(): Map<String, String>? {
             val header: MutableMap<String, String> =

@@ -77,7 +77,10 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
                 mPresenter!!.onLoadMore()
             }
         })
+    }
 
+    override fun onStart() {
+        super.onStart()
         var status = ""
         when (categoryId) {
             1 -> status = ""
@@ -182,7 +185,7 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
                     setStyle("立即支付", R.color.white_ffffff, R.drawable.bg_button_payment)
                 }
                 "AWAITING_DELIVERY" -> {
-                    setStyle("等待收货", R.color.white_ffffff, R.drawable.btn_common_100_radius_button)
+                    setStyle("确认收货", R.color.white_ffffff, R.drawable.btn_common_100_radius_button)
                 }
                 "COMPLETE" -> {
                     setStyle("查看订单", R.color.grey_666666, R.drawable.bg_button_read)
