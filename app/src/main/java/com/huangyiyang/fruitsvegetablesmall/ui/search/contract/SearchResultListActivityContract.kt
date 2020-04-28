@@ -1,6 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.search.contract
 
-import com.huangyiyang.fruitsvegetablesmall.api.ApiResult
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ApiResult
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.load.LoadListPresenter

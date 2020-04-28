@@ -1,10 +1,9 @@
-package com.huangyiyang.fruitsvegetablesmall.api
+package com.huangyiyang.fruitsvegetablesmall.mvp.http
 
 import android.app.Activity
 import android.content.Context
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
-import com.huangyiyang.fruitsvegetablesmall.util.NetWorkUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.NetWorkUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import org.json.JSONException
 import retrofit2.HttpException
@@ -69,7 +68,12 @@ abstract class ApiCallBack<T> : Subscriber<ApiResult<T>> {
         if (t.isOk()) {
             _onNext(t.data, t.message)
         } else {
-            _onError(ServerException(t.code, t.message))
+            _onError(
+                ServerException(
+                    t.code,
+                    t.message
+                )
+            )
         }
     }
 
@@ -78,7 +82,12 @@ abstract class ApiCallBack<T> : Subscriber<ApiResult<T>> {
         e.printStackTrace()
         //网络
         if (!NetWorkUtil.isNetConnected(FrameConst.getContext() as Context)) {
-            _onError(ServerException(ServerException().ERROR_EXCEPTION, mContext!!.getString(R.string.call_back_no_network)))
+            _onError(
+                ServerException(
+                    ServerException().ERROR_EXCEPTION,
+                    mContext!!.getString(R.string.call_back_no_network)
+                )
+            )
         } else if (e is ServerException) { //            ToastUtil.showShort(mContext, ((ServerException) e).mErrorMsg);
             _onError(e)
         } else if (e is HttpException) {

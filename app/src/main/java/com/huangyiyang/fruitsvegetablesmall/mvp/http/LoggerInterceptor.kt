@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.api
+package com.huangyiyang.fruitsvegetablesmall.mvp.http
 
 import android.text.TextUtils
 import android.util.Log
@@ -23,7 +23,8 @@ class LoggerInterceptor : Interceptor{
     constructor(tag: String?, showResponse: Boolean){
         var tag = tag
         if (TextUtils.isEmpty(tag)) {
-            tag = TAG
+            tag =
+                TAG
         }
         this.showResponse = showResponse
         this.tag = tag

@@ -1,9 +1,9 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.order.presenter
 
 import com.huangyiyang.fruitsvegetablesmall.MVPApplication
-import com.huangyiyang.fruitsvegetablesmall.api.ServerException
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ServerException
 import com.huangyiyang.fruitsvegetablesmall.ui.order.contract.OrderListFragmentContract
-import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ToastUtil
 
 class OrderListFragmentPresenter : OrderListFragmentContract.OrderListFragmentPresenter(){
 

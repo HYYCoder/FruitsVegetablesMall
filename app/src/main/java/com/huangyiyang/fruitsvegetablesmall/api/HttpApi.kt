@@ -1,7 +1,8 @@
 package com.huangyiyang.fruitsvegetablesmall.api
 
 import com.huangyiyang.fruitsvegetablesmall.bean.*
-import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ApiResult
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.BannerUtil
 import okhttp3.RequestBody
 import retrofit2.http.*
 import rx.Observable

@@ -1,12 +1,12 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.main.contract
 
-import com.huangyiyang.fruitsvegetablesmall.api.ApiResult
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ApiResult
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.load.LoadListPresenter
 import com.huangyiyang.fruitsvegetablesmall.mvp.model.BaseModelInterface
 import com.huangyiyang.fruitsvegetablesmall.mvp.view.BaseViewInterface
-import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.BannerUtil
 import okhttp3.RequestBody
 import rx.Observable
 

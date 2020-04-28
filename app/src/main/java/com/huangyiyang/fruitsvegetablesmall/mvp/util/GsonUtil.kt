@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.util
+package com.huangyiyang.fruitsvegetablesmall.mvp.util
 
 import com.google.gson.Gson
 import com.google.gson.JsonParser

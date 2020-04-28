@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.rxevent
+package com.huangyiyang.fruitsvegetablesmall.mvp.rxevent
 
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers

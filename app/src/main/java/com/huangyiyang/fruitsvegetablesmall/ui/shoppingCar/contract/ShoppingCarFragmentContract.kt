@@ -1,6 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.contract
 
-import com.huangyiyang.fruitsvegetablesmall.api.ApiResult
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ApiResult
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarListBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.model.BaseModelInterface

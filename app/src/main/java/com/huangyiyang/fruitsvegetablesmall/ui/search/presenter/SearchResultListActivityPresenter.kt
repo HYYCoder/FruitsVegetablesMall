@@ -1,11 +1,11 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.search.presenter
 
 import com.huangyiyang.fruitsvegetablesmall.MVPApplication
-import com.huangyiyang.fruitsvegetablesmall.api.ApiCallBack
-import com.huangyiyang.fruitsvegetablesmall.api.ServerException
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ApiCallBack
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ServerException
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.ui.search.contract.SearchResultListActivityContract
-import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ToastUtil
 import okhttp3.RequestBody
 
 class SearchResultListActivityPresenter : SearchResultListActivityContract.SearchResultListActivityPresenter(){

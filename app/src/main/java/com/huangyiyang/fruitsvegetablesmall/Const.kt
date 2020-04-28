@@ -1,6 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall
 
-import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.manage.UserManager
 import java.util.*
 
 class Const {

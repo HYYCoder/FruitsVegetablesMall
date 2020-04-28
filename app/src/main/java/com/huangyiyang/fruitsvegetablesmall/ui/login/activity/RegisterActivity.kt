@@ -8,7 +8,6 @@ import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -18,17 +17,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.gyf.immersionbar.ktx.immersionBar
-import com.huangyiyang.fruitsvegetablesmall.BuildConfig
 import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.MVPApplication
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.login.contract.RegisterActivityContract
 import com.huangyiyang.fruitsvegetablesmall.ui.login.model.RegisterActivityModel
 import com.huangyiyang.fruitsvegetablesmall.ui.login.presenter.RegisterActivityPresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.main.activity.MainActivity
-import com.huangyiyang.fruitsvegetablesmall.util.*
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.*
 import java.util.*
 
 class RegisterActivity : RegisterActivityContract.RegisterActivityView,View.OnClickListener,BaseActivity<RegisterActivityModel,RegisterActivityPresenter>(){

@@ -10,14 +10,13 @@ import android.view.MenuItem
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.manage.AppForegroundStateManager
-import com.huangyiyang.fruitsvegetablesmall.rxevent.RxManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.manage.AppForegroundStateManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.rxevent.RxManager
 import com.huangyiyang.fruitsvegetablesmall.mvp.model.BaseModelInterface
 import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
-import com.huangyiyang.fruitsvegetablesmall.mvp.view.BaseViewInterface
-import com.huangyiyang.fruitsvegetablesmall.util.KeyboardUtil
-import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
-import com.huangyiyang.fruitsvegetablesmall.util.TypeUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.KeyboardUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ToastUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.TypeUtil
 import java.util.*
 
 abstract class BaseActivity<M : BaseModelInterface,P : BasePresenter<*, *>>:AppCompatActivity() {

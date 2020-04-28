@@ -22,10 +22,10 @@ import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContrac
 import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainFragmentModel
 import com.huangyiyang.fruitsvegetablesmall.ui.main.presenter.MainFragmentPresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.search.activity.SearchResultListActivity
-import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
-import com.huangyiyang.fruitsvegetablesmall.util.DoubleUtil
-import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
-import com.huangyiyang.fruitsvegetablesmall.util.ParamsUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.BannerUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.DoubleUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ImageLoaderUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ParamsUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import com.youth.banner.listener.OnBannerListener

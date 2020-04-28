@@ -10,9 +10,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.huangyiyang.fruitsvegetablesmall.mvp.model.BaseModelInterface
 import com.huangyiyang.fruitsvegetablesmall.mvp.presenter.BasePresenter
-import com.huangyiyang.fruitsvegetablesmall.mvp.view.BaseViewInterface
-import com.huangyiyang.fruitsvegetablesmall.rxevent.RxManager
-import com.huangyiyang.fruitsvegetablesmall.util.TypeUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.rxevent.RxManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.TypeUtil
 
 abstract class BaseFragment<M : BaseModelInterface,P : BasePresenter<*, *>> : Fragment(){
 

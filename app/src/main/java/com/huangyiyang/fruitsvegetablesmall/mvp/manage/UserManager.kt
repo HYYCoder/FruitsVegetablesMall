@@ -1,9 +1,9 @@
-package com.huangyiyang.fruitsvegetablesmall.manage
+package com.huangyiyang.fruitsvegetablesmall.mvp.manage
 
 import android.content.Context
-import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
-import com.huangyiyang.fruitsvegetablesmall.util.ACacheUtil
-import com.huangyiyang.fruitsvegetablesmall.util.GsonUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.FrameConst
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ACacheUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.GsonUtil
 import org.json.JSONArray
 import org.json.JSONException
 import java.util.*

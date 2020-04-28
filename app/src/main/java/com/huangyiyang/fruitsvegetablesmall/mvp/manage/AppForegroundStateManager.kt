@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.manage
+package com.huangyiyang.fruitsvegetablesmall.mvp.manage
 
 import android.app.Activity
 import android.os.Handler

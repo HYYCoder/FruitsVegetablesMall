@@ -1,7 +1,7 @@
-package com.huangyiyang.fruitsvegetablesmall.api
+package com.huangyiyang.fruitsvegetablesmall.mvp.http
 
 import android.content.Context
-import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ToastUtil
 
 open class ServerException : Exception{
     val ERROR_NO_DATA = "400"

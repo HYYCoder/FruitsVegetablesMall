@@ -1,7 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Handler
@@ -12,12 +11,12 @@ import android.text.TextUtils
 import android.util.Log
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
-import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
-import com.huangyiyang.fruitsvegetablesmall.manage.AppForegroundStateManager
-import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.FrameConst
+import com.huangyiyang.fruitsvegetablesmall.mvp.manage.AppForegroundStateManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.ui.login.activity.LoginActivity
-import com.huangyiyang.fruitsvegetablesmall.util.ContextUtils
-import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ContextUtils
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ImageLoaderUtil
 import java.io.BufferedReader
 import java.io.FileReader
 import java.io.IOException

@@ -1,13 +1,13 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.main.presenter
 
 import com.huangyiyang.fruitsvegetablesmall.MVPApplication
-import com.huangyiyang.fruitsvegetablesmall.api.ApiCallBack
-import com.huangyiyang.fruitsvegetablesmall.api.ServerException
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ApiCallBack
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ServerException
 import com.huangyiyang.fruitsvegetablesmall.bean.CategoryListBean
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.ui.main.contract.MainFragmentContract
-import com.huangyiyang.fruitsvegetablesmall.util.BannerUtil
-import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.BannerUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ToastUtil
 import okhttp3.RequestBody
 
 class MainFragmentPresenter : MainFragmentContract.MainFragmentPresenter() {

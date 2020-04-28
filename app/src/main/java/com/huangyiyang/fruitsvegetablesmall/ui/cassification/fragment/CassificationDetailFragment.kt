@@ -21,7 +21,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.cassification.contract.Classifica
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.model.ClassificationDetailFragmentModel
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.presenter.ClassificationDetailFragmentPresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.goods.activity.GoodsDetailActivity
-import com.huangyiyang.fruitsvegetablesmall.util.*
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.*
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import com.zhouyou.recyclerview.XRecyclerView

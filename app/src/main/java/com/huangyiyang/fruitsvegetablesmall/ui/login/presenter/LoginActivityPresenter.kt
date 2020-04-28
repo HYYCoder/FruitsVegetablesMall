@@ -1,12 +1,12 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.login.presenter
 
 import com.huangyiyang.fruitsvegetablesmall.MVPApplication
-import com.huangyiyang.fruitsvegetablesmall.api.ApiCallBack
-import com.huangyiyang.fruitsvegetablesmall.api.ServerException
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ApiCallBack
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ServerException
 import com.huangyiyang.fruitsvegetablesmall.bean.LoginBean
-import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.ui.login.contract.LoginActivityContract
-import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ToastUtil
 import okhttp3.RequestBody
 
 class LoginActivityPresenter : LoginActivityContract.LoginActivityPresenter(){

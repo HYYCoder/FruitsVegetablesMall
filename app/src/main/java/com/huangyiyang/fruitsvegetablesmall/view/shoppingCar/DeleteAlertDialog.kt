@@ -6,7 +6,7 @@ import android.view.*
 import android.widget.Button
 import android.widget.TextView
 import com.huangyiyang.fruitsvegetablesmall.R
-import com.huangyiyang.fruitsvegetablesmall.util.StringUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.StringUtil
 
 class DeleteAlertDialog {
 

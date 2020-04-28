@@ -1,12 +1,12 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.goods.presenter
 
 import com.huangyiyang.fruitsvegetablesmall.MVPApplication
-import com.huangyiyang.fruitsvegetablesmall.api.ApiCallBack
-import com.huangyiyang.fruitsvegetablesmall.api.ServerException
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ApiCallBack
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ServerException
 import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.ui.goods.contract.GoodsDetailActivityContract
-import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ToastUtil
 import okhttp3.RequestBody
 
 class GoodsDetailActivityPresenter : GoodsDetailActivityContract.GoodsDetailActivityPresenter(){

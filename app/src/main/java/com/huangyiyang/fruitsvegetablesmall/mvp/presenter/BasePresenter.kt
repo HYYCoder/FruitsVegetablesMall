@@ -1,7 +1,7 @@
 package com.huangyiyang.fruitsvegetablesmall.mvp.presenter
 
 import android.content.Context
-import com.huangyiyang.fruitsvegetablesmall.rxevent.RxManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.rxevent.RxManager
 
 abstract class BasePresenter<M,V> {
 

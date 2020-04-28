@@ -5,7 +5,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
-import com.huangyiyang.fruitsvegetablesmall.util.DensityUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.DensityUtil
 
 class GridItemDecoration : RecyclerView.ItemDecoration{
     private var mContext: Context? = null

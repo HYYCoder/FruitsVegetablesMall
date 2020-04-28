@@ -1,8 +1,8 @@
-package com.huangyiyang.fruitsvegetablesmall.api
+package com.huangyiyang.fruitsvegetablesmall.mvp.http
 
 import android.annotation.SuppressLint
 import android.app.Application
-import com.huangyiyang.fruitsvegetablesmall.util.ImageMeasureUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ImageMeasureUtil
 
 class FrameConst {
     companion object {

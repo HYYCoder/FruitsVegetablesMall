@@ -1,6 +1,6 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.order.contract
 
-import com.huangyiyang.fruitsvegetablesmall.api.ApiResult
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ApiResult
 import com.huangyiyang.fruitsvegetablesmall.bean.OrderListBean
 import com.huangyiyang.fruitsvegetablesmall.mvp.load.LoadListPresenter
 import com.huangyiyang.fruitsvegetablesmall.mvp.model.BaseModelInterface

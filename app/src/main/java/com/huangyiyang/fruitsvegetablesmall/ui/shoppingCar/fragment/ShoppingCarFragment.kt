@@ -21,10 +21,10 @@ import com.huangyiyang.fruitsvegetablesmall.ui.order.activity.ConfirmOrderActivi
 import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.contract.ShoppingCarFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.model.ShoppingCarFragmentModel
 import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.presenter.ShoppingCarFragmentPresenter
-import com.huangyiyang.fruitsvegetablesmall.util.DoubleUtil
-import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
-import com.huangyiyang.fruitsvegetablesmall.util.ParamsUtil
-import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.DoubleUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ImageLoaderUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ParamsUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ToastUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import com.huangyiyang.fruitsvegetablesmall.view.shoppingCar.DeleteAlertDialog
 import com.huangyiyang.fruitsvegetablesmall.view.shoppingCar.ToolbarUtil

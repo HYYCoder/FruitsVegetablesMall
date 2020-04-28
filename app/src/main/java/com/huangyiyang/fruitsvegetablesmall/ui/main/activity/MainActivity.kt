@@ -3,11 +3,8 @@ package com.huangyiyang.fruitsvegetablesmall.ui.main.activity
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -19,7 +16,7 @@ import com.gyf.immersionbar.ktx.immersionBar
 import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
 import com.huangyiyang.fruitsvegetablesmall.event.ShoppingCountEvent
-import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.cassification.fragment.ClassificationFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.login.activity.LoginActivity
@@ -29,8 +26,8 @@ import com.huangyiyang.fruitsvegetablesmall.ui.main.model.MainActivityModel
 import com.huangyiyang.fruitsvegetablesmall.ui.main.presenter.MainActivityPresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.mine.fragment.MineFragment
 import com.huangyiyang.fruitsvegetablesmall.ui.shoppingCar.fragment.ShoppingCarFragment
-import com.huangyiyang.fruitsvegetablesmall.util.PermissionUtil
-import com.huangyiyang.fruitsvegetablesmall.util.ToastUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.PermissionUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ToastUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.NoSwipeableViewPager
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe

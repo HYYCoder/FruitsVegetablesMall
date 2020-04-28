@@ -16,8 +16,8 @@ import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.ui.order.contract.OrderDetailActivityContract
 import com.huangyiyang.fruitsvegetablesmall.ui.order.model.OrderDetailActivityModel
 import com.huangyiyang.fruitsvegetablesmall.ui.order.presenter.OrderDetailActivityPresenter
-import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
-import com.huangyiyang.fruitsvegetablesmall.util.ParamsUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ImageLoaderUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ParamsUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.huangyiyang.fruitsvegetablesmall.view.shoppingCar.ToolbarUtil
 import com.zhouyou.recyclerview.XRecyclerView

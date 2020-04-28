@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.util
+package com.huangyiyang.fruitsvegetablesmall.mvp.util
 
 import okhttp3.MediaType
 import okhttp3.RequestBody

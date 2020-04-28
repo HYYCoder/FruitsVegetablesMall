@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.api
+package com.huangyiyang.fruitsvegetablesmall.mvp.http
 
 data class ApiResult<T>(
     var code: String,

@@ -1,6 +1,5 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.search.activity
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Paint
@@ -21,7 +20,7 @@ import com.huangyiyang.fruitsvegetablesmall.bean.GoodsDetailBean
 import com.huangyiyang.fruitsvegetablesmall.bean.ShoppingCarCountBean
 import com.huangyiyang.fruitsvegetablesmall.event.EventParams
 import com.huangyiyang.fruitsvegetablesmall.event.ShoppingCarRefreshEvent
-import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.ui.goods.activity.GoodsDetailActivity
@@ -29,7 +28,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.main.activity.MainActivity
 import com.huangyiyang.fruitsvegetablesmall.ui.search.contract.SearchResultListActivityContract
 import com.huangyiyang.fruitsvegetablesmall.ui.search.model.SearchResultListActivityModel
 import com.huangyiyang.fruitsvegetablesmall.ui.search.presenter.SearchResultListActivityPresenter
-import com.huangyiyang.fruitsvegetablesmall.util.*
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.*
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import com.huangyiyang.fruitsvegetablesmall.view.search.GridItemDecoration

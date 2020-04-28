@@ -1,10 +1,10 @@
-package com.huangyiyang.fruitsvegetablesmall.api
+package com.huangyiyang.fruitsvegetablesmall.mvp.http
 
 import android.content.Context
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
-import com.huangyiyang.fruitsvegetablesmall.util.NetWorkUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.NetWorkUtil
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
@@ -36,7 +36,10 @@ open class ApiClient {
             if (sInstance == null) {
                 synchronized(ApiClient::class.java) {
                     if (sInstance == null) {
-                        sInstance = ApiClient(baseUrl)
+                        sInstance =
+                            ApiClient(
+                                baseUrl
+                            )
                     }
                 }
             }
@@ -67,7 +70,12 @@ open class ApiClient {
             .readTimeout(45, TimeUnit.SECONDS)
             .writeTimeout(55, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
-            .addInterceptor(LoggerInterceptor(HTTP_LOG, true))
+            .addInterceptor(
+                LoggerInterceptor(
+                    HTTP_LOG,
+                    true
+                )
+            )
             .cookieJar(cookieJar)
             .build()
 

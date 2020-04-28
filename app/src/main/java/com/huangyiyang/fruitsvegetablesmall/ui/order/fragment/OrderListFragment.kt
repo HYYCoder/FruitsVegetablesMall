@@ -17,7 +17,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.order.activity.OrderDetailActivit
 import com.huangyiyang.fruitsvegetablesmall.ui.order.contract.OrderListFragmentContract
 import com.huangyiyang.fruitsvegetablesmall.ui.order.model.OrderListFragmentModel
 import com.huangyiyang.fruitsvegetablesmall.ui.order.presenter.OrderListFragmentPresenter
-import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ImageLoaderUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.zhouyou.recyclerview.XRecyclerView
 import com.zhouyou.recyclerview.XRecyclerView.LoadingListener

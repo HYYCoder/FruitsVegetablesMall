@@ -13,14 +13,14 @@ import com.huangyiyang.fruitsvegetablesmall.R
 import com.huangyiyang.fruitsvegetablesmall.Const
 import com.huangyiyang.fruitsvegetablesmall.bean.ConfirmOrderBean
 import com.huangyiyang.fruitsvegetablesmall.bean.OrderBean
-import com.huangyiyang.fruitsvegetablesmall.manage.UserManager
+import com.huangyiyang.fruitsvegetablesmall.mvp.manage.UserManager
 import com.huangyiyang.fruitsvegetablesmall.mvp.activity.BaseActivity
 import com.huangyiyang.fruitsvegetablesmall.mvp.adapter.BaseQuickAdapter
 import com.huangyiyang.fruitsvegetablesmall.ui.order.contract.ConfirmOrderActivityContract
 import com.huangyiyang.fruitsvegetablesmall.ui.order.model.ConfirmOrderActivityModel
 import com.huangyiyang.fruitsvegetablesmall.ui.order.presenter.ConfirmOrderActivityPresenter
-import com.huangyiyang.fruitsvegetablesmall.util.ImageLoaderUtil
-import com.huangyiyang.fruitsvegetablesmall.util.ParamsUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ImageLoaderUtil
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.ParamsUtil
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import com.huangyiyang.fruitsvegetablesmall.view.shoppingCar.ToolbarUtil

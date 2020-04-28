@@ -22,7 +22,7 @@ import com.huangyiyang.fruitsvegetablesmall.ui.goods.contract.GoodsDetailActivit
 import com.huangyiyang.fruitsvegetablesmall.ui.goods.model.GoodsDetailActivityModel
 import com.huangyiyang.fruitsvegetablesmall.ui.goods.presenter.GoodsDetailActivityPresenter
 import com.huangyiyang.fruitsvegetablesmall.ui.main.activity.MainActivity
-import com.huangyiyang.fruitsvegetablesmall.util.*
+import com.huangyiyang.fruitsvegetablesmall.mvp.util.*
 import com.huangyiyang.fruitsvegetablesmall.view.main.CommonLayout
 import com.huangyiyang.fruitsvegetablesmall.view.main.LoadingDialog
 import org.greenrobot.eventbus.EventBus

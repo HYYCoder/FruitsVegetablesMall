@@ -1,10 +1,10 @@
 package com.huangyiyang.fruitsvegetablesmall.ui.order.model
 
-import com.huangyiyang.fruitsvegetablesmall.api.ApiResult
-import com.huangyiyang.fruitsvegetablesmall.api.FrameConst
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.ApiResult
+import com.huangyiyang.fruitsvegetablesmall.mvp.http.FrameConst
 import com.huangyiyang.fruitsvegetablesmall.api.HttpApi
 import com.huangyiyang.fruitsvegetablesmall.bean.OrderListBean
-import com.huangyiyang.fruitsvegetablesmall.rxevent.RxSchedulers
+import com.huangyiyang.fruitsvegetablesmall.mvp.rxevent.RxSchedulers
 import com.huangyiyang.fruitsvegetablesmall.ui.order.contract.OrderListFragmentContract
 import rx.Observable
 
