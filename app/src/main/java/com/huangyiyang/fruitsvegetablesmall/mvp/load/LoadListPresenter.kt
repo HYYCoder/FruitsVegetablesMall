@@ -139,7 +139,7 @@ abstract class LoadListPresenter<T, M, V> : LoadingListener , BasePresenter<M, V
                 bean: List<T>?,
                 message: String?
             ) {
-                if (bean == null || bean == null) {
+                if (bean == null) {
                     if (mPage == 0) {
                         if (isE) { //                              mCommonLayout.cancelShow();
                             mCommonLayout?.showEmpty()
