@@ -202,6 +202,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
         goodsDetailParames["price"] = ""
         goodsDetailParames["stock"] = ""
         goodsDetailParames["reducedPrice"] = ""
+        goodsDetailParames["hotGoods"] = "YES"
         goodsDetailParames["pageSize"] = java.lang.String.valueOf(mPresenter?.mPageSize)
         mPresenter!!.initLoadParams(Const.header(), goodsDetailParames)
         mPresenter!!.initLoadView(mCommonLayout, mXRecyclerView, mAdapter)

@@ -21,7 +21,7 @@ interface HttpApi {
     @GET("/specialoffers")
     fun getBannerList(@HeaderMap header: Map<String, String>?, @QueryMap body:Map<String, String>?): Observable<ApiResult<List<BannerUtil.Companion.DataBean>?>?>?
 
-    //获取首页推荐商品列表
+    //获取商品列表
     @GET("/goods")
     fun getGoodsList(@HeaderMap header: Map<String, String>?, @QueryMap body:Map<String, String>?): Observable<ApiResult<List<GoodsDetailBean>?>?>?
 

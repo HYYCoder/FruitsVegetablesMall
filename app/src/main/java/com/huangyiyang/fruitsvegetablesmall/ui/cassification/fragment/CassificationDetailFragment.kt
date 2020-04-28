@@ -94,6 +94,7 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
         goodsDetailParames["price"] = ""
         goodsDetailParames["stock"] = ""
         goodsDetailParames["reducedPrice"] = ""
+        goodsDetailParames["hotGoods"] = ""
         goodsDetailParames["pageSize"] = java.lang.String.valueOf(mPresenter?.mPageSize)
         mPresenter!!.initLoadParams(Const.header(), goodsDetailParames)
         mPresenter!!.initLoadView(common_layout, mXRecyclerViewOne, classificationDetaiListAdapter)

@@ -12,5 +12,6 @@ class GoodsDetailBean(
     var minimunOrderQuantity: Double,
     var maximumOrderQuantity: Double,
     var minimumIncrementQuantity: Double,
-    var detail:String
+    var detail:String,
+    var hotGoods:String
 )

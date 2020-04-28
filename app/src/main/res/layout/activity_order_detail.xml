@@ -234,6 +234,7 @@
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical|end"
+                            android:gravity="right"
                             android:textColor="@color/black_333333"
                             android:textSize="@dimen/font_14" />
                     </FrameLayout>
@@ -255,6 +256,7 @@
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical|end"
+                            android:gravity="right"
                             android:maxLength="90"
                             android:textColor="@color/black_333333"
                             android:textSize="@dimen/font_14" />

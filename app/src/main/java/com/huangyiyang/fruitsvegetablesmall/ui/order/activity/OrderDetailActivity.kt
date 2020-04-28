@@ -145,11 +145,11 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
         val goodsDatas: ArrayList<OrderDetailBean.Companion.DetailsBean> = ArrayList<OrderDetailBean.Companion.DetailsBean>()
         val tvGift: TextView = findViewById(R.id.discount_giftTitle)
         for (i in 0 until param?.details?.size!!) {
-            if (param.details.get(i).type.equals("GIFT")) {
+            if (param.details[i].type == "GIFT") {
                 tvGift.visibility = View.VISIBLE
-                giftDatas.add(param.details.get(i))
-            } else if (param.details.get(i).type.equals("GOODS")) {
-                goodsDatas.add(param.details.get(i))
+                giftDatas.add(param.details[i])
+            } else if (param.details[i].type == "GOODS") {
+                goodsDatas.add(param.details[i])
             } else if (i >= param.details.size) {
                 tvGift.visibility = View.GONE
             }
@@ -157,16 +157,16 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
         btnOrderDetail!!.visibility = View.VISIBLE
         detailListAdapter?.setListAll(goodsDatas)
         tvOrderDetailId!!.text = "订单编号：" + param.code
-        tvOrderDetailTime?.setText(param.date)
+        tvOrderDetailTime?.text = param.date
         tvOrderDetailPrice!!.text = getString(R.string.common_amount, param.amount)
         if (param.discountAmount !== 0.0) {
             tvOrderDetailCoupon!!.text = "-" + getString(
                 R.string.common_amount,
                 param.discountAmount
             )
-            flOrderDetailCoupon?.setVisibility(View.VISIBLE)
+            flOrderDetailCoupon?.visibility = View.VISIBLE
         } else {
-            flOrderDetailCoupon?.setVisibility(View.GONE)
+            flOrderDetailCoupon?.visibility = View.GONE
         }
         if (param.paidAmount < 0) {
             tvOrderDetailTotal!!.text = "¥0.00"
@@ -176,17 +176,15 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
             param.paidAmount
         )
         }
-        tvOrderDetailPeople?.setText(param.receiver)
-        tvOrderDetailPhone?.setText(param.mobile)
-        tvOrderDetailAddress?.setText(param.address)
-        tvOrderDetailNote?.setText(param.note)
-        if (param.status.equals(getString(R.string.order_cancel)) || param.status.equals(
-                getString(R.string.order_complete)
-            )
+        tvOrderDetailPeople?.text = param.receiver
+        tvOrderDetailPhone?.text = param.mobile
+        tvOrderDetailAddress?.text = param.address
+        tvOrderDetailNote?.text = param.note
+        if (param.status == getString(R.string.order_cancel) || param.status == getString(R.string.order_complete)
         ) {
             setStyle("查看订单", R.color.grey_666666, R.drawable.bg_button_read)
         }
-        if (param.status.equals(getString(R.string.order_payment))) {
+        if (param.status == getString(R.string.order_payment)) {
             setStyle("立即支付", R.color.white_ffffff, R.drawable.bg_button_payment)
             btnOrderDetail?.setOnClickListener {
                 val map: MutableMap<String, String> = HashMap()
