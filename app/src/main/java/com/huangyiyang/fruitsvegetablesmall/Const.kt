@@ -7,6 +7,7 @@ class Const {
     companion object {
         val BASE_URL = "http://10.0.2.2:8080/"
 
+        //Const.IMAHE_URL添加前缀，相当于http://10.0.2.2:8080/images/+图片名,目前BannerUtil和ImageLoaderUtil用到
         val IMAHE_URL = BASE_URL+"images/"
 
         fun header(): Map<String, String>? {
