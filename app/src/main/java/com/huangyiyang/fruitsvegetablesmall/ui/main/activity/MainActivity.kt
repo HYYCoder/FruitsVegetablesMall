@@ -144,9 +144,6 @@ class MainActivity : MainActivityContract.MainActivityView, RadioGroup.OnChecked
             ToastUtil.showLong(this, "登录已过期，请重新登录")
             LoginActivity.isL = false
         }
-        if (!LoginActivity.isR) {
-            //checkAppVersionCode()
-        }
     }
 
     override fun onResume() {

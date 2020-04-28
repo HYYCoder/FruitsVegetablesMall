@@ -14,8 +14,6 @@ class Const {
             val header: MutableMap<String, String> =
                 HashMap()
             header["Authorization"] = UserManager.getInstance()?.getUserToken()!!
-//            header["User-Agent"] =
-//                Build.BRAND + " " + Build.MODEL + " " + Build.VERSION.RELEASE + " " + Build.VERSION.SDK_INT + " " + BuildConfig.VERSION_NAME
             return header
         }
     }

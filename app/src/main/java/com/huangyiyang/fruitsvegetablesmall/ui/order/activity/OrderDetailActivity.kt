@@ -46,7 +46,6 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
     private var detailListAdapter: DetailListAdapter? = null
     private var orderDetail: OrderDetailBean? = null
     private var mCommonLayout: CommonLayout? = null
-//    private var mOrderGiftsListAdapter: OrderGiftsListAdapter? = null
 
     companion object{
         private const val KEY_ORDER_ID = "order_id"
@@ -113,14 +112,6 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
         detailListAdapter = DetailListAdapter(this)
         orderRecyclerView?.setAdapter(detailListAdapter)
         orderRecyclerView?.setPullRefreshEnabled(false)
-        //==============满赠列表========================
-//        mCommonLayout = findViewById(R.id.common_contentGfit)
-//        mOrderGiftsListAdapter = OrderGiftsListAdapter(this)
-//        orderRecyclerView = findViewById(R.id.gfit_recyclerView)
-//        orderRecyclerView?.setLayoutManager(LinearLayoutManager(this))
-//        orderRecyclerView?.setAdapter(mOrderGiftsListAdapter)
-//        orderRecyclerView?.setLoadingMoreEnabled(false)
-//        orderRecyclerView?.setPullRefreshEnabled(false)
 
         mPresenter?.getOrderDetail(Const.header(), mOrderId.toString())
     }
@@ -255,38 +246,4 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
         }
     }
 
-//    inner class OrderGiftsListAdapter : BaseQuickAdapter<OrderDetailBean.DetailsBean?>{
-//
-//        constructor(context: Context?) : super(
-//            context,
-//            R.layout.item_order_gifts_goods_list
-//        )
-//
-//        override fun HelperBindData(
-//            viewHolder: HelperRecyclerViewHolder,
-//            position: Int,
-//            data: OrderDetailBean.DetailsBean?
-//        ) {
-//            if (data != null) {
-//                if (data.getType().equals("GIFT")) {
-//                    val mGoodsImg =
-//                        viewHolder.getView<ImageView>(R.id.gift_img) //赠品图
-//                    ImageLoaderUtil.getInstance()?.load(
-//                        mGoodsImg,
-//                        data.getImageUrl().toString()
-//                    )
-//                    val mGoodsName =
-//                        viewHolder.getView<TextView>(R.id.tv_item_gift_name) //赠品名称
-//                    mGoodsName.setText(data.getName())
-//                    val mGoodsPrice =
-//                        viewHolder.getView<TextView>(R.id.tv_item_gift_price) //赠品价格
-//                    mGoodsPrice.setText(getString(R.string.common_amount, data.getPrice()))
-//                    val mGoodsCount =
-//                        viewHolder.getView<TextView>(R.id.tv_item_gift_count) //商品数量
-//                    val giftQuantity: Double = data.getQuantity() * 1.0
-//                    mGoodsCount.text = "x" + getString(R.string.common_amount2, giftQuantity)
-//                }
-//            }
-//        }
-//    }
 }

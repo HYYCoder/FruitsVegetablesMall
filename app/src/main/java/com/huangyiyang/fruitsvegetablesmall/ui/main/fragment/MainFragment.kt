@@ -179,12 +179,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
         //初始化轮播图点击事件
         mBannerUtil?.setBannerClickable(OnBannerListener { position ->
-//            if (TextUtils.isEmpty(bannerLists.get(position).getEventId())) return@OnBannerListener
-//            ActivityDetailActivity.goTo(
-//                activity,
-//                bannerLists.get(position).getEventId(),
-//                false
-//            )
+
         })
 
         val bannerListParames: MutableMap<String, String> =
@@ -291,16 +286,6 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     override fun setRecommendGoodsList(goodsDetailBeanList: List<GoodsDetailBean>?) {
 
-//        goodsBeanList = null;
-//        if (goodsBeanList == null || goodsBeanList.size() == 0) {
-        // View mEmptyView = getActivity().getLayoutInflater().inflate(R.layout.common_empty, null);
-//            mEmptyImage = mEmptyView.findViewById(R.id.iv_empty);
-//            mEmptyImage.setImageResource(mEmptyImageId);
-        //      mXRecyclerView.setEmptyView(null);
-//            mAdapter.setListAll(goodsBeanList);
-//        } else {
-//            mAdapter.setListAll(goodsBeanList);
-//        }
         LoadingDialog.cancelDialogForLoading()
     }
 
@@ -402,12 +387,6 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
                 viewHolder?.getView<ImageView>(R.id.iv_item_goods_shoppingcar) //购物车按钮
             mGoodsUnit?.text = "/" + item?.specification
             mGoodsName?.text = item?.name
-//            if (data.getLabels().size() > 0) {
-//                mGoodsActivity.visibility = View.VISIBLE
-//                mGoodsActivity.setText(data.getLabels().get(data.getLabels().size() - 1))
-//            } else {
-//                mGoodsActivity.visibility = View.GONE
-//            }
             if (item?.reducedPrice != 0.0) { //判断是否有优惠价格
                 mGoodsOldPrice?.visibility = View.VISIBLE
                 mGoodsPrice?.text = getString(R.string.common_amount, item?.price!!-item?.reducedPrice!!)

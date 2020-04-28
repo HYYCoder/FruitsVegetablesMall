@@ -41,18 +41,14 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
     private var mTvGoodsPrice: TextView? = null
     private var mTvGoodsOldPrice: TextView? = null
     private var mTvGoodsStock: TextView? = null
-//    private var mGoodsDetailWebView: WebView? = null
     private var mCb1: CheckBox? = null
     private var mCb2: CheckBox? = null
     private var mCbGoodsDetailActivityMinus: FrameLayout? = null
     private var mCbGoodsDetailActivityPlus: FrameLayout? = null
     private var mEtGoodsCount: EditText? = null
     private var mBtnAddShoppingCar: Button? = null
-    val MAX_COUNT = 99999
     private var goodsId: String? = null
     private var mCommonLayout: CommonLayout? = null
-//    private var mDiscountsAdapter: DiscountsAdapter? = null
-    private var mDiscountListRecyclerView: RecyclerView? = null
     private var mShoppingCarCount: TextView? = null
     private var mGoodsUnit: TextView? = null
     private var goodsDetailBean: GoodsDetailBean? = null
@@ -114,11 +110,6 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
         mEtGoodsCount = findViewById(R.id.et_shopping_count)
         mBtnAddShoppingCar = findViewById(R.id.add_shopping_car)
         mBtnAddShoppingCar?.setOnClickListener(this)
-//        mDiscountsAdapter = DiscountsAdapter(this)
-//        mDiscountListRecyclerView = findViewById(R.id.discount_recyclerView)
-//        mDiscountListRecyclerView?.setLayoutManager(LinearLayoutManager(this))
-//        mDiscountListRecyclerView?.setAdapter(mDiscountsAdapter)
-//        mGoodsDetailWebView = findViewById(R.id.detail_web_view)
         mShoppingCarCount = findViewById(R.id.shopping_car_count)
         mCommonLayout?.showLoading()
 
@@ -398,59 +389,6 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
             mEtGoodsCount!!.setText("0")
             mEtGoodsCount!!.isEnabled = false
         }
-        //web加载================================
-        //商品详情，显示
-        //mGoodsDetailWebView.getSettings().setDefaultTextEncodingName("utf-8")
-        //mGoodsDetailWebView.getSettings().setJavaScriptEnabled(true)
-        //mGoodsDetailWebView.getSettings().setPluginState(WebSettings.PluginState.ON)
-        //mGoodsDetailWebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH)
-        //mGoodsDetailWebView.getSettings().setBlockNetworkImage(true) //锁定图片加载
-        //mGoodsDetailWebView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT)
-        //mGoodsDetailWebView.setBackgroundColor(0); // 设置背景色
-        //mGoodsDetailWebView.getBackground().setAlpha(0); // 设置填充透WebView明度 范围：0-255
-        //webView自适应
-        //mWebView.getSettings().setUseWideViewPort(true);
-        //mWebView.getSettings().setLoadWithOverviewMode(true);
-        //mGoodsDetailWebView.setBackgroundColor(0); // 设置背景色
-        //mGoodsDetailWebView.getBackground().setAlpha(0); // 设置填充透WebView明度 范围：0-255
-        //webView自适应
-        //mWebView.getSettings().setUseWideViewPort(true);
-        //mWebView.getSettings().setLoadWithOverviewMode(true);
-        //mGoodsDetailWebView.loadData(bean.getDetail(), "text/html; charset=UTF-8", null)
-//
-//        mGoodsDetailWebView.setWebViewClient(object : WebViewClient() {
-//            override fun onReceivedSslError(
-//                view: WebView,
-//                handler: SslErrorHandler,
-//                error: SslError
-//            ) {
-//                super.onReceivedSslError(view, handler, error)
-//                ToastUtil.showShort(mContext, "加载失败")
-//            }
-//
-//            override fun onPageStarted(
-//                view: WebView,
-//                url: String,
-//                favicon: Bitmap
-//            ) {
-//                super.onPageStarted(view, url, favicon)
-//            }
-//
-//            override fun onPageFinished(view: WebView, url: String) {
-//                super.onPageFinished(view, url)
-//                mGoodsDetailWebView.getSettings().setBlockNetworkImage(false) //打开图片加载
-//                if (!mGoodsDetailWebView.getSettings().getLoadsImagesAutomatically()) {
-//                    mGoodsDetailWebView.getSettings().setLoadsImagesAutomatically(true)
-//                }
-//            }
-//
-//            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-//                val uri = Uri.parse(url) //url为你要链接的地址
-//                val intent = Intent(Intent.ACTION_VIEW, uri)
-//                startActivity(intent)
-//                return true
-//            }
-//        })
         mCommonLayout!!.showContent()
 
     }
@@ -470,65 +408,4 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
         EventBus.getDefault().post(ShoppingCountEvent(bean?.count!!))
     }
 
-//    private class DiscountsAdapter internal constructor(context: Context?) :
-//        BaseQuickAdapter<GoodsDetailBean?>(
-//            context,
-//            R.layout.item_discount_list
-//        ) {
-//        override fun HelperBindData(
-//            viewHolder: HelperRecyclerViewHolder,
-//            position: Int,
-//            data: GoodsDetailBean?
-//        ) {
-//            val mDiscountName =
-//                viewHolder.getView<TextView>(R.id.tv_item_discount_text) //优惠信息
-//            val llAmountOff = viewHolder.getView<LinearLayout>(R.id.ll_amountoff)
-//            val llSendGifts = viewHolder.getView<LinearLayout>(R.id.ll_send_gift)
-//            val llReduce =
-//                viewHolder.getView<LinearLayout>(R.id.ll_goods_discount_reduce)
-//            val mGiftInfo = viewHolder.getView<TextView>(R.id.tv_gift_info_text)
-//            val mReduceText = viewHolder.getView<TextView>(R.id.tv_reduce_text)
-//            if (data != null && data.getRules() != null) {
-//                val rules: List<GoodsDetailBean.ApplicableCampaignsBean.RulesBean> =
-//                    data.getRules()
-//                var couponDetail = ""
-//                val contentStr = StringBuilder("")
-//                for (i in rules.indices) {
-//                    if (0 == i) {
-//                        contentStr.append("活动商品满").append(rules[0].getThreshold() / 100)
-//                            .append("元，减").append(rules[0].getAmountOff() / 100).append("；")
-//                    } else {
-//                        contentStr.append("满").append(rules[i].getThreshold() / 100)
-//                            .append("元，减").append(rules[i].getAmountOff() / 100).append("；")
-//                    }
-//                    couponDetail = contentStr.toString()
-//                }
-//                mDiscountName.text = couponDetail
-//            }
-//            mGiftInfo.setText(R.string.goods_gifts_info_text)
-//            mReduceText.text = "指定商品统一定价"
-//            when (data.category) {
-//                "AMOUNT_OFF_ON_SKUS" -> {
-//                    llReduce.visibility = View.GONE
-//                    llSendGifts.visibility = View.GONE
-//                }
-//                "GIFT_ON_SKUS" -> {
-//                    llAmountOff.visibility = View.GONE
-//                    llReduce.visibility = View.GONE
-//                }
-//                "DISCOUNT_ON_SKUS" -> {
-//                    llAmountOff.visibility = View.GONE
-//                    llSendGifts.visibility = View.GONE
-//                }
-//            }
-//            viewHolder.itemView.setOnClickListener {
-//                ActivityDetailActivity.goTo(
-//                    this@GoodsDetailActivity,
-//                    java.lang.String.valueOf(data.getCampaignId()),
-//                    true
-//                )
-//                ActivityDetailActivity.isU = true
-//            }
-//        }
-//    }
 }

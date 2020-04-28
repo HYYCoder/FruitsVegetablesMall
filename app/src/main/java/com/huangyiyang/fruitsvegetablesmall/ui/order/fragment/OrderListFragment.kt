@@ -132,11 +132,6 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
             if (item?.payAmount!! < 0.0) {
                 tvOrderPrice.text = "¥0.00"
             } else tvOrderPrice.text = getString(R.string.order_price, item.payAmount)
-//            if (item.status != "COMPLETE") {
-//                tvOrderStatus.visibility = View.GONE
-//            } else {
-//                tvOrderStatus.visibility = View.VISIBLE
-//            }
             tvOrderStatus.text = getStringByStatus(item.status)
             tvOrderStatus.setTextColor(Color.GRAY)
             //===========商品列表===========

@@ -86,7 +86,6 @@ class MineFragment : MineFragmentContract.MineFragmentView, BaseFragment<MineFra
         toolbarUtil?.setLineBackgroundColor(R.color.white_ffffff)
         toolbarUtil?.setLeftVisibility(View.GONE)
         toolbarUtil?.setRightImage(R.drawable.setting)
-        //toolbarUtil?.setOnRightClickListener(View.OnClickListener { SettingActivity.goTo(activity) })
     }
 
     override fun initView() {

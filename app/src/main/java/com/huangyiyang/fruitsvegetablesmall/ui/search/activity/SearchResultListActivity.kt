@@ -240,12 +240,6 @@ public class SearchResultListActivity : BaseActivity<SearchResultListActivityMod
             mGoodsUnit.text = "/" + data.specification
             val mGoodsActivity =
                 viewHolder.getView<TextView>(R.id.tv_item_goods_activity) //商品活动
-//            if (data.getLabels().size() > 0) {
-//                mGoodsActivity.setText(data.getLabels().get(data.getLabels().size() - 1))
-//                mGoodsActivity.visibility = View.VISIBLE
-//            } else {
-//                mGoodsActivity.visibility = View.INVISIBLE
-//            }
             val mGoodsPrice =
                 viewHolder.getView<TextView>(R.id.tv_item_goods_price) //商品优惠价格
             val mGoodsOldPrice =

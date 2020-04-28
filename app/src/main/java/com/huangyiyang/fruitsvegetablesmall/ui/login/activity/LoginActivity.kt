@@ -232,49 +232,12 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
         mPresenter?.getLogin(ParamsUtil.getInstance()?.getBody(map))
     }
 
-    fun openWebPage(url: String?) {
-        try {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(url)
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            e.printStackTrace()
-        }
-    }
-
-    fun checkAppVersionCode() {
-        val pm = packageManager
-        val versionname: String
-        val map: MutableMap<String, String> =
-            HashMap()
-        var packageInfo: PackageInfo? = null
-        try {
-            packageInfo = pm.getPackageInfo(packageName, 0)
-            versionname = if (Const.BASE_URL.endsWith("5011")) {
-                packageInfo.versionName + ".MILESTONE"
-            } else {
-                packageInfo.versionName + ".RELEASE"
-            }
-            map["versionCode"] = versionname
-        } catch (e: PackageManager.NameNotFoundException) {
-            e.printStackTrace()
-        }
-        map["version"] = "android"
-        //mPresenter.getVersionCode(map)
-    }
-
     override fun setLogin(isBoundMobile: Boolean) {
-
-        if (!isBoundMobile) { //判断是否需要绑定手机号
-            //PhoneBindingActivity.goTo(this)
-        } else {
-            UserManager.getInstance()
-                ?.saveUserPassword(mEtLoginActivityPassword!!.text.toString().trim { it <= ' ' })
-            UserManager.getInstance()
-                ?.saveName(mEtLoginActivityCashierAccount!!.text.toString().trim { it <= ' ' })
-            //mPresenter.getConfig()
-            startActivity(MainActivity::class.java)
-            finish()
-        }
+        UserManager.getInstance()
+            ?.saveUserPassword(mEtLoginActivityPassword!!.text.toString().trim { it <= ' ' })
+        UserManager.getInstance()
+            ?.saveName(mEtLoginActivityCashierAccount!!.text.toString().trim { it <= ' ' })
+        startActivity(MainActivity::class.java)
+        finish()
     }
 }

@@ -119,21 +119,4 @@ class SuccessActivity : SuccessActivityContract.SuccessActivityView, View.OnClic
         }
     }
 
-//    /**
-//     * 订单详情
-//     */
-//    private fun showOrderDetail() {
-//        if (orderDetailStatus != null) {
-//            when (orderDetailStatus) {
-//                "AWAITING_CONFIRMATION" -> OrderDetailActivity.goTo(this, id)
-//                "AWAITING_PAYMENT" -> OrderDetailActivity.goTo(this, id)
-//                "AWAITING_DELIVERY" -> OpenOrderActivity.goTo(this, id)
-//                "COMPLETE" -> CompleteDetailActivity.goTo(this, id, orderNum)
-//                "CANCEL" -> OrderDetailActivity.goTo(this, id)
-//            }
-//            finish()
-//        } else {
-//            ToastUtil.showShort(this, "订单状态出错")
-//        }
-//    }
 }

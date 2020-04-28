@@ -188,11 +188,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
                     false
                 )
             }
-//            R.id.rl_choose_coupon -> CouponActivity.goTo(
-//                this@ConfirmOrderActivity,
-//                goodsIds,
-//                couponIdsStutes()
-//            )
         }
     }
 
@@ -200,8 +195,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
         val map: MutableMap<String, MutableList<Int>?> =
             HashMap()
         map["ids"] = shoppingCarIds
-        //map["selectedCouponsIds"] = couponIds
-        //mPresenter.getCouponList(Const.header(), ParamsUtil.getInstance()!!.getBodyIntegerList(map))
     }
 
     override fun setConfirmOrder(param: ConfirmOrderBean?) {
@@ -243,27 +236,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
         )
         finish()
     }
-
-//    override fun setCouponList(param: List<CouponListBean?>?) {
-//        val rlCoupons: RelativeLayout = findViewById(R.id.rl_choose_coupon)
-//        val rlCouponAmount: RelativeLayout = findViewById(R.id.rl_coupon_amount)
-//        //隐藏无效的优惠券
-//        var i = 0
-//        while (i < param!!.size) {
-//            if (!param[i].isAvailable()) {
-//                param.removeAt(i)
-//                i = i - 1
-//            }
-//            i++
-//        }
-//        if (param!!.size <= 0) {
-//            rlCoupons.visibility = View.GONE
-//            rlCouponAmount.visibility = View.GONE
-//        } else {
-//            rlCoupons.visibility = View.VISIBLE
-//            rlCouponAmount.visibility = View.VISIBLE
-//        }
-//    }
 
     private inner class OrderGoodsListAdapter internal constructor(context: Context?) :
         BaseQuickAdapter<ConfirmOrderBean.CartItemsBean?>(
