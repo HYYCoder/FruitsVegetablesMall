@@ -229,25 +229,25 @@ class RegisterActivity : RegisterActivityContract.RegisterActivityView,View.OnCl
         }
         val name =
             etRegisterName!!.text.toString().trim { it <= ' ' }
-        if (TextUtils.isEmpty(password)) {
+        if (TextUtils.isEmpty(name)) {
             ToastUtil.showShort(this, R.string.toast_for_LoginActivity_content_2)
             return
         }
         val mobile =
             etRegisterMobile!!.text.toString().trim { it <= ' ' }
-        if (TextUtils.isEmpty(password)) {
+        if (TextUtils.isEmpty(mobile)) {
             ToastUtil.showShort(this, R.string.toast_for_LoginActivity_content_3)
             return
         }
         val address =
             etRegisterAddress!!.text.toString().trim { it <= ' ' }
-        if (TextUtils.isEmpty(password)) {
+        if (TextUtils.isEmpty(address)) {
             ToastUtil.showShort(this, R.string.toast_for_LoginActivity_content_4)
             return
         }
         val receivingPhone =
             etRegisterReceivingPhone!!.text.toString().trim { it <= ' ' }
-        if (TextUtils.isEmpty(password)) {
+        if (TextUtils.isEmpty(receivingPhone)) {
             ToastUtil.showShort(this, R.string.toast_for_LoginActivity_content_5)
             return
         }
