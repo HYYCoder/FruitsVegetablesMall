@@ -49,7 +49,6 @@ class RegisterActivity : RegisterActivityContract.RegisterActivityView,View.OnCl
             : TextView? = null
 
     companion object {
-        var isR = false
         var isL = false
         fun goTo(context: Context) {
             val intent = Intent(context, RegisterActivity::class.java)
@@ -91,9 +90,6 @@ class RegisterActivity : RegisterActivityContract.RegisterActivityView,View.OnCl
             ToastUtil.showLong(this, "登录已过期，请重新登录")
             isL = false
         }
-        if (!isR) {
-            //checkAppVersionCode()
-        }
     }
 
     override fun getLayoutResId(): Int {
@@ -113,7 +109,6 @@ class RegisterActivity : RegisterActivityContract.RegisterActivityView,View.OnCl
     }
 
     override fun initView() {
-        //  isR = false;
         etRegisterUsername =
             findViewById(R.id.et_register_username) as EditText
         etRegisterUsername?.addTextChangedListener(object : TextWatcher {
