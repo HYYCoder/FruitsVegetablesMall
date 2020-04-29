@@ -53,12 +53,12 @@
     <string name="common_amount">¥%.2f</string>
     <string name="common_amount2">%.2f</string>
     <string name="shopping_stock_text">库存：%1$s</string>
-    <string name="toast_for_LoginActivity_content_0">请填写手机号</string>
+    <string name="toast_for_LoginActivity_content_0">请填写账号</string>
     <string name="toast_for_LoginActivity_content_1">请填写密码</string>
-    <string name="toast_for_LoginActivity_content_2">请填写新密码</string>
-    <string name="toast_for_LoginActivity_content_3">修改密码成功</string>
-    <string name="toast_for_LoginActivity_content_4">绑定手机成功</string>
-    <string name="toast_for_LoginActivity_content_5">两次密码不一致，请确认</string>
+    <string name="toast_for_LoginActivity_content_2">请填写姓名</string>
+    <string name="toast_for_LoginActivity_content_3">请填写手机号</string>
+    <string name="toast_for_LoginActivity_content_4">请填写收货地址</string>
+    <string name="toast_for_LoginActivity_content_5">请填写收货手机</string>
     <string name="btn_clear_overdue">清空失效商品</string>
     <string name="item_overdue">失效</string>
     <string name="shopping_car_item_goods_unit">单位：%1$s</string>
