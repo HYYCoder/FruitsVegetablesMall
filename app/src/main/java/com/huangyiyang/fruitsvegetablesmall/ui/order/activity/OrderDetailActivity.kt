@@ -175,6 +175,7 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
         if (param.status == getString(R.string.order_cancel) || param.status == getString(R.string.order_complete)
         ) {
             setStyle("查看订单", R.color.grey_666666, R.drawable.bg_button_read)
+            btnOrderDetail?.visibility = View.GONE
         }
         if (param.status == getString(R.string.order_payment)) {
             setStyle("立即支付", R.color.white_ffffff, R.drawable.bg_button_payment)
