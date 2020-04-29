@@ -39,11 +39,10 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
             : EditText? = null
     private var mBtnLoginActivitySign //确认登录
             : Button? = null
-    private var mBtnLoginActivityForgotPsw //忘记密码
+    private var mBtnLoginActivityRegister //注册
             : TextView? = null
 
     companion object {
-        var isR = false
         var isL = false
         fun goTo(context: Context) {
             val intent = Intent(context, LoginActivity::class.java)
@@ -85,9 +84,6 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
             ToastUtil.showLong(this, "登录已过期，请重新登录")
             isL = false
         }
-        if (!isR) {
-            //checkAppVersionCode()
-        }
     }
 
     override fun getLayoutResId(): Int {
@@ -107,7 +103,6 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
     }
 
     override fun initView() {
-        //  isR = false;
         mEtLoginActivityCashierAccount =
             findViewById(R.id.et_login_activity_cashier_account) as EditText
         mEtLoginActivityCashierAccount?.addTextChangedListener(object : TextWatcher {
@@ -159,9 +154,9 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
 
             override fun afterTextChanged(s: Editable) {}
         })
-        mBtnLoginActivityForgotPsw =
+        mBtnLoginActivityRegister =
             findViewById(R.id.tw_login_activity_register) as TextView
-        mBtnLoginActivityForgotPsw?.setOnClickListener(this)
+        mBtnLoginActivityRegister?.setOnClickListener(this)
         mBtnLoginActivitySign = findViewById(R.id.btn_login) as Button
         mBtnLoginActivitySign?.setOnClickListener(this)
         if (isL) {
