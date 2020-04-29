@@ -116,25 +116,25 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
         user_name = findViewById(R.id.user_name)
         user_phone = findViewById(R.id.user_phone)
         user_address = findViewById(R.id.user_address)
-        user_name?.setText(UserManager.getInstance()?.getUserName())
-        user_phone?.setText(UserManager.getInstance()?.getUserPhone())
-        user_address?.setText(UserManager.getInstance()?.getUserAddress())
+        user_name?.text = UserManager.getInstance()?.getUserName()
+        user_phone?.text = UserManager.getInstance()?.getUserPhone()
+        user_address?.text = UserManager.getInstance()?.getUserAddress()
         //===============商品列表========================
         mCommonLayout = findViewById(R.id.common_content)
         mOrderGoodsListAdapter = OrderGoodsListAdapter(this)
         mOrderListRecyclerView = findViewById(R.id.discount_recyclerView)
-        mOrderListRecyclerView?.setLayoutManager(LinearLayoutManager(this))
-        mOrderListRecyclerView?.setAdapter(mOrderGoodsListAdapter)
-        mOrderListRecyclerView?.setLoadingMoreEnabled(false)
-        mOrderListRecyclerView?.setPullRefreshEnabled(false)
+        mOrderListRecyclerView?.layoutManager = LinearLayoutManager(this)
+        mOrderListRecyclerView?.adapter = mOrderGoodsListAdapter
+        mOrderListRecyclerView?.isLoadingMoreEnabled = false
+        mOrderListRecyclerView?.isPullRefreshEnabled = false
         //==============满赠列表========================
         mCommonLayout = findViewById(R.id.common_contentGfit)
         mOrderGiftsListAdapter = OrderGiftsListAdapter(this)
         mOrderListRecyclerView = findViewById(R.id.gfit_recyclerView)
-        mOrderListRecyclerView?.setLayoutManager(LinearLayoutManager(this))
-        mOrderListRecyclerView?.setAdapter(mOrderGiftsListAdapter)
-        mOrderListRecyclerView?.setLoadingMoreEnabled(false)
-        mOrderListRecyclerView?.setPullRefreshEnabled(false)
+        mOrderListRecyclerView?.layoutManager = LinearLayoutManager(this)
+        mOrderListRecyclerView?.adapter = mOrderGiftsListAdapter
+        mOrderListRecyclerView?.isLoadingMoreEnabled = false
+        mOrderListRecyclerView?.isPullRefreshEnabled = false
         //====================价格计算=====================
         mCouponAmount = findViewById(R.id.coupon_amount)
         mCouponAmount2 = findViewById(R.id.coupon_amount2)
@@ -254,25 +254,21 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
             ImageLoaderUtil.getInstance()
                 ?.load(mGoodsImg, data?.imageUrls?.split("&&")?.get(1))
             val mGoodsName = viewHolder.getView<TextView>(R.id.tv_item_goods_name) //商品名称
-            mGoodsName.setText(data?.name)
+            mGoodsName.text = data?.name
             val mGoodsPrice =
                 viewHolder.getView<TextView>(R.id.tv_item_goods_price) //商品价格
-            mGoodsPrice.setText(getString(R.string.common_amount, data?.price))
+            mGoodsPrice.text = getString(R.string.common_amount, data?.price)
             val mGoodsUnit =
                 viewHolder.getView<TextView>(R.id.tv_item_goods_price_unit) //商品单位
-            mGoodsUnit.setText(
-                getString(
-                    R.string.shopping_car_item_goods_unit,
-                    data?.specification
-                )
+            mGoodsUnit.text = getString(
+                R.string.shopping_car_item_goods_unit,
+                data?.specification
             )
             val mGoodsCount =
                 viewHolder.getView<TextView>(R.id.tv_item_goods_count) //商品数量
-            mGoodsCount.setText(
-                getString(
-                    R.string.common_count,
-                    decimalFormat.format(data?.quantity).toString()
-                )
+            mGoodsCount.text = getString(
+                R.string.common_count,
+                decimalFormat.format(data?.quantity).toString()
             )
         }
     }
@@ -295,25 +291,21 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
                 ImageLoaderUtil.getInstance()?.load(mGoodsImg, data.imageUrl)
                 val mGoodsName =
                     viewHolder.getView<TextView>(R.id.tv_item_gift_name) //赠品名称
-                mGoodsName.setText(data.name)
+                mGoodsName.text = data.name
                 val mGoodsPrice =
                     viewHolder.getView<TextView>(R.id.tv_item_gift_price) //赠品价格
-                mGoodsPrice.setText(getString(R.string.common_amount, data.price))
+                mGoodsPrice.text = getString(R.string.common_amount, data.price)
                 val mGoodsUnit =
                     viewHolder.getView<TextView>(R.id.tv_item_gift_unit) //赠品单位
-                mGoodsUnit.setText(
-                    getString(
-                        R.string.shopping_car_item_goods_unit,
-                        data.specification
-                    )
+                mGoodsUnit.text = getString(
+                    R.string.shopping_car_item_goods_unit,
+                    data.specification
                 )
                 val mGoodsCount =
                     viewHolder.getView<TextView>(R.id.tv_item_gift_count) //商品数量
-                mGoodsCount.setText(
-                    getString(
-                        R.string.common_count,
-                        decimalFormat.format(data.quantity / 100).toString()
-                    )
+                mGoodsCount.text = getString(
+                    R.string.common_count,
+                    decimalFormat.format(data.quantity / 100).toString()
                 )
             }
         }

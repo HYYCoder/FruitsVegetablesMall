@@ -106,12 +106,12 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
         btnOrderDetail = findViewById(R.id.btn_order_detail)
         tvOrderDetailNote = findViewById(R.id.tv_order_detail_note)
         flOrderDetailCoupon = findViewById(R.id.fl_order_detail_coupon)
-        orderRecyclerView?.setLayoutManager(LinearLayoutManager(this))
-        orderRecyclerView?.setPullRefreshEnabled(false)
-        orderRecyclerView?.setLoadingMoreEnabled(false)
+        orderRecyclerView?.layoutManager = LinearLayoutManager(this)
+        orderRecyclerView?.isPullRefreshEnabled = false
+        orderRecyclerView?.isLoadingMoreEnabled = false
         detailListAdapter = DetailListAdapter(this)
-        orderRecyclerView?.setAdapter(detailListAdapter)
-        orderRecyclerView?.setPullRefreshEnabled(false)
+        orderRecyclerView?.adapter = detailListAdapter
+        orderRecyclerView?.isPullRefreshEnabled = false
 
         mPresenter?.getOrderDetail(Const.header(), mOrderId.toString())
     }
