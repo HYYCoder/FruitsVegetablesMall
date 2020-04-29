@@ -114,7 +114,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
 
         headerView = LayoutInflater.from(activity).inflate(
-            R.layout.header_view_main_home,
+            R.layout.fragment_main_home,
             mXRecyclerView?.parent as ViewGroup,
             false
         )
@@ -266,7 +266,7 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
 
     override fun setBannerList(bannerList: List<BannerUtil.Companion.DataBean>?) {
         val image =
-            headerView!!.findViewById<ImageView>(R.id.iv_default_ygf)
+            headerView!!.findViewById<ImageView>(R.id.iv_default_banner)
         if (bannerList != null) {
             mBannerUtil!!.setBanner(bannerList)
             bannerLists = bannerList

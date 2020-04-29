@@ -35,7 +35,7 @@
                         app:indicator_drawable_unselected="@drawable/main_banner_unselected" >
 
                         <ImageView
-                            android:id="@+id/iv_default_ygf"
+                            android:id="@+id/iv_default_banner"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginBottom="0dp"
