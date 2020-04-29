@@ -69,9 +69,9 @@ class OrderListActivity : OrderListActivityContract.OrderListActivityView, View.
         }
         tabLayout = findViewById(R.id.tab_layout)
         viewPager = findViewById(R.id.vp_detail)
-        viewPager?.setOffscreenPageLimit(4)
-        tabLayout?.setTabGravity(TabLayout.GRAVITY_FILL)
-        tabLayout?.setTabMode(TabLayout.MODE_FIXED)
+        viewPager?.offscreenPageLimit = 4
+        tabLayout?.tabGravity = TabLayout.GRAVITY_FILL
+        tabLayout?.tabMode = TabLayout.MODE_FIXED
         tabLayout?.setupWithViewPager(viewPager)
 
         pagerTitle = allPagerTitle
@@ -81,14 +81,12 @@ class OrderListActivity : OrderListActivityContract.OrderListActivityView, View.
         fragments.add(OrderListFragment.newInstance(2)!!)
         fragments.add(OrderListFragment.newInstance(3)!!)
         fragments.add(OrderListFragment.newInstance(4)!!)
-        viewPager?.setAdapter(
-            ViewPagerAdapter(
-                supportFragmentManager,
-                fragments
-            )
+        viewPager?.adapter = ViewPagerAdapter(
+            supportFragmentManager,
+            fragments
         )
         if (index > 0) {
-            viewPager?.setCurrentItem(index)
+            viewPager?.currentItem = index
         }
     }
 
@@ -113,7 +111,7 @@ class OrderListActivity : OrderListActivityContract.OrderListActivityView, View.
         }
 
         override fun getPageTitle(position: Int): CharSequence? {
-            return return pagerTitle?.get(position)
+            return pagerTitle?.get(position)
         }
     }
 }

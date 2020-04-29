@@ -343,7 +343,7 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
             btnJoinShoppingCar.isEnabled = true
             btnJoinShoppingCar.setTextColor(
                 ContextCompat.getColor(
-                    dialog.getContext(),
+                    dialog.context,
                     R.color.white_ffffff
                 )
             )
@@ -351,7 +351,7 @@ class CassificationDetailFragment : ClassificationDetailFragmentContract.Classif
             btnJoinShoppingCar.isEnabled = false
             btnJoinShoppingCar.setTextColor(
                 ContextCompat.getColor(
-                    dialog.getContext(),
+                    dialog.context,
                     R.color.gray_999999
                 )
             )

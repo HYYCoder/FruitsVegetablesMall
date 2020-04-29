@@ -189,7 +189,7 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
                 super.onBackPressed()
             }
         }
-        if (param.status.equals(getString(R.string.order_delivery))) {
+        if (param.status == getString(R.string.order_delivery)) {
             setStyle("确认收货", R.color.white_ffffff, R.drawable.btn_common_100_radius_button)
             btnOrderDetail?.setOnClickListener {
                 val map: MutableMap<String, String> = HashMap()
@@ -202,12 +202,11 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
                 super.onBackPressed()
             }
         }
-        if (param.status.equals(getString(R.string.order_payment_overdue))) {
+        if (param.status == getString(R.string.order_payment_overdue)) {
             setStyle("查看订单", R.color.grey_666666, R.drawable.bg_button_read)
             tvOrderDetailTime!!.text = "支付超时，订单已取消"
             tvOrderDetailTime!!.setTextColor(Color.GRAY)
         }
-        //mOrderGiftsListAdapter.setListAll(giftDatas)
     }
 
     override fun updateSuccess() {
@@ -226,19 +225,19 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
             position: Int,
             data: OrderDetailBean.Companion.DetailsBean
         ) {
-            if (data.type.equals("GOODS")) {
+            if (data.type == "GOODS") {
                 val mGoodsImg =
                     viewHolder.getView<ImageView>(R.id.gift_img) //商品图
                 ImageLoaderUtil.getInstance()?.load(
                     mGoodsImg,
-                    data.imageUrl.split("&&").get(1)
+                    data.imageUrl.split("&&")[1]
                 )
                 val mGoodsName =
                     viewHolder.getView<TextView>(R.id.tv_item_gift_name) //商品名称
-                mGoodsName.setText(data.name)
+                mGoodsName.text = data.name
                 val mGoodsPrice =
                     viewHolder.getView<TextView>(R.id.tv_item_gift_price) //商品价格
-                mGoodsPrice.setText(getString(R.string.common_amount, data.price))
+                mGoodsPrice.text = getString(R.string.common_amount, data.price)
                 val mGoodsCount =
                     viewHolder.getView<TextView>(R.id.tv_item_gift_count) //商品数量
                 mGoodsCount.text = "x" + getString(R.string.common_amount2, data.quantity)

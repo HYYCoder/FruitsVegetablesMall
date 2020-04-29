@@ -104,7 +104,7 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
 
     override fun initView() {
         mEtLoginActivityCashierAccount =
-            findViewById(R.id.et_login_activity_cashier_account) as EditText
+            findViewById<EditText>(R.id.et_login_activity_cashier_account)
         mEtLoginActivityCashierAccount?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 s: CharSequence,
@@ -120,16 +120,12 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
                 before: Int,
                 count: Int
             ) {
-                if (!StringUtil.isTrimEmpty(s.toString())) {
-                    mBtnLoginActivitySign!!.isEnabled = true
-                } else {
-                    mBtnLoginActivitySign!!.isEnabled = false
-                }
+                mBtnLoginActivitySign!!.isEnabled = !StringUtil.isTrimEmpty(s.toString())
             }
 
             override fun afterTextChanged(s: Editable) {}
         })
-        mEtLoginActivityPassword = findViewById(R.id.et_login_activity_password) as EditText
+        mEtLoginActivityPassword = findViewById<EditText>(R.id.et_login_activity_password)
         mEtLoginActivityPassword?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 s: CharSequence,
@@ -145,19 +141,15 @@ class LoginActivity : LoginActivityContract.LoginActivityView,View.OnClickListen
                 before: Int,
                 count: Int
             ) {
-                if (!StringUtil.isTrimEmpty(s.toString())) {
-                    mBtnLoginActivitySign!!.isEnabled = true
-                } else {
-                    mBtnLoginActivitySign!!.isEnabled = false
-                }
+                mBtnLoginActivitySign!!.isEnabled = !StringUtil.isTrimEmpty(s.toString())
             }
 
             override fun afterTextChanged(s: Editable) {}
         })
         mBtnLoginActivityRegister =
-            findViewById(R.id.tw_login_activity_register) as TextView
+            findViewById<TextView>(R.id.tw_login_activity_register)
         mBtnLoginActivityRegister?.setOnClickListener(this)
-        mBtnLoginActivitySign = findViewById(R.id.btn_login) as Button
+        mBtnLoginActivitySign = findViewById<Button>(R.id.btn_login)
         mBtnLoginActivitySign?.setOnClickListener(this)
         if (isL) {
             ToastUtil.showLong(this, "token过期，请重新登录")

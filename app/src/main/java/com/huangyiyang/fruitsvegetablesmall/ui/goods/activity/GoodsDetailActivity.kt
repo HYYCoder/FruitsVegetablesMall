@@ -100,12 +100,12 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
         mTvGoodsPrice = findViewById(R.id.tv_goods_price)
         mTvGoodsOldPrice = findViewById(R.id.tv_goods_old_price)
         mTvGoodsStock = findViewById(R.id.tv_goods_stock)
-        mCb1 = findViewById(R.id.cb_1) as CheckBox
-        mCb2 = findViewById(R.id.cb_2) as CheckBox
+        mCb1 = findViewById<CheckBox>(R.id.cb_1)
+        mCb2 = findViewById<CheckBox>(R.id.cb_2)
         mCbGoodsDetailActivityMinus =
-            findViewById(R.id.cb_goods_detail_activity_minus) as FrameLayout
+            findViewById<FrameLayout>(R.id.cb_goods_detail_activity_minus)
         mCbGoodsDetailActivityMinus!!.setOnClickListener(this)
-        mCbGoodsDetailActivityPlus = findViewById(R.id.cb_goods_detail_activity_plus) as FrameLayout
+        mCbGoodsDetailActivityPlus = findViewById<FrameLayout>(R.id.cb_goods_detail_activity_plus)
         mCbGoodsDetailActivityPlus!!.setOnClickListener(this)
         mEtGoodsCount = findViewById(R.id.et_shopping_count)
         mBtnAddShoppingCar = findViewById(R.id.add_shopping_car)
@@ -129,21 +129,21 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
             false
         })
 
-        mEtGoodsCount?.setOnFocusChangeListener(OnFocusChangeListener { v, hasFocus ->
+        mEtGoodsCount?.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
             //当焦点离开editText
             if (!hasFocus) {
                 var n: Double = goodsDetailBean?.minimumIncrementQuantity!!
                 if (goodsDetailBean?.minimumIncrementQuantity!! > goodsDetailBean?.minimunOrderQuantity!!) n =
                     goodsDetailBean?.minimumIncrementQuantity!!
-                if (StringUtil.isEmpty(mEtGoodsCount?.getText().toString())) mEtGoodsCount?.setText(
+                if (StringUtil.isEmpty(mEtGoodsCount?.text.toString())) mEtGoodsCount?.setText(
                     getString(R.string.common_amount2, n)
                 )
                 try {
-                    mEtGoodsCount?.getText().toString().toDouble()
+                    mEtGoodsCount?.text.toString().toDouble()
                 } catch (e: Exception) {
                     mEtGoodsCount?.setText(getString(R.string.common_amount2, n))
                 }
-                var newCount = mEtGoodsCount?.getText().toString().toDouble()
+                var newCount = mEtGoodsCount?.text.toString().toDouble()
                 if (goodsDetailBean?.stock !== newCount) {
                     val b: Double = goodsDetailBean?.minimumIncrementQuantity!!
                     val f = newCount * 100000 % (b * 100000)
@@ -187,7 +187,7 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
                     ToastUtil.showShort(this, "订购商品数量不能小于$n")
                 }
             }
-        })
+        }
 
         mPresenter?.getGoodsDetail(Const.header(), goodsId)
         mPresenter?.getShoppingCarCount(Const.header())
@@ -404,7 +404,7 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
         } else {
             mShoppingCarCount!!.visibility = View.VISIBLE
         }
-        mShoppingCarCount?.setText(java.lang.String.valueOf(bean?.count))
+        mShoppingCarCount?.text = java.lang.String.valueOf(bean?.count)
         EventBus.getDefault().post(ShoppingCountEvent(bean?.count!!))
     }
 

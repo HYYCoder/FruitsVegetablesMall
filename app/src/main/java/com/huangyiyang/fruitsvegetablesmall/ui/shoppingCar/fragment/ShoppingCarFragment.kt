@@ -66,29 +66,6 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
     private var isR = false
     private var isR2 = false
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        btnSettlement = view.findViewById(R.id.btn_settlement)
-//        btnSettlement?.setOnClickListener {
-//            val shoppingCar = ArrayList<Int?>()
-//            for (itemsBean in shoppingCarListBean?.normalItems!!) {
-//                    if (itemsBean.isChecked) {
-//                        shoppingCar.add(itemsBean.shoppingCarId)
-//                    }
-//            }
-//            if (shoppingCar.size == 0) {
-//                ToastUtil.showShort(mPresenter?.mContext!!, "没有选择商品")
-//            } else {
-//                ConfirmOrderActivity.goTo(mPresenter?.mContext!!, shoppingCar)
-//            }
-//            ConfirmOrderActivity.goTo(mPresenter?.mContext!!, shoppingCar)
-//        }
-//        btnEmpty = view.findViewById(R.id.btn_empty)
-//        btnEmpty?.setOnClickListener {
-//            mRxManager.post(EventParams.EVENT_TYPE_TO_MAIN_FRAGMENT, null)
-//        }
-//    }
-
     override fun getLayoutResId(): Int {
         return R.layout.fragment_shopping_car
     }
@@ -410,17 +387,15 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
                 data?.imageUrls!!.split("&&")[1]
             )
             val mGoodsName = viewHolder.getView<TextView>(R.id.tv_item_goods_name) //商品名称
-            mGoodsName.setText(data?.name)
+            mGoodsName.text = data?.name
             val mGoodsPrice =
                 viewHolder.getView<TextView>(R.id.tv_item_goods_price) //商品价格
-            mGoodsPrice.setText(getString(R.string.common_amount, data?.price))
+            mGoodsPrice.text = getString(R.string.common_amount, data?.price)
             val mGoodsUnit =
                 viewHolder.getView<TextView>(R.id.tv_item_goods_price_unit) //商品单位
-            mGoodsUnit.setText(
-                getString(
-                    R.string.shopping_car_item_goods_unit,
-                    data?.specification
-                )
+            mGoodsUnit.text = getString(
+                R.string.shopping_car_item_goods_unit,
+                data?.specification
             )
             val mItemOverdue = viewHolder.getView<TextView>(R.id.tv_item_overdue) //失效
             val mOverdueB = viewHolder.getView<TextView>(R.id.btn_clear_overdue) //失效
@@ -428,11 +403,11 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
             mGoodsUnit.setTextColor(Color.LTGRAY)
             if (position == shoppingCarListBean?.normalItems?.size) {
                 mOverdueB.visibility = View.VISIBLE
-                mOverdueB.setOnClickListener { deleteOverdueAlertDialog?.show(getActivity(), "") }
+                mOverdueB.setOnClickListener { deleteOverdueAlertDialog?.show(activity, "") }
             }
             if (position >= shoppingCarListBean?.normalItems?.size!!) {
                 mCheckBox.visibility = View.INVISIBLE
-                mItemOverdue.setText(getString(R.string.item_overdue))
+                mItemOverdue.text = getString(R.string.item_overdue)
                 mItemOverdue.visibility = View.VISIBLE
                 mGoodsName.setTextColor(Color.LTGRAY)
                 mGoodsPrice.setTextColor(Color.LTGRAY)
@@ -457,12 +432,12 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
                         }
                     }
                     mCheckAll?.setOnCheckedChangeListener(null)
-                    mCheckAll?.setChecked(isCheckAll)
+                    mCheckAll?.isChecked = isCheckAll
                     mCheckAll?.setOnCheckedChangeListener(mCheckListener)
                 } else {
                     data.isChecked = false
                     mCheckAll?.setOnCheckedChangeListener(null)
-                    mCheckAll?.setChecked(false)
+                    mCheckAll?.isChecked = false
                     mCheckAll?.setOnCheckedChangeListener(mCheckListener)
                 }
                 refreshTotalAmount()
@@ -601,7 +576,7 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
                 )
             }
             viewHolder.itemView.setOnLongClickListener {
-                deleteAlertDialog?.show(getActivity(), java.lang.String.valueOf(data.id))
+                deleteAlertDialog?.show(activity, java.lang.String.valueOf(data.id))
                 true
             }
             etShoppingCount.onFocusChangeListener =

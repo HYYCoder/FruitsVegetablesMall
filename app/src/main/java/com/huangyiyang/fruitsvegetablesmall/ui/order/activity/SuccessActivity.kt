@@ -27,7 +27,7 @@ class SuccessActivity : SuccessActivityContract.SuccessActivityView, View.OnClic
     private var address : String? = null
     private var amount : String? = null
     private var id = 0
-    private val orderDetailStatus : String? = null
+
     companion object{
 
         var ORDER_NUM = "order_num"

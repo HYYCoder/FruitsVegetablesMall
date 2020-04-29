@@ -110,7 +110,7 @@ class RegisterActivity : RegisterActivityContract.RegisterActivityView,View.OnCl
 
     override fun initView() {
         etRegisterUsername =
-            findViewById(R.id.et_register_username) as EditText
+            findViewById<EditText>(R.id.et_register_username)
         etRegisterUsername?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 s: CharSequence,
@@ -126,16 +126,12 @@ class RegisterActivity : RegisterActivityContract.RegisterActivityView,View.OnCl
                 before: Int,
                 count: Int
             ) {
-                if (!StringUtil.isTrimEmpty(s.toString())) {
-                    btnRegister!!.isEnabled = true
-                } else {
-                    btnRegister!!.isEnabled = false
-                }
+                btnRegister!!.isEnabled = !StringUtil.isTrimEmpty(s.toString())
             }
 
             override fun afterTextChanged(s: Editable) {}
         })
-        etRegisterPassword = findViewById(R.id.et_register_password) as EditText
+        etRegisterPassword = findViewById<EditText>(R.id.et_register_password)
         etRegisterPassword?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 s: CharSequence,
@@ -151,27 +147,23 @@ class RegisterActivity : RegisterActivityContract.RegisterActivityView,View.OnCl
                 before: Int,
                 count: Int
             ) {
-                if (!StringUtil.isTrimEmpty(s.toString())) {
-                    btnRegister!!.isEnabled = true
-                } else {
-                    btnRegister!!.isEnabled = false
-                }
+                btnRegister!!.isEnabled = !StringUtil.isTrimEmpty(s.toString())
             }
 
             override fun afterTextChanged(s: Editable) {}
         })
         etRegisterName =
-            findViewById(R.id.et_register_name) as EditText
+            findViewById<EditText>(R.id.et_register_name)
         etRegisterMobile =
-            findViewById(R.id.et_register_mobile) as EditText
+            findViewById<EditText>(R.id.et_register_mobile)
         etRegisterAddress =
-            findViewById(R.id.et_register_address) as EditText
+            findViewById<EditText>(R.id.et_register_address)
         etRegisterReceivingPhone =
-            findViewById(R.id.et_register_receivingPhone) as EditText
+            findViewById<EditText>(R.id.et_register_receivingPhone)
         btnRegisterBack =
-            findViewById(R.id.tw_register_back) as TextView
+            findViewById<TextView>(R.id.tw_register_back)
         btnRegisterBack?.setOnClickListener(this)
-        btnRegister = findViewById(R.id.btn_register) as Button
+        btnRegister = findViewById<Button>(R.id.btn_register)
         btnRegister?.setOnClickListener(this)
         if (isL) {
             ToastUtil.showLong(this, "token过期，请重新登录")

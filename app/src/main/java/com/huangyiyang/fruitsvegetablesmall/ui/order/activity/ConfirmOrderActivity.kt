@@ -35,7 +35,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
     private var shoppingCarIds : MutableList<Int> = arrayListOf()
     private var mCommonLayout: CommonLayout? = null
     private var mOrderGoodsListAdapter: OrderGoodsListAdapter? = null
-    private var mOrderGiftsListAdapter: OrderGiftsListAdapter? = null
     private var mOrderListRecyclerView: XRecyclerView? = null
     private var toolbarUtil: ToolbarUtil? = null
     private var rlChooseCoupon: RelativeLayout? = null
@@ -127,14 +126,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
         mOrderListRecyclerView?.adapter = mOrderGoodsListAdapter
         mOrderListRecyclerView?.isLoadingMoreEnabled = false
         mOrderListRecyclerView?.isPullRefreshEnabled = false
-        //==============满赠列表========================
-        mCommonLayout = findViewById(R.id.common_contentGfit)
-        mOrderGiftsListAdapter = OrderGiftsListAdapter(this)
-        mOrderListRecyclerView = findViewById(R.id.gfit_recyclerView)
-        mOrderListRecyclerView?.layoutManager = LinearLayoutManager(this)
-        mOrderListRecyclerView?.adapter = mOrderGiftsListAdapter
-        mOrderListRecyclerView?.isLoadingMoreEnabled = false
-        mOrderListRecyclerView?.isPullRefreshEnabled = false
         //====================价格计算=====================
         mCouponAmount = findViewById(R.id.coupon_amount)
         mCouponAmount2 = findViewById(R.id.coupon_amount2)
@@ -218,7 +209,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
         } else {
             tvGift.visibility = View.GONE
         }
-        mOrderGiftsListAdapter!!.setListAll(param.gifts as List<ConfirmOrderBean.GiftsBean?>?)
         LoadingDialog.cancelDialogForLoading()
     }
 
@@ -270,44 +260,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
                 R.string.common_count,
                 decimalFormat.format(data?.quantity).toString()
             )
-        }
-    }
-
-    private inner class OrderGiftsListAdapter internal constructor(context: Context?) :
-        BaseQuickAdapter<ConfirmOrderBean.GiftsBean?>(
-            context,
-            R.layout.item_confirm_order_gifts_list
-        ) {
-        override fun HelperBindData(
-            viewHolder: HelperRecyclerViewHolder,
-            position: Int,
-            data: ConfirmOrderBean.GiftsBean?
-        ) {
-            viewHolder.setIsRecyclable(false)
-            val decimalFormat = DecimalFormat("0.00")
-            if (data != null) {
-                val mGoodsImg =
-                    viewHolder.getView<ImageView>(R.id.gift_img) //赠品图
-                ImageLoaderUtil.getInstance()?.load(mGoodsImg, data.imageUrl)
-                val mGoodsName =
-                    viewHolder.getView<TextView>(R.id.tv_item_gift_name) //赠品名称
-                mGoodsName.text = data.name
-                val mGoodsPrice =
-                    viewHolder.getView<TextView>(R.id.tv_item_gift_price) //赠品价格
-                mGoodsPrice.text = getString(R.string.common_amount, data.price)
-                val mGoodsUnit =
-                    viewHolder.getView<TextView>(R.id.tv_item_gift_unit) //赠品单位
-                mGoodsUnit.text = getString(
-                    R.string.shopping_car_item_goods_unit,
-                    data.specification
-                )
-                val mGoodsCount =
-                    viewHolder.getView<TextView>(R.id.tv_item_gift_count) //商品数量
-                mGoodsCount.text = getString(
-                    R.string.common_count,
-                    decimalFormat.format(data.quantity / 100).toString()
-                )
-            }
         }
     }
 
