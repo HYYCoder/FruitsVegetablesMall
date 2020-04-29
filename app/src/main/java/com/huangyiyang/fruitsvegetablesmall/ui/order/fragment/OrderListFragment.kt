@@ -108,7 +108,7 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
 
     inner class OrderListAdapter : BaseQuickAdapter<OrderListBean>{
 
-        constructor(context : Context) : super(context,R.layout.item_orderlist)
+        constructor(context : Context) : super(context,R.layout.item_order_list)
 
         private var btnOrder: Button? = null
 

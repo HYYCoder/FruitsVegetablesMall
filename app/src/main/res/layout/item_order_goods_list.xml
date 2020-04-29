@@ -11,7 +11,7 @@
 
 
     <ImageView
-        android:id="@+id/gift_img"
+        android:id="@+id/iv_goods_img"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="@dimen/spacing_5"
@@ -26,18 +26,18 @@
 
         android:layout_marginLeft="@dimen/spacing_6"
         android:layout_marginRight="@dimen/spacing_10"
-        android:layout_toRightOf="@id/gift_img"
+        android:layout_toRightOf="@id/iv_goods_img"
         android:orientation="vertical"
        >
 
             <RelativeLayout
-                android:id="@+id/ll_giftName_and_price"
+                android:id="@+id/ll_goods_name_and_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                >
 
                 <TextView
-                    android:id="@+id/tv_item_gift_name"
+                    android:id="@+id/tv_item_goods_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -55,7 +55,7 @@
 
 
                 <TextView
-                    android:id="@+id/tv_item_gift_price"
+                    android:id="@+id/tv_item_goods_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -65,7 +65,7 @@
 
 
                 <TextView
-                    android:id="@+id/tv_item_gift_count"
+                    android:id="@+id/tv_item_goods_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

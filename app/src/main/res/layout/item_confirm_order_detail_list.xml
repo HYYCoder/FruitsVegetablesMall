@@ -39,7 +39,7 @@
             android:maxLines="2"
             android:textColor="@color/grey_666666"
             android:textSize="@dimen/font_14"
-            tools:text="大阪日本环球影¬城 大阪环球影城大门票+快速券大阪日本环球影¬城 大阪环球影城大门票+快速券大阪日本环球影¬城 大阪环球影城大门票+快速券大阪日本环球影¬城 大阪环球影城大门票+快速券" />
+            tools:text="测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试" />
 
 
 

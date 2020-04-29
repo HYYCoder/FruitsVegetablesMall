@@ -392,9 +392,11 @@ class MainFragment :MainFragmentContract.MainFragmentView, View.OnClickListener,
                 mGoodsPrice?.text = getString(R.string.common_amount, item?.price!!-item?.reducedPrice!!)
                 mGoodsOldPrice?.paint?.flags = Paint.STRIKE_THRU_TEXT_FLAG //中划线
                 mGoodsOldPrice?.text = getString(R.string.common_amount, item?.price)
+                mGoodsActivity?.text = "满50.0减"+item?.reducedPrice
             } else {
                 mGoodsPrice?.text = getString(R.string.common_amount, item?.price)
                 mGoodsOldPrice?.visibility = View.INVISIBLE
+                mGoodsActivity?.visibility = View.INVISIBLE
             }
             viewHolder?.itemView?.setOnClickListener {
                 //跳转商品详情

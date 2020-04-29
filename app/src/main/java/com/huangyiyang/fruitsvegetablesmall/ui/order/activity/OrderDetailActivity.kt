@@ -218,7 +218,7 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
 
         constructor(context: Context?) : super(
             context,
-            R.layout.item_order_gifts_goods_list
+            R.layout.item_order_goods_list
         )
 
         override fun HelperBindData(
@@ -228,19 +228,19 @@ class OrderDetailActivity : OrderDetailActivityContract.OrderDetailActivityView,
         ) {
             if (data.type == "GOODS") {
                 val mGoodsImg =
-                    viewHolder.getView<ImageView>(R.id.gift_img) //商品图
+                    viewHolder.getView<ImageView>(R.id.iv_goods_img) //商品图
                 ImageLoaderUtil.getInstance()?.load(
                     mGoodsImg,
                     data.imageUrl.split("&&")[1]
                 )
                 val mGoodsName =
-                    viewHolder.getView<TextView>(R.id.tv_item_gift_name) //商品名称
+                    viewHolder.getView<TextView>(R.id.tv_item_goods_name) //商品名称
                 mGoodsName.text = data.name
                 val mGoodsPrice =
-                    viewHolder.getView<TextView>(R.id.tv_item_gift_price) //商品价格
+                    viewHolder.getView<TextView>(R.id.tv_item_goods_price) //商品价格
                 mGoodsPrice.text = getString(R.string.common_amount, data.price)
                 val mGoodsCount =
-                    viewHolder.getView<TextView>(R.id.tv_item_gift_count) //商品数量
+                    viewHolder.getView<TextView>(R.id.tv_item_goods_count) //商品数量
                 mGoodsCount.text = "x" + getString(R.string.common_amount2, data.quantity)
             }
         }
