@@ -63,11 +63,11 @@ class OrderListFragment : OrderListFragmentContract.OrderListFragmentView
     override fun initView() {
         commonLayout = layout!!.findViewById(R.id.common_layout)
         mXRecyclerView = layout!!.findViewById(R.id.order_list)
-        mXRecyclerView?.setLayoutManager(LinearLayoutManager(activity))
-        mXRecyclerView?.setLoadingMoreEnabled(true)
+        mXRecyclerView?.layoutManager = LinearLayoutManager(activity)
+        mXRecyclerView?.isLoadingMoreEnabled = true
         mOrderListListAdapter = OrderListAdapter(activity!!)
-        mXRecyclerView?.setAdapter(mOrderListListAdapter)
-        mXRecyclerView?.setPullRefreshEnabled(true)
+        mXRecyclerView?.adapter = mOrderListListAdapter
+        mXRecyclerView?.isPullRefreshEnabled = true
         mXRecyclerView?.setLoadingListener(object : LoadingListener {
             override fun onRefresh() {
                 mPresenter!!.onRefresh()

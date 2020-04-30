@@ -355,11 +355,7 @@ class ShoppingCarFragment : ShoppingCarFragmentContract.ShoppingCarFragmentView,
         }
         mTvTotal!!.text = getString(R.string.total_money, priceDF!!.format(totalAccount))
         btnSettlement!!.text = getString(R.string.settlement, checkNum.toString())
-        if (checkNum == 0) {
-            btnSettlement?.isEnabled = false
-        } else {
-            btnSettlement?.isEnabled = true
-        }
+        btnSettlement?.isEnabled = checkNum != 0
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
