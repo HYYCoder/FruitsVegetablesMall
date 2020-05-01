@@ -80,7 +80,7 @@
             android:layout_marginStart="@dimen/spacing_50"
             android:layout_marginEnd="@dimen/spacing_50"
             android:background="@drawable/bg_edit_text_bottom_stroke"
-            android:drawableStart="@drawable/login_ed_phone_gray"
+            android:drawableStart="@drawable/login_ed_psw_gray"
             android:drawablePadding="@dimen/spacing_10"
             android:hint="@string/register_mobile"
             android:maxLines="1"

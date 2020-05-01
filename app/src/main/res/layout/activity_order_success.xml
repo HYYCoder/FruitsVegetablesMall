@@ -117,7 +117,7 @@
                         android:layout_centerVertical="true"
                         android:textColor="@color/grey_999999"
                         android:textSize="@dimen/spacing_12"
-                        tools:text="提交成功" />
+                        tools:text="测试" />
 
                 </RelativeLayout>
 
@@ -146,7 +146,7 @@
                         android:layout_marginLeft="@dimen/spacing_52"
                         android:textColor="@color/grey_999999"
                         android:textSize="@dimen/spacing_12"
-                        tools:text="提交成功" />
+                        tools:text="测试" />
 
                 </RelativeLayout>
 
@@ -174,7 +174,7 @@
                         android:layout_centerVertical="true"
                         android:textColor="@color/grey_999999"
                         android:textSize="@dimen/spacing_12"
-                        tools:text="提交成功" />
+                        tools:text="测试" />
 
                 </RelativeLayout>
 
