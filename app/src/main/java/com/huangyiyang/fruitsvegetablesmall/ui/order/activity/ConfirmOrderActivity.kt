@@ -79,14 +79,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
         }
     }
 
-    fun couponIdsStutes(): List<Int> {
-        return if (isGotoUse) {
-            couponIds2
-        } else {
-            couponIds
-        }
-    }
-
     override fun getLayoutResId(): Int {
         return R.layout.activity_confirm_order_detail
     }
@@ -147,9 +139,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
         val map: MutableMap<String, List<Int>> =
             HashMap()
         map["ids"] = shoppingCarIds
-        if (isGotoUse) {
-            map["couponIds"] = couponIdsStutes()
-        }
         mPresenter?.getConfirmOrder(Const.header(), ParamsUtil.getInstance()?.getBodyIntegerList(map))
         LoadingDialog.showDialogForLoading(this, getString(R.string.call_back_loading), false)
     }
@@ -171,7 +160,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
                 val map: MutableMap<String, Any> = HashMap()
                 map["ids"] = shoppingCarIdsList
                 map["note"] = notes
-                //map["coupons"] = couponIdsStutes()
                 mPresenter?.placeOrder(Const.header(), ParamsUtil.getInstance()!!.getBodyObj(map))
                 LoadingDialog.showDialogForLoading(
                     this,
