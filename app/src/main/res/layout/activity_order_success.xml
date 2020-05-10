@@ -188,7 +188,8 @@
                     android:text="@string/success_order_detail"
                     android:textColor="@color/grey_666666"
                     android:textSize="@dimen/spacing_18"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
