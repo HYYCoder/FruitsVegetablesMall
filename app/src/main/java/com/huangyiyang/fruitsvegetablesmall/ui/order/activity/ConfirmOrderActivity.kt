@@ -135,7 +135,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
 
     override fun onStart() {
         super.onStart()
-        getCouponList()
         val map: MutableMap<String, List<Int>> =
             HashMap()
         map["ids"] = shoppingCarIds
@@ -168,12 +167,6 @@ class ConfirmOrderActivity : ConfirmOrderActivityContract.ConfirmOrderActivityVi
                 )
             }
         }
-    }
-
-    private fun getCouponList() { //==========第一次打开结算页面时的自动选择可用的优惠券============
-        val map: MutableMap<String, MutableList<Int>?> =
-            HashMap()
-        map["ids"] = shoppingCarIds
     }
 
     override fun setConfirmOrder(param: ConfirmOrderBean?) {
