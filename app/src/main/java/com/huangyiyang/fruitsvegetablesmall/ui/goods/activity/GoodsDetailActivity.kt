@@ -83,7 +83,7 @@ class GoodsDetailActivity : GoodsDetailActivityContract.GoodsDetailActivityView,
 
         immersionBar {
             statusBarColor(R.color.green_4CAF65)
-            navigationBarColor(R.color.white_ffffff)
+            navigationBarColor(R.color.gray_999999)
             autoDarkModeEnable(true)
         }
 

@@ -129,6 +129,7 @@ public class SearchResultListActivity : BaseActivity<SearchResultListActivityMod
                     goodsDetailParames["price"] = ""
                     goodsDetailParames["stock"] = ""
                     goodsDetailParames["reducedPrice"] = ""
+                    goodsDetailParames["hotGoods"] = ""
                     goodsDetailParames["pageSize"] = java.lang.String.valueOf(mPresenter?.mPageSize)
                     mPresenter!!.initLoadParams(Const.header(), goodsDetailParames)
                     //初始

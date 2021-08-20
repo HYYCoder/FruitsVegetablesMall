@@ -105,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:text="@string/success_name"
+                        android:text="@string/success_receiver"
                         android:textColor="@color/grey_999999"
                         android:textSize="@dimen/spacing_12" />
 
@@ -188,7 +188,8 @@
                     android:text="@string/success_order_detail"
                     android:textColor="@color/grey_666666"
                     android:textSize="@dimen/spacing_18"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="visible" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
