@@ -1,4 +1,4 @@
-package com.huangyiyang.fruitsvegetablesmall.ui.goods.activity
+ package com.huangyiyang.fruitsvegetablesmall.ui.goods.activity
 
 import android.content.Context
 import android.content.Intent
